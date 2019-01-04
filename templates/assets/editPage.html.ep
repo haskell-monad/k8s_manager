@@ -1,0 +1,1 @@
+%= include 'assets/form', title => '编辑', formUrl => '/assets/edit'

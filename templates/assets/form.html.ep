@@ -1,0 +1,67 @@
+
+% my @Server = qw(内部服务器 内部虚拟机 阿里云 腾讯云 交换机 防火墙);
+
+% my @Status = qw(上架 在线 离线 下架);
+
+<div id="contentwrapper" class="contentwrapper">
+    <div class="contenttitle2">
+        <h3><%= $title %></h3>
+    </div
+    <div id="validation" class="subcontent" >
+    	
+            <form id="_assets" class="stdform" method="post" action="<%= $formUrl %>">
+                <p>
+                    <label>资产类型(必填)</label>
+                    <span class="field">
+                        <select name="assetType" id="assetType">
+                            <option value="">请选择资产类型</option>
+                        % while (my($idx, $val) = each @Server) {
+                            <option value="<%= $idx %>" <%= $assets -> {assetType} eq $idx ? "selected" : "" %>>
+                                <%=$val%>
+                            </option>
+                        % }
+                        </select>
+                    </span>
+                </p>
+                <p>
+                    <label>设备状态(必填)</label>
+                    <span class="field">
+                        <select name="status" id="status">
+                        % while (my($idx, $val) = each @Status) {
+                            <option value="<%= $idx %>" <%= $assets -> {status} eq $idx ? "selected" : "" %>>
+                                <%=$val%>
+                            </option>
+                        % }
+                        </select>
+                    </span>
+                </p>
+                <p>
+                    <label>IDC机房(可选)</label>
+                    <span class="field"><input type="text" value ="<%= $assets -> {idc} %>" name="idc" id="idc" class="smallinput" placeholder = "如：10.24.22.12" /></span>
+                </p>
+                <p>
+                    <label>机柜号(可选)</label>
+                    <span class="field"><input type="text" value ="<%= $assets -> {cabinetNo} %>" name="cabinetNo" id="cabinetNo" class="smallinput" placeholder = "如：10.24.22.12" /></span>
+                </p>
+                <p>
+                    <label>机柜中序号(可选)</label>
+                    <span class="field"><input type="text" value ="<%= $assets -> {cabinetOrder} %>" name="cabinetOrder" id="cabinetOrder" class="smallinput" placeholder = "如：10.24.22.12" /></span>
+                </p>
+                
+                <p>
+                    <label>资产标签(可选)</label>
+                    <span class="field"><input type="text" value ="<%= $assets -> {tags} %>" name="tags" id="tags" class="smallinput" placeholder = "如：10.24.22.12" /></span>
+                </p>
+
+                <br />
+                
+                <p class="stdformbutton">
+                    <input type="hidden" value ="<%= $assets -> {id} %>" name="id" id="id"/>
+                	<button class="submit radius2">确定</button>
+                </p>
+            </form>
+
+    </div>
+</div>
+
+%= javascript '/js/product-form.js'

@@ -1,0 +1,50 @@
+<div class="pageheader notab">
+    <h5 class="pagetitle">服务器资产列表</h5>
+    <span class="pagedesc">公司所有服务器资产信息，可以在这里进行维护</span>            
+</div>
+<div id="contentwrapper" class="contentwrapper">
+    <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+        </colgroup>
+        <!--表头-->
+        <thead>
+            <tr>
+                <th class="head0 nosort"></th>
+                <th class="head0">产品名称</th>
+                <th class="head1">线上版本</th>
+                <th class="head1">最近一次上线</th>
+                <th class="head0">当前状态</th>
+                <th class="head1">产品负责人</th>
+                <th class="head0">操作</th>
+            </tr>
+        </thead>
+        <!--内容-->
+        <tbody>
+            % for my $product (@$listData){
+            <tr class="gradeX">
+                <td align="center">
+                    <span class="center"><input type="checkbox" value="<%= $product->{id} %>"/></span>
+                </td>
+                <td>
+                    <a href="#" onclick="productEditPage(<%=$product->{id}%>)">
+                    <%= $product->{productName} %>
+                    </a>
+                </td>
+                <td><%= $product->{onlineVersion} %></td>
+                <td><%= $product->{lastOnline}%></td>
+                <td><%= $product->{productStatus} %></td>
+                <td class="center"><%= $product->{productManager} %></td> 
+                <td class="center">
+                    <a href="<%= $product->{productWiki} %>" target="_blank">wiki</a> &nbsp; 
+                    <a href="/product/version/<%= $product->{id} %>">版本管理</a>
+                </td>
+            </tr>
+            % }
+        </tbody>
+    </table>
+</div>

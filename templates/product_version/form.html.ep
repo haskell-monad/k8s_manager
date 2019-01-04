@@ -1,0 +1,126 @@
+% my @versionStatusConfig = qw(需求收集 需求评审 立项 排期 开发 测试 安全测试 发布 验收);
+
+<div id="contentwrapper" class="contentwrapper">
+    <div class="contenttitle2">
+        <h3><%= $title %></h3>
+    </div
+    <div>
+        <a href="/product/version/<%= $product -> {id} %>">返回</a>
+    </div>
+    <div id="validation" class="subcontent" >
+    	
+            <form id="_version" class="stdform" method="post" action="<%= $formUrl %>">
+            	<p>
+                	<label>版本名称</label>
+                    <span class="field">
+                        <input type="text" value ="<%= $version -> {versionName} %>" name="versionName" id="versionName" class="smallinput" placeholder = "如：v2.1.0" />
+                    </span>
+                </p>
+                <p>
+                    <label>版本标签</label>
+                    <span class="field">
+                        <input type="text" value ="<%= $version -> {tags} %>" name="tags" id="tags" class="smallinput" placeholder = "如：uat,payment,v2.0.0或者uat|payment|v2.0.0" />
+                    </span>
+                </p>
+            
+                <p>
+                    <label>版本状态</label>
+                    <span class="field">
+                        <select name="versionStatus" id="versionStatus">
+                        % while (my($idx, $val) = each @versionStatusConfig) {
+                            <option value="<%= $idx %>" <%= $version -> {versionStatus} eq $idx ? "selected" : "" %> >
+                                <%=$val%>
+                            </option>
+                        % }
+                        </select>
+                    </span>
+                </p>
+
+                <p>
+                    <label>版本开始日期</label>
+                    <span class="field">
+                        <input type="text" value ="<%= $version -> {startTime} %>" name="startTime" id="startTime" class="smallinput" />
+                    </span>
+                </p>
+
+                <p>
+                    <label>版本截止日期</label>
+                    <span class="field">
+                        <input type="text" value ="<%= $version -> {endTime} %>" name="endTime" id="endTime" class="smallinput" />
+                    </span>
+                </p>
+                <!-- 
+                <p>
+                    <label>版本当前环境</label>
+                    <span class="field"><input type="text" value ="<%= $version -> {versionEnv} %>" name="versionEnv" id="versionEnv" class="smallinput" /></span>
+                </p>
+                -->
+                <p>
+                    <label>版本Wiki</label>
+                    <span class="field"><input type="text" value ="<%= $version -> {versionWiki} %>" name="versionWiki" id="versionWiki" class="smallinput" /></span>
+                </p>
+                <p>
+                    <label>默认负责人</label>
+                    <span class="field">
+                        负责人信息，会默认获取产品配置中的负责人信息，这里可以进行修改。
+                    </span>
+                </p>        
+                <p>
+                    <label>产品负责人</label>
+                    <span class="field">
+                    <input type="text" value ="<%= !($version -> {productManager}) ? $product -> {productManager} : $version -> {productManager} %>" name="productManager" id="productManager" class="smallinput" placeholder = "如：张启山"/>
+                    </span>
+                </p>
+
+                <p>
+                    <label>产品负责人联系方式</label>
+                    <span class="field"><input type="text" value ="<%= !($version -> {productContact}) ? $product -> {productContact} : $version -> {productContact} %>" name="productContact" id="productContact" class="smallinput" placeholder = "如：qishan.zhang@gmail.com"/></span>
+                </p>
+
+                <p>
+                    <label>开发负责人</label>
+                    <span class="field">
+                        <input type="text" value ="<%= !($version -> {devManager}) ? $product -> {devManager} : $version -> {devManager} %>" name="devManager" id="devManager" class="smallinput" />
+                    </span>
+                </p>
+
+                <p>
+                    <label>开发负责人联系方式</label>
+                    <span class="field"><input type="text" value ="<%= !($version -> {devContact}) ? $product -> {devContact} : $version -> {devContact} %>" name="devContact" id="devContact" class="smallinput" /></span>
+                </p>
+
+                <p>
+                    <label>测试负责人</label>
+                    <span class="field"><input type="text" value ="<%= !($version -> {qaManager}) ? $product -> {qaManager} : $version -> {qaManager} %>" name="qaManager" id="qaManager" class="smallinput" /></span>
+                </p>
+
+                <p>
+                    <label>测试负责人联系方式</label>
+                    <span class="field"><input type="text" value ="<%= !($version -> {qaContact}) ? $product -> {qaContact} : $version -> {qaContact} %>" name="qaContact" id="qaContact" class="smallinput" /></span>
+                </p>
+
+                <p>
+                    <label>安全测试负责人</label>
+                    <span class="field">
+                        <input type="text" value ="<%= !($version -> {safeManager}) ? $product -> {safeManager} : $version -> {safeManager} %>" name="safeManager" id="safeManager" class="smallinput" />
+                    </span>
+                </p>
+
+                <p>
+                    <label>安全测试负责人联系方式</label>
+                    <span class="field"><input type="text" value ="<%= !($version -> {safeContact}) ? $product -> {safeContact} : $version -> {safeContact} %>" name="safeContact" id="safeContact" class="smallinput" /></span>
+                </p>
+
+                <br />
+                
+                <p class="stdformbutton">
+                    <input type="hidden" value ="<%= $version -> {id} %>" name="id" id="id"/>
+                    <input type="hidden" value ="<%= $product -> {id} %>" name="productId" id="productId"/>
+                	<button class="submit radius2">确定</button>
+                </p>
+            </form>
+
+    </div>
+</div>
+
+%= javascript '/js/product-form.js'

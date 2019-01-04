@@ -1,0 +1,95 @@
+<div id="contentwrapper" class="contentwrapper">
+    <div class="contenttitle2">
+        <h3><%= $title %></h3>
+    </div
+    <div id="validation" class="subcontent" >
+    	
+            <form id="_product" class="stdform" method="post" action="<%= $formUrl %>">
+            	<p>
+                	<label>产品名称</label>
+                    <span class="field">
+                        <input type="text" value ="<%= $product -> {productName} %>" name="productName" id="productName" class="smallinput" placeholder = "如：支付系统" />
+                    </span>
+                </p>
+                                    
+                <p>
+                    <label>产品Wiki</label>
+                    <span class="field"><input type="text" value ="<%= $product -> {productWiki} %>" name="productWiki" id="productWiki" class="smallinput" /></span>
+                </p>
+
+                <p>
+                    <label>产品负责人</label>
+                    <span class="field"><input type="text" value ="<%= $product -> {productManager} %>" name="productManager" id="productManager" class="smallinput" placeholder = "如：张启山"/></span>
+                </p>
+
+                <p>
+                    <label>产品负责人联系方式</label>
+                    <span class="field"><input type="text" value ="<%= $product -> {productContact} %>" name="productContact" id="productContact" class="smallinput" placeholder = "如：qishan.zhang@gmail.com"/></span>
+                </p>
+
+                <p>
+                    <label>开发负责人</label>
+                    <span class="field">
+                        <input type="text" value ="<%= $product -> {devManager} %>" name="devManager" id="devManager" class="smallinput" />
+                    </span>
+                </p>
+
+                <p>
+                    <label>开发负责人联系方式</label>
+                    <span class="field"><input type="text" value ="<%= $product -> {devContact} %>" name="devContact" id="devContact" class="smallinput" /></span>
+                </p>
+
+                <p>
+                    <label>测试负责人</label>
+                    <span class="field"><input type="text" value ="<%= $product -> {qaManager} %>" name="qaManager" id="qaManager" class="smallinput" /></span>
+                </p>
+
+                <p>
+                    <label>测试负责人联系方式</label>
+                    <span class="field"><input type="text" value ="<%= $product -> {qaContact} %>" name="qaContact" id="qaContact" class="smallinput" /></span>
+                </p>
+
+                <p>
+                    <label>安全测试负责人</label>
+                    <span class="field"><input type="text" value ="<%= $product -> {safeManager} %>" name="safeManager" id="safeManager" class="smallinput" /></span>
+                </p>
+
+                <p>
+                    <label>安全测试负责人联系方式</label>
+                    <span class="field"><input type="text" value ="<%= $product -> {safeContact} %>" name="safeContact" id="safeContact" class="smallinput" /></span>
+                </p>
+                
+                <p>
+                	<label>产品描述</label>
+                    <span class="field">
+                        <textarea cols="80" rows="5" name="productDesc" class="mediuminput" id="productDesc">
+                        <%= $product -> {productDesc} %>
+                        </textarea>
+                    </span> 
+                </p>
+                <!--
+                <p>
+                	<label>Select</label>
+                    <span class="field">
+                        <select name="selection" id="selection">
+                        	<option value="">Choose One</option>
+                            <option value="1">Selection One</option>
+                            <option value="2">Selection Two</option>
+                            <option value="3">Selection Three</option>
+                            <option value="4">Selection Four</option>
+                        </select>
+                    </span>
+                </p>
+                -->
+                <br />
+                
+                <p class="stdformbutton">
+                    <input type="hidden" value ="<%= $product -> {id} %>" name="id" id="id"/>
+                	<button class="submit radius2">确定</button>
+                </p>
+            </form>
+
+    </div>
+</div>
+
+%= javascript '/js/product-form.js'
