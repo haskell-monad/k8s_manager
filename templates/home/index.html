@@ -5,24 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Perl DevOps</title>
 
-%= stylesheet '/css/style.default.css'
-%= javascript '/js/plugins/jquery-1.7.min.js'
-%= javascript '/js/plugins/jquery-ui-1.8.16.custom.min.js'
-%= javascript '/js/plugins/jquery.cookie.js'
-%= javascript '/js/plugins/jquery.uniform.min.js'
-<!-- %= javascript '/js/plugins/jquery.flot.min.js'
-%= javascript '/js/plugins/jquery.flot.resize.min.js' 
--->
-%= javascript '/js/plugins/jquery.slimscroll.js'
-%= javascript '/js/custom/general.js'
-<!-- %= javascript '/js/custom/dashboard.js' -->
+{% load staticfiles  %}
+<link rel="stylesheet" href="{% static 'css/style.default.css' %}" />
+
+<script type="text/javascript" src="{% static 'js/plugins/jquery-1.7.min.js'  %}" ></script>
+<script type="text/javascript" src="{% static 'js/plugins/jquery-ui-1.8.16.custom.min.js' %}" ></script>
+<script type="text/javascript" src="{% static 'js/plugins/jquery.cookie.js' %}" ></script>
+<script type="text/javascript" src="{% static 'js/plugins/jquery.uniform.min.js' %}" ></script>
+<script type="text/javascript" src="{% static 'js/plugins/jquery.slimscroll.js' %}" ></script>
+<script type="text/javascript" src="{% static 'js/custom/general.js' %}" ></script>
 
 
 </head>
 <body class="withvernav">
 <div class="bodywrapper">
         <!--引入header-->
-	%= include 'header'
+    {% include "header.html" %}
 	<!--左侧菜单-->
 	<div class="vernav2 iconmenu">
     	<ul>

@@ -1,0 +1,55 @@
+% my @Server = qw(内部服务器 内部虚拟机 阿里云 腾讯云 交换机 防火墙);
+
+% my @Status = qw(上架 在线 离线 下架);
+
+<div class="pageheader notab">
+    <h5 class="pagetitle">资产列表</h5>
+    <span class="pagedesc">公司所有资产信息，可以在这里进行维护</span>            
+</div>
+<div id="contentwrapper" class="contentwrapper">
+    <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+        </colgroup>
+        <!--表头-->
+        <thead>
+            <tr>
+                <th class="head0 nosort"></th>
+                <th class="head0">资产id</th>
+                <th class="head1">资产类型</th>
+                <th class="head1">资产状态</th>
+                <th class="head1">资产标签</th>
+                <th class="head1">业务线</th>
+                <th class="head0">操作</th>
+            </tr>
+        </thead>
+        <!--内容-->
+        <tbody>
+            {% for assets in listData %}
+            <tr class="gradeX">
+                <td align="center">
+                    <span class="center"><input type="checkbox" value="{{ assets.id }}"/></span>
+                </td>
+                <td>
+                    <a href="#" onclick="assetsEditPage("{{ assets.id }}")">
+                        {{ assets.id }}
+                    </a>
+                </td>
+                <td><%= $Server[$assets -> {assetType}]%></td>
+                <td><%= $Status[$assets -> {status}]%></td>
+                <td><%= $assets -> {tags}%></td>
+                <td><%= $assets -> {productName} %></td>
+
+                <td class="center">
+                    <a href="<%= $assets->{id} %>" target="_blank">删除</a> &nbsp; 
+                    <a href="#" onclick="serverEditPage(<%= $assets -> {id} %>)">服务器维护</a>
+                </td>
+            </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+</div>
