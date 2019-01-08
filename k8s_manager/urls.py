@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from . import (home,assets,product,k8s)
+from . import (home,assets,product,kube)
 
 
 urlpatterns = [
@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^index$', home.index),
     url(r'^assets$', assets.index),
     url(r'^product$', product.index),
-    url(r'^k8s$', k8s.index),
+    url(r'^kube$', kube.index),
 ]

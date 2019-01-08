@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'k8s',
+    'k8s_manager',
 ]
 
 MIDDLEWARE = [

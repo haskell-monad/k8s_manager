@@ -5,8 +5,8 @@ from django.db import models
 
 # Create your models here.
 # python manage.py migrate   # create table
-# python manage.py makemigrations k8s  # change model
-# python manage.py migrate k8s   # create table
+# python manage.py makemigrations k8s_manager   # change model
+# python manage.py migrate k8s_manager   # create table
 
 class Assets(models.Model):
 	productName = models.CharField(max_length=50)
