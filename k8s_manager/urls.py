@@ -21,7 +21,13 @@ from . import (home,assets,product,kube)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index$', home.index),
+
+    #assets
     url(r'^assets$', assets.index),
+    url(r'^assets/add$', assets.add),
+    url(r'^assets/edit/(\d+)$', assets.edit),
+
+
     url(r'^product$', product.index),
     url(r'^kube$', kube.index),
 ]

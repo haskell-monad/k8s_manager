@@ -17,10 +17,10 @@ class Assets(models.Model):
 	updateDate = models.DateField()
 	createUser = models.CharField(max_length=20)
 	updateUser = models.CharField(max_length=20)
-	idc = models.CharField(max_length=255)
-	cabinetNo = models.CharField(max_length=255)
-	cabinetOrder = models.CharField(max_length=255)
-	tags = models.CharField(max_length=255)
+	idc = models.CharField(max_length=200)
+	cabinetNo = models.CharField(max_length=200)
+	cabinetOrder = models.CharField(max_length=200)
+	tags = models.CharField(max_length=200)
 	class Meta:
 		db_table = "assets"
 

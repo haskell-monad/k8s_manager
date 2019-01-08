@@ -35,13 +35,13 @@ function versionEditPage(id){
 }
 
 //新增资产页面
-function assetsAddPage(){
-	flushHtmlByAjax("/assets/addPage","centerContent");
+function assetsAdd(){
+	flushHtmlByAjax("/assets/add","centerContent");
 }
 
 //编辑资产页面
-function assetsEditPage(id){
-	flushHtmlByAjax("/assets/editPage/"+id,"centerContent");
+function assetsEdit(id){
+	flushHtmlByAjax("/assets/edit/"+id,"centerContent");
 }
 
 //编辑服务器页面
