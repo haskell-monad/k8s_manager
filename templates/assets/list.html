@@ -25,6 +25,7 @@
         </thead>
         <!--内容-->
         <tbody>
+            {% load filter_list %} 
             {% for assets in listData %}
             <tr class="gradeX">
                 <td align="center">
@@ -35,13 +36,13 @@
                         {{ assets.id }}
                     </a>
                 </td>
-                <td>{{ service_list.assets.assetType }}</td>
-                <td>{{ status_list.assets.status }}</td>
+                <td>{{ service_list|filter_list:assets.assetType }}</td>
+                <td>{{ status_list|filter_list:assets.status }}</td>
                 <td>{{ assets.tags }}</td>
                 <td>{{ assets.productName }}</td>
 
                 <td class="center">
-                    <a href="<%= $assets->{id} %>" target="_blank">删除</a> &nbsp; 
+                    <a href="{{ assets.id }}" target="_blank">删除</a> &nbsp; 
                     <a href="#" onclick="serverEditPage({{ assets.id }})">服务器维护</a>
                 </td>
             </tr>

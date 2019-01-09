@@ -2,6 +2,8 @@
 from .models import Assets
 from django.forms import ModelForm
 from django.forms import widgets as wid
+from . import common
+
 class AssetsForm(ModelForm):
     class Meta:
         model = Assets
@@ -16,10 +18,13 @@ class AssetsForm(ModelForm):
         #     'age':{'required':"年龄不能为空",},
         # }
         widgets = {
+            "assetType": wid.Select(choices=common.TYPE_VALUE),
+            "status": wid.Select(choices=common.STATUS_VALUE),
             "idc": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
             "cabinetNo": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
             "cabinetOrder": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
             "tags": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：阿里云 高配"}),
+            "id": wid.HiddenInput()
         }
         labels= {
             "idc": "IDC机房(可选)",

@@ -31,17 +31,17 @@ def add(request):
     context['status_list'] = status_list
     if request.method == "POST":
         form = AssetsForm(request.POST)
-        logger.info("-----------add assets----------")
-        logger.info(form.is_valid())
         if form.is_valid():
-             form.save()
+             assets = form.save(commit=False)
+             assets.createUser("admin")
+             assets.save()
         return HttpResponseRedirect('/assets')
     else:
         form = AssetsForm()
     context['title'] = "新增"
     context['formUrl'] = "/assets/add"
     context['form'] = form
-    return render(request, 'assets/addPage.html', context)
+    return render(request, 'assets/form.html', context)
 
 
 def edit(request, pk):
@@ -54,12 +54,14 @@ def edit(request, pk):
         return redirect('/assets')
     if request.method == "GET":
         form = AssetsForm(instance=obj)
-        context['assets'] = form
+        context['form'] = form
         context['title'] = "编辑"
         context['formUrl'] = "/assets/edit/"+pk
-        return render(request, 'assets/editPage.html', context)
+        return render(request, 'assets/form.html', context)
     else:
         form = AssetsForm(request.POST, instance=obj)
+        logger.info("-----------edit assets----------")
+        logger.info(form)
         if form.is_valid():
             form.save()
         return redirect('/assets')

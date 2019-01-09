@@ -1,4 +1,3 @@
-
 <div id="contentwrapper" class="contentwrapper">
     <div class="contenttitle2">
         <h3>{{ title }}</h3>
@@ -10,54 +9,46 @@
                 <p>
                     <label>资产类型(必填)</label>
                     <span class="field">
-                        <select name="assetType" id="assetType">
-                            <option value="">请选择资产类型</option>
-                            {% for service in service_list %}
-                            <option value="{{ forloop.counter0 }}" {% if assets.assetType == forloop.counter0 %} "selected" {% endif %} >
-                                {{ service }}
-                            </option>
-                        {% endfor %}
-                        </select>
+                        {{ form.assetType }}
                     </span>
                 </p>
                 <p>
                     <label>设备状态(必填)</label>
                     <span class="field">
-                        <select name="status" id="status">
-                        {% for status in status_list %}
-                            <option value="{{ forloop.counter0 }}" {% if assets.status == forloop.counter0 %} "selected" {% endif %} >
-                               {{ status }}
-                            </option>
-                        {% endfor %}
-                        </select>
+                        {{ form.status }}
                     </span>
                 </p>
                 <p>
                     <label>IDC机房(可选)</label>
                     <span class="field">
-                        <input type="text" value="{{ assets.idc }}" name="idc" id="idc" class="smallinput" placeholder = "如：10.24.22.12" />
+                        {{ form.idc }}
                     </span>
                 </p>
                 <p>
                     <label>机柜号(可选)</label>
                     <span class="field">
-                        <input type="text" value ="{{ assets.cabinetNo }}" name="cabinetNo" id="cabinetNo" class="smallinput" placeholder = "如：10.24.22.12" />
+                        {{ form.cabinetNo }}
                     </span>
                 </p>
                 <p>
                     <label>机柜中序号(可选)</label>
-                    <span class="field"><input type="text" value ="{{ assets.cabinetOrder }}" name="cabinetOrder" id="cabinetOrder" class="smallinput" placeholder = "如：10.24.22.12" /></span>
+
+                    <span class="field">
+                        {{ form.cabinetOrder }}
+                    </span>
                 </p>
                 
                 <p>
                     <label>资产标签(可选)</label>
-                    <span class="field"><input type="text" value ="{{ assets.tags }}" name="tags" id="tags" class="smallinput" placeholder = "如：10.24.22.12" /></span>
+                    <span class="field">
+                        {{ form.tags }}
+                    </span>
                 </p>
 
                 <br />
                 
                 <p class="stdformbutton">
-                    <input type="hidden" value ="{{ assets.id }}" name="id" id="id"/>
+                    {{ form.id }}
                 	<button class="submit radius2">确定</button>
                 </p>
             </form>
