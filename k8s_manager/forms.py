@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import (Assets,Product)
+from .models import (Assets,Product,ProductVersion,KubeConfig)
 from django.forms import ModelForm
 from django.forms import widgets as wid
 from . import common
@@ -88,8 +88,12 @@ class ProductVersionForm(ModelForm):
 class KubeConfigForm(ModelForm):
     class Meta:
         model = ProductVersion
-        fields = ('versionName','tags','versionStatus','startTime','endTime','versionWiki','productManager',
-                'productContact','devManager','devContact','qaManager','qaContact','safeManager','safeContact','productId','id'
+        fields = ('kube_name','kube_version','deploy_mode','ntp_enabled','lb_node','etcd_node','etcd_node_name_prefix','kube_master','kube_node','harbor_node',
+                    'harbor_domain','harbor_install','kube_new_master','kube_new_node','ssh_addkey','node_port_range','master_ip','kube_api_server','cluster_network',
+                    'service_cidr',
+                    'cluster_cidr','cluster_k8s_svc_ip','cluster_dns_svc_ip','cluster_dns_domain',
+                    'basic_auth_user','basic_auth_pass','bin_dir','ca_dir','base_dir','kube_desc',
+                    'id'
         )
         exclude = None          #排除的字段
         labels = None           #提示信息
@@ -97,42 +101,47 @@ class KubeConfigForm(ModelForm):
         widgets = None          #自定义插件
         error_messages = None   #自定义错误信息
         widgets = {
-            "kubeName": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：Test"}),
-            "clusterIP": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.244.0.0/16"}),
-            "serviceClusterIP": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.96.0.0/12"}),
-            "dnsIP": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.96.0.10"}),
+            "kube_name": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：Test"}),
+            "kube_version": wid.Select(choices=common.K8S_VERSION),
+            "deploy_mode": wid.Select(choices=common.K8S_DEPLOY_MODE),
+            "ntp_enabled": wid.Select(choices=common.COMMON_STATUS),
 
-            "dnsDN": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：cluster.local"}),
-            "apiVIP": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：11.11.11.109"}),
-            "ingressVIP": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：11.11.11.110"}),
-            "sshUser": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：root"}),
+            "lb_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.185;192.168.150.187"}),
+            "etcd_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182;192.168.150.183"}),
+            "etcd_node_name_prefix": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：etcd"}),
+            "kube_master": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182"}),
+            "kube_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.184"}),
 
-            "sshPort": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：22"}),
-            "masterAddress": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.10.10.1[1,2,3]  test.k8s-[1-3].cluster"}),
-            "masterHostName": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：K8S-M"}),
-            "nodeHostName": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：K8S-N"}),
+            "harbor_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.189"}),
+            "harbor_domain": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：harbor.ikang.com"}),
+            "harbor_install": wid.Select(choices=common.COMMON_STATUS),
 
-            "etcdAddress": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.20.20.1[1,2],10.20.20.22"}),
-            "yamlDir": wid.TextInput(attrs={'class':'smallinput'}),
-            "nodePort": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"200010"}),
-            "kubeToken": wid.TextInput(attrs={'class':'smallinput'}),
+            "kube_new_master": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182"}),
+            "kube_new_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.184"}),
+            "ssh_addkey": wid.Select(choices=common.COMMON_STATUS),
+            "node_port_range": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：20000-40000"}),
 
-            "keepalivedAddress": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：v2.1.0"}),
-            "kubeDesc": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：v2.1.0"}),
-            "id": wid.HiddenInput(),
-            "deploy": wid.HiddenInput(),
+            "master_ip": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.187"}),
+            "kube_api_server": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：https://$master_ip:8443"}),
 
+            "cluster_network": wid.Select(choices=common.K8S_CLUSTER_NETWORK),
+
+            "service_cidr": wid.TextInput(attrs={'class':'smallinput', 'value':"10.68.0.0/16"}),
+            "cluster_cidr": wid.TextInput(attrs={'class':'smallinput', 'value':"172.20.0.0/16"}),
+            "cluster_k8s_svc_ip": wid.TextInput(attrs={'class':'smallinput', 'value':"10.68.0.1"}),
+            "cluster_dns_svc_ip": wid.TextInput(attrs={'class':'smallinput', 'value':"10.68.0.2"}),
+            "cluster_dns_domain": wid.TextInput(attrs={'class':'smallinput', 'value':"cluster.local."}),
+
+            "basic_auth_user": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：admin"}),
+            "basic_auth_pass": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：admin123456"}),
+
+            "bin_dir": wid.TextInput(attrs={'class':'smallinput', 'readonly': 'readonly','value': '/opt/kube/bin'}),
+            "ca_dir": wid.TextInput(attrs={'class':'smallinput', 'readonly': 'readonly','value': '/etc/kubernetes/ssl'}),
+            "base_dir": wid.TextInput(attrs={'class':'smallinput', 'readonly': 'readonly','value': '/etc/ansible'}),
             
-            "kubeVersion": wid.Select(choices=common.VERSION_STATUS_VALUE),
-            "kubeCniVersion": wid.Select(choices=common.VERSION_STATUS_VALUE),
-            "etcdVersion": wid.Select(choices=common.VERSION_STATUS_VALUE),
-            "dockerVersion": wid.Select(choices=common.VERSION_STATUS_VALUE),
-            "netMode": wid.Select(choices=common.VERSION_STATUS_VALUE),
-
-            "loadBalance": wid.Select(choices=common.VERSION_STATUS_VALUE),
- 
+            "kube_desc": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"集群描述信息"}),
+            "id": wid.HiddenInput(),
         }
-
 
 
 

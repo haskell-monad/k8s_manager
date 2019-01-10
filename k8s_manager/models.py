@@ -87,55 +87,119 @@ class ProductVersion(models.Model):
 
 
 class KubeConfig(models.Model):
-    kubeName = models.CharField(max_length=255)
-    kubeVersion = models.CharField(max_length=255)
-    kubeCniVersion = models.CharField(max_length=255)
-    etcdVersion = models.CharField(max_length=255)
-    dockerVersion = models.CharField(max_length=255)
-    netMode = models.CharField(max_length=255)
-    clusterIP = models.CharField(max_length=255)
-    serviceClusterIP = models.CharField(max_length=255)
-    dnsIP = models.CharField(max_length=255)
-    dnsDN = models.CharField(max_length=255)
-    kube_api_ip = models.CharField(max_length=255)
-    ingressVIP = models.CharField(max_length=255)
-    sshUser = models.CharField(max_length=255)
-    sshPort = models.CharField(max_length=255)
-    masterAddress = models.CharField(max_length=255)
-    masterHostName = models.CharField(max_length=255)
-    nodeHostName = models.CharField(max_length=255)
-    etcdAddress = models.CharField(max_length=255)
-    yamlDir = models.CharField(max_length=255)
-    nodePort = models.CharField(max_length=255)
-    kubeToken = models.CharField(max_length=255)
-    loadBalance = models.CharField(max_length=255)
-    kubeDesc = models.CharField(max_length=255)
+    # 集群名称/标识，如 Test
+    kube_name = models.CharField(max_length=20)
+    # 集群主版本号, 如 v1.8, v1.9, v1.10，v1.11, v1.12
+    kube_version = models.IntegerField(choices=common.K8S_VERSION)
+    # 集群部署模式：allinone, single-master, multi-master
+    deploy_mode = models.IntegerField(choices=common.K8S_DEPLOY_MODE)
+    
+    # 集群是否安装 chrony 时间同步,yes/no
+    ntp_enabled = models.CharField(max_length=10)
+
+    # 负载均衡节点，多个使用分号分割， 安装 haproxy+keepalived
+    lb_node = models.CharField(max_length=150)
+
+    # etcd 节点,多个使用分号分割
+    etcd_node = models.CharField(max_length=150)
+    # etcd节点名称
+    etcd_node_name_prefix = models.CharField(max_length=150)
+
+    # master节点，多个使用分号分割
+    kube_master = models.CharField(max_length=150)
+
+    # node节点，多个使用分号分割
+    kube_node = models.CharField(max_length=150)
+    
+    # harbor节点
+    harbor_node = models.CharField(max_length=20)
+    # harbor域名
+    harbor_domain = models.CharField(max_length=100)
+    # yes表示新建，no表示使用已有harbor服务器
+    harbor_install = models.CharField(choices=common.COMMON_STATUS)
+
+    # 预留组，后续添加master节点使用，多个使用分号分割
+    kube_new_master = models.CharField(max_length=150)
+    # 预留组，后续添加node节点使用，多个使用分号分割
+    kube_new_node = models.CharField(max_length=150)
+
+    # 是否自动配置免密钥
+    ssh_addkey = models.CharField(choices=common.COMMON_STATUS)
+
+    # 服务端口范围 (NodePort Range),如：20000-40000
+    node_port_range = models.CharField(max_length=20)
+    
+    # master_ip即LB节点VIP地址，为区别与默认apiserver端口，设置VIP监听的服务端口8443
+    # 公有云上请使用云负载均衡内网地址和监听端口
+    master_ip = models.CharField(max_length=20)
+    kube_api_server = models.CharField(max_length=100)
+
+    # 集群网络插件，目前支持calico, flannel, kube-router, cilium
+    cluster_network = models.CharField(choices=common.K8S_CLUSTER_NETWORK)
+
+    # 服务网段 (Service CIDR），注意不要与内网已有网段冲突
+    service_cidr = models.CharField(max_length=40)
+    # POD 网段 (Cluster CIDR），注意不要与内网已有网段冲突
+    cluster_cidr = models.CharField(max_length=40)
+    # kubernetes 服务 IP (预分配，一般是 SERVICE_CIDR 中第一个IP)
+    cluster_k8s_svc_ip = models.CharField(max_length=40)
+    # 集群 DNS 服务 IP (从 SERVICE_CIDR 中预分配)
+    cluster_dns_svc_ip = models.CharField(max_length=40)
+    # 集群 DNS 域名
+    cluster_dns_domain = models.CharField(max_length=40)
+
+    # 集群basic auth 使用的用户名和密码
+    basic_auth_user = models.CharField(max_length=40)
+    basic_auth_pass = models.CharField(max_length=40)
+
+    # 默认二进制文件目录
+    bin_dir = models.CharField(max_length=40)
+    # 证书目录
+    ca_dir = models.CharField(max_length=40)
+    # 部署目录，即 ansible 工作目录，建议不要修改
+    base_dir = models.CharField(max_length=40)
+
+    # 该集群是否已经部署
+    deploy = models.IntegerField(choices=common.COMMON_STATUS)
+    # 该集群部署错误信息
+    deploy_error = models.CharField(max_length=255)
+    # 集群描述信息
+    kube_desc = models.CharField(max_length=255)
+
     createDate = models.DateField(auto_now_add=True)
-    createUser = models.CharField(max_length=255)
+    createUser = models.CharField(max_length=20)
     updateDate = models.DateField(auto_now = True)
     updateUser = models.CharField(max_length=20)
-    keepalivedAddress = models.CharField(max_length=255)
-    nodeAddress = models.CharField(max_length=255)
-    etcd_ca_dir = models.CharField(max_length=255)
-    kube_dir = models.CharField(max_length=255)
-    kube_api_port = models.IntegerField()
-    deploy = models.IntegerField()
-    etcd_default_port = models.IntegerField()
-    haproxy_default_port = models.IntegerField()
 
     class Meta:
         db_table = "kube_config"
 
 
 class KubeCluster(models.Model):
-    ip = models.CharField(max_length=20)
-    nodeType = models.CharField(max_length=16)
-    ssh = models.IntegerField()
-    cluster = models.CharField(max_length=20)
-    user = models.CharField(max_length=30)
-    password = models.CharField(max_length=30)
-    port = models.IntegerField()
-
+    # 集群id，唯一标识
+    kube_id = models.IntegerField(max_length=20)
+    # 节点ip
+    node_ip = models.CharField(max_length=20)
+    # 节点域名
+    node_domain = models.CharField(max_length=40)
+    # 节点类型
+    node_type = models.CharField(choices=common.TYPE_VALUE)
+    # 节点用户名
+    node_user = models.CharField(max_length=30)
+    # 节点密码
+    node_password = models.CharField(max_length=100)
+    # 节点端口号
+    node_port = models.IntegerField()
+    # 节点主机名
+    node_name = models.CharField(max_length=100)
+    # 节点角色，如: master/backup
+    node_role = models.CharField(choices=common.TYPE_VALUE)
+    # 是否已经配置过ssh免密钥登陆
+    ssh_enabled = models.IntegerField()
+    # 创建日期
+    createDate = models.DateField(auto_now_add=True)
+    # 修改日期
+    updateDate = models.DateField(auto_now = True)
     class Meta:
         db_table = "kube_cluster"
 

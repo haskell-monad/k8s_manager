@@ -33,3 +33,14 @@ VERSION_STATUS_VALUE = (
 )
 
 version_status_list = map(lambda x: x[1], VERSION_STATUS_VALUE)
+
+
+
+
+COMMON_STATUS = ["yes","no"]
+
+K8S_VERSION = ["v1.8", "v1.9", "v1.10", "v1.11", "v1.12"]
+
+K8S_DEPLOY_MODE = ["allinone","single-master","multi-master"]
+
+K8S_CLUSTER_NETWORK = ["flannel","calico","kube-router","cilium"]
