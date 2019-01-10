@@ -35,12 +35,49 @@ VERSION_STATUS_VALUE = (
 version_status_list = map(lambda x: x[1], VERSION_STATUS_VALUE)
 
 
+COMMON_STATUS = (
+    ("yes","yes"),
+    ("no","no")
+)
+
+K8S_VERSION = (
+    ("v1.8","v1.8"),
+    ("v1.9","v1.9"),
+    ("v1.10","v1.10"),
+    ("v1.11","v1.11"),
+    ("v1.12","v1.12"),
+)
+
+K8S_DEPLOY_MODE = (
+    ("allinone","allinone"),
+    ("single-master","single-master"),
+    ("multi-master","multi-master")
+)
+
+K8S_CLUSTER_NETWORK = (
+    ("flannel","flannel"),
+    ("calico","calico"),
+    ("kube-router","kube-router"),
+    ("cilium","cilium")
+)
+
+K8S_NODE_ROLE = (
+    ("master","master"),
+    ("backup","backup")
+)
+
+K8S_NODE_TYPE = (
+    ("k8s","k8s"),
+    ("loadblance","loadblance"),
+    ("etcd","etcd"),
+    ("harbor","harbor")
+)
 
 
-COMMON_STATUS = ["yes","no"]
 
-K8S_VERSION = ["v1.8", "v1.9", "v1.10", "v1.11", "v1.12"]
 
-K8S_DEPLOY_MODE = ["allinone","single-master","multi-master"]
 
-K8S_CLUSTER_NETWORK = ["flannel","calico","kube-router","cilium"]
+
+
+
+

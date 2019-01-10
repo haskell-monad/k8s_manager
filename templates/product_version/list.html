@@ -1,6 +1,6 @@
 <div class="pageheader notab">
-    <h1 class="pagetitle"> <a href="/product">产品线列表</a> / {{ product.productName }} </h1>
-    <span class="pagedesc">{{ product.productDesc }}</span>            
+    <h1 class="pagetitle"> <a href="/product">产品线列表</a> / {{ product.product_name }} </h1>
+    <span class="pagedesc">{{ product.product_desc }}</span>            
 </div>
 <div id="contentwrapper" class="contentwrapper">
     <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
@@ -31,18 +31,18 @@
             <tr class="gradeX">
                 <td align="center"><span class="center"><input type="checkbox" /></span></td>
                 <td>
-                    <a href="#" onclick="versionEditPage({{ version.id }})">
-                        {{ version.versionName }}
+                    <a href="#" onclick="versionEdit({{ version.id }})">
+                        {{ version.version_name }}
                     </a>     
                 </td>
-                <td>{{ version.productManager}}</td>
-                <td>{{ version_status_list | filter_list:version.versionStatus}}</td>
+                <td>{{ version.product_manager}}</td>
+                <td>{{ version_status_list | filter_list:version.version_status}}</td>
                 <td>{{ version.tags }}</td>
-                <td>{{ version.startTime }}</td>
-                <td class="center">{{ version.endTime }}</td> 
+                <td>{{ version.start_time }}</td>
+                <td class="center">{{ version.end_time }}</td> 
                 <td class="center">
                     <a href="#" onclick="productDetail(1)">详情</a> &nbsp; 
-                    <a target="_blank" href="{{ version.versionWiki }}" class="delete">wiki</a> &nbsp; 
+                    <a target="_blank" href="{{ version.version_wiki }}" class="delete">wiki</a> &nbsp; 
                     <a href="" class="delete">环境配置</a>
                 </td>
             </tr>

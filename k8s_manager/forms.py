@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import (Assets,Product,ProductVersion,KubeConfig)
+from .models import Assets, Product, ProductVersion, KubeConfig, Server
 from django.forms import ModelForm
 from django.forms import widgets as wid
 from . import common
@@ -7,7 +7,7 @@ from . import common
 class AssetsForm(ModelForm):
     class Meta:
         model = Assets
-        fields = ('assetType','status','idc','cabinetNo','cabinetOrder','tags','id')
+        fields = ('assets_type','status','idc','cabinet_no','cabinet_order','tags','id')
         exclude = None          #排除的字段
         labels = None           #提示信息
         help_texts = None       #帮助提示信息
@@ -18,82 +18,86 @@ class AssetsForm(ModelForm):
         #     'age':{'required':"年龄不能为空",},
         # }
         widgets = {
-            "assetType": wid.Select(choices=common.TYPE_VALUE),
+            "assets_type": wid.Select(choices=common.TYPE_VALUE),
             "status": wid.Select(choices=common.STATUS_VALUE),
             "idc": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
-            "cabinetNo": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
-            "cabinetOrder": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
+            "cabinet_no": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
+            "cabinet_order": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
             "tags": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：阿里云 高配"}),
             "id": wid.HiddenInput()
         }
         labels= {
             "idc": "IDC机房(可选)",
-            "cabinetNo": "机柜号(可选)",
-            "cabinetOrder": "机柜中序号(可选)",
+            "cabinet_no": "机柜号(可选)",
+            "cabinet_order": "机柜中序号(可选)",
             "tags": "资产标签(可选)" 
         }
 
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ('productName','productWiki','productManager','productContact','devManager','devContact','qaManager','qaContact','safeManager','safeContact','productDesc','id')
+        fields = ('product_name','product_wiki','product_manager','product_contact','dev_manager','dev_contact','qa_manager','qa_contact','safe_manager','safe_contact',
+            'product_desc','id'
+        )
         exclude = None          #排除的字段
         labels = None           #提示信息
         help_texts = None       #帮助提示信息
         widgets = None          #自定义插件
         error_messages = None   #自定义错误信息
         widgets = {
-            "productName": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：支付系统"}),
-            "productWiki": wid.TextInput(attrs={'class':'smallinput'}),
-            "productManager": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：张启山"}),
-            "productContact": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：qishan.zhang@gmail.com"}),
-            "devManager": wid.TextInput(attrs={'class':'smallinput'}),
-            "devContact": wid.TextInput(attrs={'class':'smallinput'}),
-            "qaManager": wid.TextInput(attrs={'class':'smallinput'}),
-            "qaContact": wid.TextInput(attrs={'class':'smallinput'}),
-            "safeManager": wid.TextInput(attrs={'class':'smallinput'}),
-            "safeContact": wid.TextInput(attrs={'class':'smallinput'}),
-            "productDesc": wid.Textarea(attrs={'cols': 80, 'rows': 5, 'class':'mediuminput'}),
+            "product_name": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：支付系统"}),
+            "product_wiki": wid.TextInput(attrs={'class':'smallinput'}),
+            "product_manager": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：张启山"}),
+            "product_contact": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：qishan.zhang@gmail.com"}),
+            "dev_manager": wid.TextInput(attrs={'class':'smallinput'}),
+            "dev_contact": wid.TextInput(attrs={'class':'smallinput'}),
+            "qa_manager": wid.TextInput(attrs={'class':'smallinput'}),
+            "qa_contact": wid.TextInput(attrs={'class':'smallinput'}),
+            "safe_manager": wid.TextInput(attrs={'class':'smallinput'}),
+            "safe_contact": wid.TextInput(attrs={'class':'smallinput'}),
+            "product_desc": wid.Textarea(attrs={'cols': 80, 'rows': 5, 'class':'mediuminput'}),
             "id": wid.HiddenInput()
         }
 
 class ProductVersionForm(ModelForm):
     class Meta:
         model = ProductVersion
-        fields = ('versionName','tags','versionStatus','startTime','endTime','versionWiki','productManager','productContact','devManager','devContact','qaManager','qaContact','safeManager','safeContact','productId','id')
+        fields = ('version_name','tags','version_status','start_time','end_time','version_wiki','product_manager','product_contact',
+            'dev_manager','dev_contact','qa_manager','qa_contact','safe_manager','safe_contact','id')
         exclude = None          #排除的字段
         labels = None           #提示信息
         help_texts = None       #帮助提示信息
         widgets = None          #自定义插件
         error_messages = None   #自定义错误信息
         widgets = {
-            "versionName": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：v2.1.0"}),
+            "version_name": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：v2.1.0"}),
             "tags": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：uat,payment,v2.0.0或者uat|payment|v2.0.0"}),
-            "versionStatus": wid.Select(choices=common.VERSION_STATUS_VALUE),
-            "startTime": wid.TextInput(attrs={'class':'smallinput'}),
-            "endTime": wid.TextInput(attrs={'class':'smallinput'}),
-            "versionWiki": wid.TextInput(attrs={'class':'smallinput'}),
-            "productManager": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：张启山"}),
-            "productContact": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：qishan.zhang@gmail.com"}),
-            "devManager": wid.TextInput(attrs={'class':'smallinput'}),
-            "devContact": wid.TextInput(attrs={'class':'smallinput'}),
-            "qaManager": wid.TextInput(attrs={'class':'smallinput'}),
-            "qaContact": wid.TextInput(attrs={'class':'smallinput'}),
-            "safeManager": wid.TextInput(attrs={'class':'smallinput'}),
-            "safeContact": wid.TextInput(attrs={'class':'smallinput'}),
-            "productId": wid.HiddenInput(),
+            "version_status": wid.Select(choices=common.VERSION_STATUS_VALUE),
+            "start_time": wid.TextInput(attrs={'class':'smallinput'}),
+            "end_time": wid.TextInput(attrs={'class':'smallinput'}),
+            "version_wiki": wid.TextInput(attrs={'class':'smallinput'}),
+            "product_manager": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：张启山"}),
+            "product_contact": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：qishan.zhang@gmail.com"}),
+            "dev_manager": wid.TextInput(attrs={'class':'smallinput'}),
+            "dev_contact": wid.TextInput(attrs={'class':'smallinput'}),
+            "qa_manager": wid.TextInput(attrs={'class':'smallinput'}),
+            "qa_contact": wid.TextInput(attrs={'class':'smallinput'}),
+            "safe_manager": wid.TextInput(attrs={'class':'smallinput'}),
+            "safe_contact": wid.TextInput(attrs={'class':'smallinput'}),
             "id": wid.HiddenInput()
         }
 
 class KubeConfigForm(ModelForm):
     class Meta:
-        model = ProductVersion
+        model = KubeConfig
         fields = ('kube_name','kube_version','deploy_mode','ntp_enabled','lb_node','etcd_node','etcd_node_name_prefix','kube_master','kube_node','harbor_node',
-                    'harbor_domain','harbor_install','kube_new_master','kube_new_node','ssh_addkey','node_port_range','master_ip','kube_api_server','cluster_network',
+                    'harbor_domain','harbor_install',
+                    #'kube_new_master','kube_new_node',
+                    'ssh_addkey','node_port_range','master_ip','kube_api_server','cluster_network',
                     'service_cidr',
                     'cluster_cidr','cluster_k8s_svc_ip','cluster_dns_svc_ip','cluster_dns_domain',
                     'basic_auth_user','basic_auth_pass','bin_dir','ca_dir','base_dir','kube_desc',
-                    'id'
+                    'id','deploy'
         )
         exclude = None          #排除的字段
         labels = None           #提示信息
@@ -108,7 +112,7 @@ class KubeConfigForm(ModelForm):
 
             "lb_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.185;192.168.150.187"}),
             "etcd_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182;192.168.150.183"}),
-            "etcd_node_name_prefix": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：etcd"}),
+            "etcd_node_name_prefix": wid.TextInput(attrs={'class':'smallinput', 'value': 'etcd'}),
             "kube_master": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182"}),
             "kube_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.184"}),
 
@@ -116,8 +120,8 @@ class KubeConfigForm(ModelForm):
             "harbor_domain": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：harbor.ikang.com"}),
             "harbor_install": wid.Select(choices=common.COMMON_STATUS),
 
-            "kube_new_master": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182"}),
-            "kube_new_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.184"}),
+            #"kube_new_master": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182"}),
+            #"kube_new_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.184"}),
             "ssh_addkey": wid.Select(choices=common.COMMON_STATUS),
             "node_port_range": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：20000-40000"}),
 
@@ -141,9 +145,42 @@ class KubeConfigForm(ModelForm):
             
             "kube_desc": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"集群描述信息"}),
             "id": wid.HiddenInput(),
+            "deploy": wid.HiddenInput(),
         }
 
+class ServerForm(ModelForm):
+    class Meta:
+        model = Server
+        fields = ('manage_ip','intranet_ip','user','ip','port','desc','sn','manufacturer',
+            'model','platform','version','cpu_count','cpu_physical_count','cpu_model','mac',
+            'serial_num','name','port_num','id')
+        exclude = None          #排除的字段
+        labels = None           #提示信息
+        help_texts = None       #帮助提示信息
+        widgets = None          #自定义插件
+        error_messages = None   #自定义错误信息
+        widgets = {
+            "manage_ip": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：10.24.22.12"}),
+            "intranet_ip": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.1.240"}),
+            "user": wid.Select(choices=common.VERSION_STATUS_VALUE),
+            "ip": wid.TextInput(attrs={'class':'smallinput','placeholder': "如：23.24.22.12"}),
+            "port": wid.TextInput(attrs={'class':'smallinput'}),
+            "desc": wid.Textarea(attrs={'class':'smallinput','placeholder': "如：本地机房服务器，在2楼xxx办公室"}),
 
+            "sn": wid.TextInput(attrs={'class':'smallinput', 'readonly': "readonly"}),
+            "manufacturer": wid.TextInput(attrs={'class':'smallinput', 'readonly': "readonly"}),
+            "model": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "platform": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "version": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "cpu_count": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "cpu_physical_count": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "cpu_model": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "mac": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "serial_num": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "name": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "port_num": wid.TextInput(attrs={'class':'smallinput','readonly': "readonly"}),
+            "id": wid.HiddenInput(),
+        }
 
 
 

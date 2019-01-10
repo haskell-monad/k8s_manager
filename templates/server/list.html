@@ -25,7 +25,7 @@
         </thead>
         <!--内容-->
         <tbody>
-            % for my $product (@$listData){
+            {% for product in listData %}
             <tr class="gradeX">
                 <td align="center">
                     <span class="center"><input type="checkbox" value="<%= $product->{id} %>"/></span>
@@ -35,16 +35,16 @@
                     <%= $product->{productName} %>
                     </a>
                 </td>
-                <td><%= $product->{onlineVersion} %></td>
-                <td><%= $product->{lastOnline}%></td>
-                <td><%= $product->{productStatus} %></td>
-                <td class="center"><%= $product->{productManager} %></td> 
+                <td>{{ product.online_version }}</td>
+                <td>{{ product.last_online }}</td>
+                <td>{{ product.product_status }}</td>
+                <td class="center">{{ product.product_manager }}</td> 
                 <td class="center">
-                    <a href="<%= $product->{productWiki} %>" target="_blank">wiki</a> &nbsp; 
-                    <a href="/product/version/<%= $product->{id} %>">版本管理</a>
+                    <a href="{{ product.product_wiki }}" target="_blank">wiki</a> &nbsp; 
+                    <a href="/product/version/{{ product.id }} %>">版本管理</a>
                 </td>
             </tr>
-            % }
+            {% endfor %}
         </tbody>
     </table>
 </div>

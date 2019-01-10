@@ -8,7 +8,7 @@
             	<p>
                 	<label>k8s集群名称</label>
                     <span class="field">
-                        {{ form.kubeName }}
+                        {{ form.kube_name }}
                         <a>集群唯一标识</a>
                     </span>
                 </p>
@@ -16,136 +16,171 @@
                 <p>
                     <label>k8s版本</label>
                     <span class="field">
-                        {{ form.kubeVersion }}
-                        <select name="kubeVersion" id="kubeVersion">
-                            <option value="">请选择k8s版本</option>
-                            <option value="v1.11.0">v1.11.0</option>
-                        
-                        </select>
+                        {{ form.kube_version }}
                         <a>支持安装不同版本k8s</a>
                     </span>
                 </p>
 
                 <p>
-                    <label>CNI版本</label>
+                    <label>集群部署模式</label>
                     <span class="field">
-                        {{ form.kubeCniVersion }}
-                        <select name="kubeCniVersion" id="kubeCniVersion">
-                            <option value="">请选择CNI版本</option>
-                            <option value="v0.7.1">v0.7.1</option>
-                        </select>
-                        <a>CNI版本，默认v0.7.1</a>
+                        {{ form.deploy_mode }}
                     </span>
                 </p>
 
                 <p>
-                    <label>etcd版本</label>
+                    <label>是否启用时钟同步</label>
                     <span class="field">
-                        {{ form.etcdVersion }}
-                        <select name="etcdVersion" id="etcdVersion">
-                            <option value="">请选择etcd版本</option>
-                            <option value="v3.3.8">v3.3.8</option>
-                          
-                        </select>
-                        <a>etcd版本，默认v3.3.8</a>
-                    </span>
-                </p>
-                <p>
-                    <label>Docker版本</label>
-                    <span class="field">
-                        {{ form.dockerVersion }}
-                        <select name="dockerVersion" id="dockerVersion">
-                            <option value="">请选择Docker版本</option>
-                            <option value="v18.05.0-ce">v18.05.0-ce</option>
-                            
-                        </select>
-                        <a>Docker版本，默认v18.05.0-ce</a>
-                    </span>
-                </p>
-                <p>
-                    <label>k8s网络模型</label>
-                    <span class="field">
-                        {{ form.netMode }}
-                        <select name="netMode" id="netMode">
-                            <option value="">请选择网络模型</option>
-                            <option value="Calico-v3.1">Calico-v3.1</option>
-                           
-                        </select>
-                        <a>k8s支持多种网络模型配置，默认使用Calico</a>
-                    </span>
-                </p>
-                
-                <p style="align:center">Kubernetes集群网路信息配置</p>
-                
-                <p>
-                    <label>Cluster IP CIDR</label>
-                    <span class="field">
-                        {{ form.clusterIP }}
-                        <a>虚拟IP</a>
+                        {{ form.ntp_enabled }}
+                        <a>建议启用</a>
                     </span>
                 </p>
 
                 <p>
-                    <label>Service Cluster IP CIDR</label>
+                    <label>免密钥配置</label>
                     <span class="field">
-                        {{ form.serviceClusterIP }}
-                        <a>Service虚拟IP</a>
+                        {{ form.ssh_addkey }}
+                        <a>是否自动配置免密钥登陆</a>
                     </span>
                 </p>
 
                 <p>
-                    <label>Service DNS IP CIDR</label>
+                    <label>负载均衡节点</label>
                     <span class="field">
-                        {{ form.dnsIP }}
-                        <a>Service DNS IP CIDR</a>
+                        {{ form.lb_node }}
+                        <a>用来安装haproxy+keepalived</a>
                     </span>
                 </p>
 
                 <p>
-                    <label>DNS DN</label>
+                    <label>Etcd集群节点</label>
                     <span class="field">
-                        {{ form.dnsDN }}
-                        <a>DNS DN</a>
+                        {{ form.etcd_node }}
+                        <a>etcd集群必须是1,3,5,7...奇数个节点</a>
                     </span>
                 </p>
 
                 <p>
-                    <label>Kubernetes API VIP</label>
+                    <label>Etcd集群节点</label>
                     <span class="field">
-                        {{ form.apiVIP }}
-                        <a>通过连接该IP和Master节点通讯</a>
-                    </span>
-                </p>
-
-                <p>
-                    <label>Kubernetes Ingress VIP</label>
-                    <span class="field">
-                         {{ form.ingressVIP }}
-                         <a>Kubernetes Ingress虚拟IP</a>
-                    </span>
-                </p>
-
-                <p>
-                    <label>SSH用户</label>
-                    <span class="field">
-                        {{ form.sshUser }}
-                        <a>SSH用户</a>
-                    </span>
-                </p>
-
-                <p>
-                    <label>SSH端口</label>
-                    <span class="field">
-                        {{ form.sshPort }}
-                        <a>SSH端口</a>
+                        {{ form.etcd_node_name_prefix }}
+                        <a>主机名前缀,例如: etcd1/etcd2/etcd3</a>
                     </span>
                 </p>
 
                 <p>
                     <label>Master节点</label>
                     <span class="field">
-                        {{ form.masterAddress }}
-                        <a>支持IP、域名正则匹配</a>
+                        {{ form.kube_master }}
+                        <a>待安装的Master节点</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>Node节点</label>
+                    <span class="field">
+                        {{ form.kube_node }}
+                        <a>待安装的Node节点列表</a>
+                    </span>
+                </p>
+
+                <p style="align:center">harbor服务器配置</p>
+
+                <p>
+                    <label>harbor服务器节点</label>
+                    <span class="field">
+                        {{ form.harbor_node }}
+                        <a>harbor服务器ip</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>harbor服务器域名</label>
+                    <span class="field">
+                        {{ form.harbor_domain }}
+                        <a>harbor服务器域名</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>harbor安装类型</label>
+                    <span class="field">
+                        {{ form.harbor_install }}
+                        <a>yes表示新建，no表示使用已有harbor服务器</a>
+                    </span>
+                </p>
+
+                <p style="align:center">Kubernetes集群网路信息配置</p>
+                
+                <p>
+                    <label>服务端口范围</label>
+                    <span class="field">
+                        {{ form.node_port_range }}
+                        <a>Node Port Range</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>负载均衡VIP</label>
+                    <span class="field">
+                        {{ form.master_ip }}
+                        <a>负载均衡服务器节点虚拟IP</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>Api Server</label>
+                    <span class="field">
+                        {{ form.kube_api_server }}
+                        <a></a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>集群网络插件</label>
+                    <span class="field">
+                        {{ form.cluster_network }}
+                        <a></a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>服务网段(Service CIDR）</label>
+                    <span class="field">
+                        {{ form.service_cidr }}
+                        <a>注意不要与内网已有网段冲突</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>POD网段(Cluster CIDR）</label>
+                    <span class="field">
+                         {{ form.cluster_cidr }}
+                         <a>注意不要与内网已有网段冲突</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>kubernetes服务IP</label>
+                    <span class="field">
+                        {{ form.cluster_k8s_svc_ip }}
+                        <a>预分配，一般是Service CIDR中第一个IP</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>集群DNS服务IP</label>
+                    <span class="field">
+                        {{ form.cluster_dns_svc_ip }}
+                        <a>从Service CIDR中预分配</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>集群DNS域名</label>
+                    <span class="field">
+                        {{ form.cluster_dns_domain }}
+                        <a>如: cluster.local.</a>
                     </span>
                 </p>
 
@@ -158,79 +193,57 @@
                 </p>
 
                 <p>
-                    <label>Node节点HostName前缀</label>
+                    <label>集群basic auth使用的用户名</label>
                     <span class="field">
-                        {{ form.nodeHostName }}
-                        <a>Node节点主机名前缀,如：K8S-N1、K8S-N2、K8S-N3</a>
+                        {{ form.basic_auth_user }}
+                        <a></a>
                     </span>
                 </p>
-
-
                 <p>
-                    <label>etcd集群</label>
+                    <label>集群basic auth使用的密码</label>
                     <span class="field">
-                        {{ form.etcdAddress }}
-                        <a>暂时只支持静态模式</a>    
+                        {{ form.basic_auth_pass }}
+                        <a></a>
                     </span>
                 </p>
 
                 <p>
-                    <label>YAML主目录</label>
+                    <label>默认二进制文件目录</label>
                     <span class="field">
-                         {{ form.yamlDir }}
+                        {{ form.bin_dir }}
+                        <a></a>    
+                    </span>
+                </p>
+
+                <p>
+                    <label>证书目录</label>
+                    <span class="field">
+                         {{ form.ca_dir }}
                         <a></a> 
                     </span>
                 </p>
 
                 <p>
-                    <label>NodePort</label>
+                    <label>部署目录</label>
                     <span class="field">
-                        {{ form.nodePort }}
-                        <a>NodePort端口</a> 
+                        {{ form.base_dir }}
+                        <a>ansible工作目录</a> 
                     </span>
                 </p>
 
                 <p>
-                    <label>token</label>
+                    <label>集群描述</label>
                     <span class="field">
-                         {{ form.kubeToken }}
-                        <a>只针对token模式起作用</a> 
+                         {{ form.kube_desc }}
+                        <a></a> 
                     </span>
-                </p>
-
-                <p>
-                    <label>负载均衡器配置</label>
-                    <span class="field">
-                        <select name="loadBalance" id="loadBalance">
-                            <option value="">请选择负载均衡器</option>
-                            <option value="LVS">LVS</option>
-                            <option value="Nginx">Nginx</option>
-                            <option value="HaProxy">HaProxy</option>
-                        </select>
-                        <a>4层负载均衡配置，当前可选lvs、nginx</a>        
-                    </span>
-                </p>    
-                <p>
-                    <label>keepalived部署</label>
-                    <span class="field">
-                        <input type="text" value ="<%= $kubeConfig -> {keepalivedAddress} %>" name="keepalivedAddress" id="safeContact" class="smallinput" />
-                        <a>keepalived健康监测</a>  
-                    </span>
-                </p>
-                <p>
-                	<label>集群描述</label>
-                    <span class="field">
-                        <textarea cols="80" rows="5" name="kubeDesc" class="mediuminput" id="kubeDesc">
-                        <%= $kubeConfig -> {kubeDesc} %>
-                        </textarea>
-                    </span> 
                 </p>
                
                 <br />
                 
                 <p class="stdformbutton">
-                    <input type="hidden" value ="<%= $kubeConfig -> {id} %>" name="id" id="id"/>
-                    <input type="hidden" value ="<%= $kubeConfig -> {deploy} %>" name="deploy" id="deploy"/>
+                    {{ form.id }}
+                    {{ form.deploy }}
                 	<button class="submit radius2">确定</button>
                 </p>
             </form>
@@ -238,4 +251,5 @@
     </div>
 </div>
 
-%= javascript '/js/product-form.js'
+{% load staticfiles  %}
+<script type="text/javascript" src="{% static 'js/product-form.js' %}" ></script>

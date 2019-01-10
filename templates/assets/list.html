@@ -36,10 +36,10 @@
                         {{ assets.id }}
                     </a>
                 </td>
-                <td>{{ type_list|filter_list:assets.assetType }}</td>
+                <td>{{ type_list|filter_list:assets.assets_type }}</td>
                 <td>{{ status_list|filter_list:assets.status }}</td>
                 <td>{{ assets.tags }}</td>
-                <td>{{ assets.productName }}</td>
+                <td>{{ assets.product_name }}</td>
 
                 <td class="center">
                     <a href="{{ assets.id }}" target="_blank">删除</a> &nbsp; 

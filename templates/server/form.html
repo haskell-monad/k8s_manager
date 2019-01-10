@@ -1,0 +1,132 @@
+<div id="contentwrapper" class="contentwrapper">
+    <div class="contenttitle2">
+        <h3><%= $title %></h3>
+    </div>
+    <span><a href="/assets">返回</a></span>
+    <div id="validation" class="subcontent" >
+            <form id="_server" class="stdform" method="post" action="<%= $formUrl %>">
+                <p>
+                    <label>管理IP</label>
+                    <span class="field">
+                        {{ server.manage_ip }}    
+                    </span>
+                </p> 
+                <p>
+                    <label>内网ip</label>
+                    <span class="field">
+                        {{ server.intranet_ip }}  
+                    </span>
+                </p>
+                <p>
+                    <label>用户名</label>
+                    <span class="field">
+                         {{ server.user }}
+                    </span>
+                </p>
+                 <p>
+                    <label>外网IP地址</label>
+                    <span class="field">
+                        {{ server.ip }}
+                    </span>
+                </p>
+                <p>
+                    <label>端口</label>
+                    <span class="field">
+                        {{ server.port }}
+                    </span>
+                </p>
+                <p>
+                    <label>描述</label>
+                    <span class="field">
+                        {{ server.desc }}
+                    </span>
+                </p>
+                <p>
+                    <label>SN号(可选)</label>
+                    <span class="field">
+                        {{ server.sn }}
+                    </span>
+                </p>
+                <p>
+                    <label>制造商(可选)</label>
+                    <span class="field">
+                         {{ server.manufacturer }}
+                    </span>
+                </p>
+                <p>
+                    <label>型号(可选)</label>
+                    <span class="field">
+                        {{ server.model }}
+                    </span>
+                </p>
+                <p>
+                    <label>系统(可选)</label>
+                    <span class="field">
+                        {{ server.platform }}
+                    </span>
+                </p>
+                <p>
+                    <label>系统版本(可选)</label>
+                    <span class="field">
+                        {{ server.version }}
+                    </span>
+                </p>
+                <p>
+                    <label>CPU个数(可选)</label>
+                    <span class="field">
+                         {{ server.cpu_count }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>CPU物理个数(可选)</label>
+                    <span class="field">
+                         {{ server.cpu_physical_count }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>CPU型号(可选)</label>
+                    <span class="field">
+                        {{ server.cpu_model }}
+                    </span>
+                </p>
+                <p>
+                    <label>Mac地址(可选)</label>
+                    <span class="field">
+                         {{ server.mac }}
+                    </span>
+                </p>
+                <p>
+                    <label>主机序列号(可选)</label>
+                    <span class="field">
+                        {{ server.serial_num }}
+                    </span>
+                </p>                    
+               
+                <p>
+                    <label>服务器名称(可选)</label>
+                    <span class="field">
+                        {{ server.name }}
+                    </span>
+                </p>
+                <p>
+                    <label>端口个数(可选)</label>
+                    <span class="field">
+                        {{ server.port_num }}
+                    </span>
+                </p>
+
+                <br />
+                
+                <p class="stdformbutton">
+                    {{ server.id }}
+                	<button class="submit radius2">确定</button>
+                </p>
+            </form>
+
+    </div>
+</div>
+
+{% load staticfiles  %}
+<script type="text/javascript" src="{% static 'js/product-form.js' %}" ></script>

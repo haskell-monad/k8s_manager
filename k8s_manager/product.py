@@ -5,8 +5,8 @@ from django.views.decorators import csrf
 from django.http import HttpResponseRedirect
 import logging
 
-from .models import Produt
-from .forms import ProdutForm
+from .models import Product
+from .forms import ProductForm
 from . import common
 
 logger = logging.getLogger('django')
@@ -21,7 +21,7 @@ def build_context():
 def index(request):
     context = build_context()
 
-    listData = Produt.objects.all()
+    listData = Product.objects.all()
 
     
     context['listData'] = listData
@@ -32,14 +32,15 @@ def add(request):
     request.encoding = 'utf-8'
     context = build_context()
     if request.method == "POST":
-        form = ProdutForm(request.POST)
+        form = ProductForm(request.POST)
         if form.is_valid():
              product = form.save(commit=False)
-             product.createUser("admin")
+             product.create_user = "admin"
+             product.product_status = common.VERSION_STATUS_VALUE[0][1]
              product.save()
         return HttpResponseRedirect('/product')
     else:
-        form = ProdutForm()
+        form = ProductForm()
     context['title'] = "新增"
     context['formUrl'] = "/product/add"
     context['form'] = form
@@ -49,22 +50,22 @@ def add(request):
 def edit(request, pk):
     logger.info("-----------edit product----------"+pk)
     context = build_context()
-    obj = Produt.objects.filter(pk=pk).first()
+    obj = Product.objects.filter(pk=pk).first()
     if not obj:
         return redirect('/product')
     if request.method == "GET":
-        form = ProdutForm(instance=obj)
+        form = ProductForm(instance=obj)
         context['form'] = form
         context['title'] = "编辑"
         context['formUrl'] = "/product/edit/"+pk
         return render(request, 'product/form.html', context)
     else:
-        form = ProdutForm(request.POST, instance=obj)
+        form = ProductForm(request.POST, instance=obj)
         logger.info("-----------edit product----------")
         logger.info(form)
         if form.is_valid():
             product = form.save(commit=False)
-            product.updateUser("admin")
+            product.create_user = "admin"
             product.save()
         return redirect('/product')
 

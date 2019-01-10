@@ -35,7 +35,7 @@ def add(request):
         form = AssetsForm(request.POST)
         if form.is_valid():
              assets = form.save(commit=False)
-             assets.createUser("admin")
+             assets.create_user = "admin"
              assets.save()
         return HttpResponseRedirect('/assets')
     else:

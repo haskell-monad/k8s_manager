@@ -8,10 +8,11 @@
     <div id="validation" class="subcontent" >
     	
             <form id="_version" class="stdform" method="post" action="{{ formUrl }}">
+                {% csrf_token %}
             	<p>
                 	<label>版本名称</label>
                     <span class="field">
-                         {{ form.versionName }}
+                         {{ form.version_name }}
                     </span>
                 </p>
                 <p>
@@ -24,21 +25,21 @@
                 <p>
                     <label>版本状态</label>
                     <span class="field">
-                         {{ form.versionStatus }}
+                         {{ form.version_status }}
                     </span>
                 </p>
 
                 <p>
                     <label>版本开始日期</label>
                     <span class="field">
-                        {{ form.startTime }}
+                        {{ form.start_time }}
                     </span>
                 </p>
 
                 <p>
                     <label>版本截止日期</label>
                     <span class="field">
-                        {{ form.endTime }}
+                        {{ form.end_time }}
                     </span>
                 </p>
                 <!-- 
@@ -52,7 +53,7 @@
                 <p>
                     <label>版本Wiki</label>
                     <span class="field">
-                         {{ form.versionWiki }}
+                         {{ form.version_wiki }}
                      </span>
                 </p>
                 <p>
@@ -64,56 +65,56 @@
                 <p>
                     <label>产品负责人</label>
                     <span class="field">
-                          {{ form.productManager }}
+                          {{ form.product_manager }}
                     </span>
                 </p>
 
                 <p>
                     <label>产品负责人联系方式</label>
                     <span class="field">
-                        {{ form.productContact }}
+                        {{ form.product_contact }}
                     </span>
                 </p>
 
                 <p>
                     <label>开发负责人</label>
                     <span class="field">
-                         {{ form.devManager }}
+                         {{ form.dev_manager }}
                     </span>
                 </p>
 
                 <p>
                     <label>开发负责人联系方式</label>
                     <span class="field">
-                         {{ form.devContact }}
+                         {{ form.dev_contact }}
                      </span>
                 </p>
 
                 <p>
                     <label>测试负责人</label>
                     <span class="field">
-                        {{ form.qaManager }}
+                        {{ form.qa_manager }}
                     </span>
                 </p>
 
                 <p>
                     <label>测试负责人联系方式</label>
                     <span class="field">
-                        {{ form.qaContact }}
+                        {{ form.qa_contact }}
                     </span>
                 </p>
 
                 <p>
                     <label>安全测试负责人</label>
                     <span class="field">
-                         {{ form.safeManager }}
+                         {{ form.safe_manager }}
                     </span>
                 </p>
 
                 <p>
                     <label>安全测试负责人联系方式</label>
                     <span class="field">
-                        {{ form.safeContact }}
+                        {{ form.safe_contact }}
                     </span>
                 </p>
 
@@ -121,7 +122,6 @@
                 
                 <p class="stdformbutton">
                     {{ form.id }}
-                    {{ form.productId }}
                 	<button class="submit radius2">确定</button>
                 </p>
             </form>
