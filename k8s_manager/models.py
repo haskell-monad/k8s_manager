@@ -45,7 +45,7 @@ class Product(models.Model):
     productWiki = models.CharField(max_length=200)
 
     createDate = models.DateField(auto_now_add=True)
-    updateDate = models.DateField()
+    updateDate = models.DateField(auto_now = True)
     createUser = models.CharField(max_length=20)
     updateUser = models.CharField(max_length=20)
 
@@ -76,7 +76,7 @@ class ProductVersion(models.Model):
     safeContact = models.CharField(max_length=50)
 
     createDate = models.DateField(auto_now_add=True)
-    updateDate = models.DateField()
+    updateDate = models.DateField(auto_now = True)
     createUser = models.CharField(max_length=20)
     updateUser = models.CharField(max_length=20)
 
@@ -112,7 +112,7 @@ class KubeConfig(models.Model):
     kubeDesc = models.CharField(max_length=255)
     createDate = models.DateField(auto_now_add=True)
     createUser = models.CharField(max_length=255)
-    updateDate = models.DateField()
+    updateDate = models.DateField(auto_now = True)
     updateUser = models.CharField(max_length=20)
     keepalivedAddress = models.CharField(max_length=255)
     nodeAddress = models.CharField(max_length=255)
@@ -152,7 +152,7 @@ class Server(models.Model):
     cpuPhysicalCount = models.IntegerField()
     cpuModel = models.CharField(max_length=255)
     createDate = models.DateField(auto_now_add=True)
-    updateDate = models.DateField()
+    updateDate = models.DateField(auto_now = True)
     createUser = models.CharField(max_length=20)
     updateUser = models.CharField(max_length=20)
     mac = models.CharField(max_length=255)
@@ -187,7 +187,7 @@ class VersionEnv(models.Model):
     imageType = models.IntegerField()
     deployType = models.IntegerField()
     createDate = models.DateField(auto_now_add=True)
-    updateDate = models.DateField()
+    updateDate = models.DateField(auto_now = True)
     createUser = models.CharField(max_length=20)
     updateUser = models.CharField(max_length=20)
 

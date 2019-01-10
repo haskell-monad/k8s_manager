@@ -15,23 +15,23 @@ function flushHtmlByAjax(url,tagId){
 }
 
 //新增产品页面
-function productAddPage(){
-	flushHtmlByAjax("/product/addPage","centerContent");
+function productAdd(){
+	flushHtmlByAjax("/product/add","centerContent");
 }
 
 //编辑产品页面
-function productEditPage(id){
-	flushHtmlByAjax("/product/editPage/"+id,"centerContent");
+function productEdit(id){
+	flushHtmlByAjax("/product/edit/"+id,"centerContent");
 }
 
 //新增版本页面
-function versionAddPage(productId){
-	flushHtmlByAjax("/product/version/addPage/"+productId,"centerContent");
+function versionAdd(productId){
+	flushHtmlByAjax("/product/version/add/"+productId,"centerContent");
 }
 
 //编辑版本页面
-function versionEditPage(id){
-	flushHtmlByAjax("/product/version/editPage/"+id,"centerContent");
+function versionEdit(id){
+	flushHtmlByAjax("/product/version/edit/"+id,"centerContent");
 }
 
 //新增资产页面
@@ -45,13 +45,13 @@ function assetsEdit(id){
 }
 
 //编辑服务器页面
-function serverEditPage(assetsId){
-   flushHtmlByAjax("/assets/server/editPage/"+assetsId,"centerContent");
+function serverEdit(assetsId){
+   flushHtmlByAjax("/assets/server/edit/"+assetsId,"centerContent");
 }
 
 //kubernetes
-function kubernetesConfigPage(){
-	 flushHtmlByAjax("/k8s/configPage","centerContent");
+function kubernetesConfig(){
+	 flushHtmlByAjax("/k8s/config","centerContent");
 }
 
 function k8sInstall(id){

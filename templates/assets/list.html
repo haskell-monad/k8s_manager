@@ -36,7 +36,7 @@
                         {{ assets.id }}
                     </a>
                 </td>
-                <td>{{ service_list|filter_list:assets.assetType }}</td>
+                <td>{{ type_list|filter_list:assets.assetType }}</td>
                 <td>{{ status_list|filter_list:assets.status }}</td>
                 <td>{{ assets.tags }}</td>
                 <td>{{ assets.productName }}</td>

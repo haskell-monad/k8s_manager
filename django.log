@@ -4033,3 +4033,87 @@ tz
 [2019-01-09 03:21:48,489] [INFO] "GET /static/images/default/menuarrow.png HTTP/1.1" 200 2884
 [2019-01-09 03:21:48,498] [INFO] "GET /static/images/sort_both.png HTTP/1.1" 200 2957
 [2019-01-09 03:21:48,508] [INFO] "GET /static/images/uniform/sprite.png HTTP/1.1" 200 18012
+[2019-01-09 13:11:41,086] [INFO] "GET /static/images/default/icons_sprite2.png HTTP/1.1" 200 2934
+[2019-01-09 13:11:41,090] [INFO] "GET /assets HTTP/1.1" 200 6148
+[2019-01-09 13:11:41,105] [INFO] "GET /static/js/custom.js HTTP/1.1" 304 0
+[2019-01-09 13:11:41,106] [INFO] "GET /static/css/style.default.css HTTP/1.1" 200 121140
+[2019-01-09 13:27:35,659] [ERROR] Internal Server Error: /assets
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/assets.py", line 22, in index
+    context = build_context()
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/assets.py", line 17, in build_context
+    context['type_list'] = common.type_list
+AttributeError: 'module' object has no attribute 'type_list'
+[2019-01-09 13:27:35,754] [ERROR] "GET /assets HTTP/1.1" 500 69775
+[2019-01-09 13:28:39,706] [INFO] "GET /index HTTP/1.1" 200 5781
+[2019-01-09 13:28:39,744] [INFO] "GET /static/js/plugins/jquery.slimscroll.js HTTP/1.1" 304 0
+[2019-01-09 13:28:39,813] [INFO] "GET /static/images/thumbs/avatar.png HTTP/1.1" 200 1473
+[2019-01-09 13:28:39,823] [INFO] "GET /static/css/plugins/jquery.ui.css HTTP/1.1" 200 9186
+[2019-01-09 13:28:39,824] [INFO] "GET /static/images/thumbs/avatarbig.png HTTP/1.1" 200 16493
+[2019-01-09 13:28:39,831] [INFO] "GET /static/css/plugins/jquery.ui.autocomplete.css HTTP/1.1" 200 901
+[2019-01-09 13:28:39,831] [INFO] "GET /static/css/plugins/fullcalendar.css HTTP/1.1" 200 11810
+[2019-01-09 13:28:39,836] [INFO] "GET /static/css/plugins/colorpicker.css HTTP/1.1" 200 3435
+[2019-01-09 13:28:39,837] [INFO] "GET /static/css/plugins/colorbox.css HTTP/1.1" 200 2259
+[2019-01-09 13:28:39,840] [INFO] "GET /static/css/plugins/jquery.alerts.css HTTP/1.1" 200 2503
+[2019-01-09 13:28:39,845] [INFO] "GET /static/css/plugins/uniform.tp.css HTTP/1.1" 200 10550
+[2019-01-09 13:28:39,847] [INFO] "GET /static/css/plugins/jquery.jgrowl.css HTTP/1.1" 200 1943
+[2019-01-09 13:28:39,847] [INFO] "GET /static/fonts/roboto.css HTTP/1.1" 200 6933
+[2019-01-09 13:28:39,848] [INFO] "GET /static/css/plugins/ui.spinner.css HTTP/1.1" 200 506
+[2019-01-09 13:28:39,848] [INFO] "GET /static/css/plugins/jquery.tagsinput.css HTTP/1.1" 200 918
+[2019-01-09 13:28:42,308] [INFO] "GET /static/css/plugins/jquery.chosen.css HTTP/1.1" 200 11789
+[2019-01-09 13:28:42,401] [INFO] "GET /static/images/line.ccc.png HTTP/1.1" 200 109
+[2019-01-09 13:28:42,401] [INFO] "GET /static/images/default/topheaderbg.png HTTP/1.1" 200 4093
+[2019-01-09 13:28:42,409] [INFO] "GET /static/images/default/arrow-active.png HTTP/1.1" 200 21122
+[2019-01-09 13:28:42,409] [INFO] "GET /static/images/default/userinfoarrow.png HTTP/1.1" 200 207
+[2019-01-09 13:28:42,410] [INFO] "GET /static/images/default/headerbg.png HTTP/1.1" 200 1144
+[2019-01-09 13:28:42,410] [INFO] "GET /static/images/default/searchbutton.png HTTP/1.1" 200 3462
+[2019-01-09 13:28:42,410] [INFO] "GET /static/fonts/Roboto-Condensed-webfont.woff HTTP/1.1" 200 21836
+[2019-01-09 13:28:42,411] [INFO] "GET /static/fonts/Roboto-BoldCondensed-webfont.woff HTTP/1.1" 200 21440
+[2019-01-09 13:28:42,413] [INFO] "GET /static/images/icons/flatscreen.white.png HTTP/1.1" 200 337
+[2019-01-09 13:28:42,417] [INFO] "GET /static/images/icons/pencil.white.png HTTP/1.1" 200 464
+[2019-01-09 13:28:42,418] [INFO] "GET /static/images/icons/message.white.png HTTP/1.1" 200 556
+[2019-01-09 13:28:42,418] [INFO] "GET /static/images/icons/chart.white.png HTTP/1.1" 200 231
+[2019-01-09 13:28:42,421] [INFO] "GET /static/images/default/icons_sprite.png HTTP/1.1" 200 3631
+[2019-01-09 13:28:42,422] [INFO] "GET /static/images/menucollapsed.png HTTP/1.1" 200 875
+[2019-01-09 13:28:42,423] [INFO] "GET /static/images/default/menuarrow.png HTTP/1.1" 200 2884
+[2019-01-09 13:28:42,424] [INFO] "GET /static/images/default/noise.white.png HTTP/1.1" 200 7924
+[2019-01-09 13:28:42,424] [INFO] "GET /static/images/icons/blogperfume/Advertisment/advertisment-32.png HTTP/1.1" 200 2590
+[2019-01-09 13:28:42,425] [INFO] "GET /static/images/close.png HTTP/1.1" 200 1781
+[2019-01-09 13:28:42,452] [INFO] "GET /static/images/default/bghover.png HTTP/1.1" 200 17273
+[2019-01-09 13:28:44,933] [INFO] "GET /assets HTTP/1.1" 200 6148
+[2019-01-09 13:28:45,006] [INFO] "GET /static/images/sort_both.png HTTP/1.1" 200 2957
+[2019-01-09 13:28:45,017] [INFO] "GET /static/images/uniform/sprite.png HTTP/1.1" 200 18012
+[2019-01-09 13:28:47,523] [INFO] -----------edit assets----------1
+[2019-01-09 13:28:47,546] [INFO] "GET /assets/edit/1 HTTP/1.1" 200 2974
+[2019-01-09 13:28:47,554] [INFO] "GET /static/js/product-form.js?_=1547040527552 HTTP/1.1" 200 3174
+[2019-01-09 13:28:58,813] [INFO] "GET /assets HTTP/1.1" 200 6148
+[2019-01-09 13:28:59,587] [INFO] "GET /static/images/line.dashed.png HTTP/1.1" 200 128
+[2019-01-09 13:29:00,286] [INFO] "GET /assets/add HTTP/1.1" 200 2913
+[2019-01-09 13:29:00,292] [INFO] "GET /static/js/product-form.js?_=1547040540290 HTTP/1.1" 200 3174
+[2019-01-09 13:29:02,940] [INFO] "GET /assets HTTP/1.1" 200 6148
+[2019-01-09 13:29:06,793] [WARNING] Not Found: /assets/server/editPage/1
+[2019-01-09 13:29:06,793] [WARNING] "GET /assets/server/editPage/1 HTTP/1.1" 404 2667
+[2019-01-09 13:29:39,370] [ERROR] Internal Server Error: /product
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/product.py", line 9, in index
+    return render(request, 'product/index.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: product/index.html
+[2019-01-09 13:29:39,499] [ERROR] "GET /product HTTP/1.1" 500 80171

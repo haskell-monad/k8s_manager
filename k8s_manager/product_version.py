@@ -5,8 +5,8 @@ from django.views.decorators import csrf
 from django.http import HttpResponseRedirect
 import logging
 
-from .models import Produt
-from .forms import ProdutForm
+from .models import ProdutVersion
+from .forms import ProdutVersionForm
 from . import common
 
 logger = logging.getLogger('django')
@@ -14,19 +14,18 @@ logger = logging.getLogger('django')
 
 def build_context():
     context = {}
-    context['type_list'] = common.type_list
-    context['status_list'] = common.status_list
+    context['version_status_list'] = common.version_status_list
     return context
 
 def index(request):
     context = build_context()
 
-    listData = Produt.objects.all()
+    listData = ProdutVersion.objects.all()
 
     
     context['listData'] = listData
 
-    return render(request, 'product/index.html', context)
+    return render(request, 'product_version/index.html', context)
 
 def add(request):
     request.encoding = 'utf-8'
@@ -34,39 +33,39 @@ def add(request):
     if request.method == "POST":
         form = ProdutForm(request.POST)
         if form.is_valid():
-             product = form.save(commit=False)
-             product.createUser("admin")
-             product.save()
-        return HttpResponseRedirect('/product')
+             product_version = form.save(commit=False)
+             product_version.createUser("admin")
+             product_version.save()
+        return HttpResponseRedirect('/product/version')
     else:
         form = ProdutForm()
     context['title'] = "新增"
-    context['formUrl'] = "/product/add"
+    context['formUrl'] = "/product/version/add"
     context['form'] = form
-    return render(request, 'product/form.html', context)
+    return render(request, 'product_version/form.html', context)
 
 
 def edit(request, pk):
-    logger.info("-----------edit product----------"+pk)
+    logger.info("-----------edit product_version----------"+pk)
     context = build_context()
     obj = Produt.objects.filter(pk=pk).first()
     if not obj:
-        return redirect('/product')
+        return redirect('/product/version')
     if request.method == "GET":
         form = ProdutForm(instance=obj)
         context['form'] = form
         context['title'] = "编辑"
-        context['formUrl'] = "/product/edit/"+pk
-        return render(request, 'product/form.html', context)
+        context['formUrl'] = "/product/version/edit/"+pk
+        return render(request, 'product_version/form.html', context)
     else:
         form = ProdutForm(request.POST, instance=obj)
-        logger.info("-----------edit product----------")
+        logger.info("-----------edit product_version----------")
         logger.info(form)
         if form.is_valid():
-            product = form.save(commit=False)
-            product.updateUser("admin")
-            product.save()
-        return redirect('/product')
+            product_version = form.save(commit=False)
+            product_version.updateUser("admin")
+            product_version.save()
+        return redirect('/product/version')
 
 
 

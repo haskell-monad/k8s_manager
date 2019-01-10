@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>k8s Manager</title>
 
+
 {% load staticfiles  %}
 <link rel="stylesheet" href="{% static 'css/style.default.css' %}" />
 
@@ -32,10 +33,10 @@
 	<div class="vernav2 iconmenu">
     	<ul>
         	<li>
-                <a href="#formsub" class="editor">资产管理</a>
+                <a href="#formsub" class="editor">产品线管理</a>
                 <span class="arrow"></span>
                 <ul id="formsub">
-                    <li><a href="#" onclick="assetsAdd()">新增资产</a></li>
+                    <li><a href="#" onclick="productAdd()">新增产品线</a></li>
                 </ul>
             </li>
         </ul>
@@ -44,7 +45,7 @@
     </div>
 	<!--内容-->
     <div id="centerContent" class="centercontent tables">
-        {% include "assets/list.html" %}
+        {% include "product/list.html" %}
 	</div>
 </div>
 </body>

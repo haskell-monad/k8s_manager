@@ -29,5 +29,8 @@ urlpatterns = [
 
 
     url(r'^product$', product.index),
+    url(r'^product/add$', product.add),
+    url(r'^product/edit/(\d+)$', product.edit),
+
     url(r'^kube$', kube.index),
 ]

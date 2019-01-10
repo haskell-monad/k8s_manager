@@ -1,0 +1,133 @@
+<div id="contentwrapper" class="contentwrapper">
+    <div class="contenttitle2">
+        <h3>{{ title }}</h3>
+    </div
+    <div>
+        <a href="/product/version/{{ product.id }} %>">返回</a>
+    </div>
+    <div id="validation" class="subcontent" >
+    	
+            <form id="_version" class="stdform" method="post" action="{{ formUrl }}">
+            	<p>
+                	<label>版本名称</label>
+                    <span class="field">
+                         {{ form.versionName }}
+                    </span>
+                </p>
+                <p>
+                    <label>版本标签</label>
+                    <span class="field">
+                         {{ form.tags }}
+                    </span>
+                </p>
+            
+                <p>
+                    <label>版本状态</label>
+                    <span class="field">
+                         {{ form.versionStatus }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>版本开始日期</label>
+                    <span class="field">
+                        {{ form.startTime }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>版本截止日期</label>
+                    <span class="field">
+                        {{ form.endTime }}
+                    </span>
+                </p>
+                <!-- 
+                <p>
+                    <label>版本当前环境</label>
+                    <span class="field">
+                        {{ form.versionEnv }}
+                    </span>
+                </p>
+                -->
+                <p>
+                    <label>版本Wiki</label>
+                    <span class="field">
+                         {{ form.versionWiki }}
+                     </span>
+                </p>
+                <p>
+                    <label>默认负责人</label>
+                    <span class="field">
+                        负责人信息，会默认获取产品配置中的负责人信息，这里可以进行修改。
+                    </span>
+                </p>        
+                <p>
+                    <label>产品负责人</label>
+                    <span class="field">
+                          {{ form.productManager }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>产品负责人联系方式</label>
+                    <span class="field">
+                        {{ form.productContact }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>开发负责人</label>
+                    <span class="field">
+                         {{ form.devManager }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>开发负责人联系方式</label>
+                    <span class="field">
+                         {{ form.devContact }}
+                     </span>
+                </p>
+
+                <p>
+                    <label>测试负责人</label>
+                    <span class="field">
+                        {{ form.qaManager }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>测试负责人联系方式</label>
+                    <span class="field">
+                        {{ form.qaContact }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>安全测试负责人</label>
+                    <span class="field">
+                         {{ form.safeManager }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>安全测试负责人联系方式</label>
+                    <span class="field">
+                        {{ form.safeContact }}
+                    </span>
+                </p>
+
+                <br />
+                
+                <p class="stdformbutton">
+                    {{ form.id }}
+                    {{ form.productId }}
+                	<button class="submit radius2">确定</button>
+                </p>
+            </form>
+
+    </div>
+</div>
+
+{% load staticfiles  %}
+<script type="text/javascript" src="{% static 'js/product-form.js' %}" ></script>

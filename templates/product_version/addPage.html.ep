@@ -1,1 +1,0 @@
-%= include 'product_version/form', title => '新增版本', formUrl => '/product/version/add'
