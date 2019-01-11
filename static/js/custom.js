@@ -50,8 +50,8 @@ function serverEdit(assetsId){
 }
 
 //kubernetes
-function kubernetesConfig(){
-	 flushHtmlByAjax("/k8s/config","centerContent");
+function k8sAdd(){
+	 flushHtmlByAjax("/k8s/add","centerContent");
 }
 
 function k8sInstall(id){

@@ -1,0 +1,52 @@
+<div class="pageheader notab">
+    <h5 class="pagetitle">k8s集群列表</h5>
+    <span class="pagedesc">可以管理指定k8s集群 </span>            
+</div>
+<div id="contentwrapper" class="contentwrapper">
+    <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+        </colgroup>
+        <!--表头-->
+        <thead>
+            <tr>
+                <th class="head0 nosort"></th>
+                <th class="head0">集群环境标识</th>
+                <th class="head1">k8s版本</th>
+                <th class="head1">集群部署模式</th>
+                <th class="head0">当前状态</th>
+                <th class="head0">操作</th>
+            </tr>
+        </thead>
+        <!--内容-->
+        <tbody>
+            {% for kube in listData %}
+            <tr class="gradeX">
+                <td align="center">
+                    <span class="center"><input type="checkbox" value="{{ kube.id }}"/></span>
+                </td>
+                <td>
+                    <a href="#" onclick="kubeEdit({{ kube.id }})">
+                    {{ kube.kube_name }}
+                    </a>
+                </td>
+                <td>{{ kube.kube_version }}</td>
+                <td>{{ kube.deploy_mode }}</td>
+                <td>{{ kube.deploy }}</td>
+                <td class="center">
+                    <a href="/kube/version/{{ kube.id }}">部署</a>
+                    <a href="{{ kube.id }}" target="_blank">卸载集群</a> &nbsp; 
+                    <a href="/kube/version/{{ kube.id }}">启动</a>
+                    <a href="/kube/version/{{ kube.id }}">停止</a>
+                    <a href="/kube/version/{{ kube.id }}">重启</a>
+                    <a href="/kube/version/{{ kube.id }}">克隆</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -73,6 +73,11 @@ K8S_NODE_TYPE = (
     ("harbor","harbor")
 )
 
+K8S_FLAG = (
+    ("test","test"),
+    ("uat","uat"),
+    ("pro","pro")
+)
 
 
 

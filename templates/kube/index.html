@@ -37,7 +37,7 @@
                 <a href="#formsub" class="editor">K8S管理</a>
                 <span class="arrow"></span>
                 <ul id="formsub">
-                    <li><a href="#" onclick="kubernetesConfig()">配置管理</a></li>
+                    <li><a href="#" onclick="k8sAdd()">配置管理</a></li>
                     <li><a href="#" onclick="k8sInstall(1)">一键部署</a></li>
                     <li><a href="#" onclick="productAdd()">在线管理</a></li>
                     <li><a href="#" onclick="productAdd()">调度</a></li>
@@ -50,7 +50,7 @@
     </div>
 	<!--内容-->
     <div id="centerContent" class="centercontent tables">
-        {% include "kube/detail.html" %}
+        {% include "kube/list.html" %}
 	</div>
 </div>
 </body>

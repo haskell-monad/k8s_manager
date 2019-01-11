@@ -4,9 +4,10 @@
     </div
     <div id="validation" class="subcontent" >
     	
-            <form id="_kubeConfig" class="stdform" method="post" action="/k8s/config">
+            <form id="_kubeConfig" class="stdform" method="post" action="{{ formUrl }}">
+                {% csrf_token %}
             	<p>
-                	<label>k8s集群名称</label>
+                	<label>k8s集群环境名称</label>
                     <span class="field">
                         {{ form.kube_name }}
                         <a>集群唯一标识</a>
@@ -45,6 +46,96 @@
                 </p>
 
                 <p>
+                    <label>Etcd集群节点主机名</label>
+                    <span class="field">
+                        {{ form.etcd_node_name_prefix }}
+                        <a>主机名前缀,例如: etcd1/etcd2/etcd3</a>
+                    </span>
+                </p>
+                
+                <p style="align:center;color:blue">负载均衡节点配置，用来安装haproxy+keepalived</p>
+                <p>
+                    <label>节点IP</label>
+                    <span class="field">
+                        {{ lb_form.node_ip }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>节点域名</label>
+                    <span class="field">
+                        {{ lb_form.node_domain }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>节点类型</label>
+                    <span class="field">
+                        {{ lb_form.node_type }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>用户名</label>
+                    <span class="field">
+                        {{ lb_form.node_user }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>用户密码</label>
+                    <span class="field">
+                        {{ lb_form.node_password }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>SSH端口</label>
+                    <span class="field">
+                        {{ lb_form.node_port }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>节点主机名</label>
+                    <span class="field">
+                        {{ lb_form.node_name }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>节点角色</label>
+                    <span class="field">
+                        {{ lb_form.node_role }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>节点角色</label>
+                    <span class="field">
+                        {{ lb_form.node_role }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>是否已配置SSH免密钥登陆</label>
+                    <span class="field">
+                        {{ lb_form.ssh_enabled }}
+                        <a></a>
+                    </span>
+                </p>
+                <p>
+                    <label>安装类型</label>
+                    <span class="field">
+                        {{ lb_form.install_type }}
+                        <a></a>
+                    </span>
+                </p>
+                {{ lb_form.id }}
+
+                <!-- <p style="align:center;color:blue">集群节点配置,文本框中每行一个IP</p>
+
+                <p>
                     <label>负载均衡节点</label>
                     <span class="field">
                         {{ form.lb_node }}
@@ -60,13 +151,7 @@
                     </span>
                 </p>
 
-                <p>
-                    <label>Etcd集群节点</label>
-                    <span class="field">
-                        {{ form.etcd_node_name_prefix }}
-                        <a>主机名前缀,例如: etcd1/etcd2/etcd3</a>
-                    </span>
-                </p>
+                
 
                 <p>
                     <label>Master节点</label>
@@ -84,7 +169,7 @@
                     </span>
                 </p>
 
-                <p style="align:center">harbor服务器配置</p>
+                <p style="align:center;color:blue">harbor服务器配置</p>
 
                 <p>
                     <label>harbor服务器节点</label>
@@ -108,9 +193,9 @@
                         {{ form.harbor_install }}
                         <a>yes表示新建，no表示使用已有harbor服务器</a>
                     </span>
-                </p>
+                </p> -->
 
-                <p style="align:center">Kubernetes集群网路信息配置</p>
+                <p style="align:center;color:blue">Kubernetes集群网路信息配置</p>
                 
                 <p>
                     <label>服务端口范围</label>

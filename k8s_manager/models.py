@@ -90,39 +90,16 @@ class KubeConfig(models.Model):
     # 集群名称/标识，如 Test
     kube_name = models.CharField(max_length=20)
     # 集群主版本号, 如 v1.8, v1.9, v1.10，v1.11, v1.12
-    kube_version = models.IntegerField(choices=common.K8S_VERSION)
+    kube_version = models.CharField(max_length=20,choices=common.K8S_VERSION)
     # 集群部署模式：allinone, single-master, multi-master
-    deploy_mode = models.IntegerField(choices=common.K8S_DEPLOY_MODE)
+    deploy_mode = models.CharField(max_length=20,choices=common.K8S_DEPLOY_MODE)
     
     # 集群是否安装 chrony 时间同步,yes/no
     ntp_enabled = models.CharField(max_length=10)
 
-    # 负载均衡节点，多个使用分号分割， 安装 haproxy+keepalived
-    lb_node = models.CharField(max_length=150)
-
-    # etcd 节点,多个使用分号分割
-    etcd_node = models.CharField(max_length=150)
-    # etcd节点名称
+    # etcd节点主机名前缀
     etcd_node_name_prefix = models.CharField(max_length=150)
-
-    # master节点，多个使用分号分割
-    kube_master = models.CharField(max_length=150)
-
-    # node节点，多个使用分号分割
-    kube_node = models.CharField(max_length=150)
     
-    # harbor节点
-    harbor_node = models.CharField(max_length=20)
-    # harbor域名
-    harbor_domain = models.CharField(max_length=100)
-    # yes表示新建，no表示使用已有harbor服务器
-    harbor_install = models.CharField(max_length=5,choices=common.COMMON_STATUS)
-
-    # 预留组，后续添加master节点使用，多个使用分号分割
-    kube_new_master = models.CharField(max_length=150)
-    # 预留组，后续添加node节点使用，多个使用分号分割
-    kube_new_node = models.CharField(max_length=150)
-
     # 是否自动配置免密钥
     ssh_addkey = models.CharField(max_length=10,choices=common.COMMON_STATUS)
 
@@ -160,7 +137,7 @@ class KubeConfig(models.Model):
     base_dir = models.CharField(max_length=40)
 
     # 该集群是否已经部署
-    deploy = models.CharField(max_length=5,choices=common.COMMON_STATUS)
+    deploy = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
     # 该集群部署错误信息
     deploy_error = models.CharField(max_length=255)
     # 集群描述信息
@@ -195,7 +172,9 @@ class KubeCluster(models.Model):
     # 节点角色，如: master/backup
     node_role = models.CharField(max_length=10,choices=common.K8S_NODE_ROLE)
     # 是否已经配置过ssh免密钥登陆
-    ssh_enabled = models.CharField(max_length=5,choices=common.COMMON_STATUS)
+    ssh_enabled = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
+    # 安装类型 yes为新安装 no为使用已有服务器
+    install_type = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
     # 创建日期
     create_date = models.DateField(auto_now_add=True)
     # 修改日期

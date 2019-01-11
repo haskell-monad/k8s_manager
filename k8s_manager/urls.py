@@ -36,5 +36,8 @@ urlpatterns = [
     url(r'^product/version/add/(\d+)$', product_version.add),
    
 
-    url(r'^kube$', kube.index),
+    url(r'^k8s$', kube.index),
+    url(r'^k8s/add$', kube.add),
+    url(r'^k8s/edit/(\d+)$', kube.edit),
+    url(r'^k8s/install/(\d+)$', kube.install),
 ]

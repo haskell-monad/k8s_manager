@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import Assets, Product, ProductVersion, KubeConfig, Server
+from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster
 from django.forms import ModelForm
 from django.forms import widgets as wid
 from . import common
@@ -90,8 +90,9 @@ class ProductVersionForm(ModelForm):
 class KubeConfigForm(ModelForm):
     class Meta:
         model = KubeConfig
-        fields = ('kube_name','kube_version','deploy_mode','ntp_enabled','lb_node','etcd_node','etcd_node_name_prefix','kube_master','kube_node','harbor_node',
-                    'harbor_domain','harbor_install',
+        fields = ('kube_name','kube_version','deploy_mode','ntp_enabled','etcd_node_name_prefix',
+                    # 'lb_node','etcd_node','kube_master','kube_node','harbor_node',
+                    # 'harbor_domain','harbor_install',
                     #'kube_new_master','kube_new_node',
                     'ssh_addkey','node_port_range','master_ip','kube_api_server','cluster_network',
                     'service_cidr',
@@ -105,30 +106,30 @@ class KubeConfigForm(ModelForm):
         widgets = None          #自定义插件
         error_messages = None   #自定义错误信息
         widgets = {
-            "kube_name": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：Test"}),
-            "kube_version": wid.Select(choices=common.K8S_VERSION),
-            "deploy_mode": wid.Select(choices=common.K8S_DEPLOY_MODE),
-            "ntp_enabled": wid.Select(choices=common.COMMON_STATUS),
+            "kube_name": wid.Select(choices=common.K8S_FLAG,attrs={'style':'margin: 0px;height:30px'}),
+            "kube_version": wid.Select(choices=common.K8S_VERSION,attrs={'style':'margin: 0px;height:30px'}),
+            "deploy_mode": wid.Select(choices=common.K8S_DEPLOY_MODE,attrs={'style':'margin: 0px;height:30px'}),
+            "ntp_enabled": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
 
-            "lb_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.185;192.168.150.187"}),
-            "etcd_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182;192.168.150.183"}),
-            "etcd_node_name_prefix": wid.TextInput(attrs={'class':'smallinput', 'value': 'etcd'}),
-            "kube_master": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182"}),
-            "kube_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.184"}),
+            # "lb_node": wid.Textarea(attrs={'class':'smallinput','style':'margin: 0px; width: 174px; height: 91px;'}),
+            # "etcd_node": wid.Textarea(attrs={'class':'smallinput', 'style':'margin: 0px; width: 174px; height: 91px;'}),
+            "etcd_node_name_prefix": wid.TextInput(attrs={'class':'smallinput', 'value': 'etcd','style':'margin: 0px; width: 100px'}),
+            # "kube_master": wid.Textarea(attrs={'class':'smallinput','style':'margin: 0px; width: 174px; height: 91px;'}),
+            # "kube_node": wid.Textarea(attrs={'class':'smallinput','style':'margin: 0px; width: 174px; height: 91px;'}),
 
-            "harbor_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.189"}),
-            "harbor_domain": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：harbor.ikang.com"}),
-            "harbor_install": wid.Select(choices=common.COMMON_STATUS),
+            # "harbor_node": wid.TextInput(attrs={'class':'smallinput'}),
+            # "harbor_domain": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：harbor.ikang.com"}),
+            # "harbor_install": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
 
             #"kube_new_master": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182"}),
             #"kube_new_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.184"}),
-            "ssh_addkey": wid.Select(choices=common.COMMON_STATUS),
-            "node_port_range": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：20000-40000"}),
+            "ssh_addkey": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
+            "node_port_range": wid.TextInput(attrs={'class':'smallinput', 'value':'20000-40000','readonly':'readonly'}),
 
             "master_ip": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.187"}),
-            "kube_api_server": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：https://$master_ip:8443"}),
+            "kube_api_server": wid.TextInput(attrs={'class':'smallinput','value':'https://$loadblance_vip:8443'}),
 
-            "cluster_network": wid.Select(choices=common.K8S_CLUSTER_NETWORK),
+            "cluster_network": wid.Select(choices=common.K8S_CLUSTER_NETWORK,attrs={'style':'margin: 0px;height:30px'}),
 
             "service_cidr": wid.TextInput(attrs={'class':'smallinput', 'value':"10.68.0.0/16"}),
             "cluster_cidr": wid.TextInput(attrs={'class':'smallinput', 'value':"172.20.0.0/16"}),
@@ -136,16 +137,42 @@ class KubeConfigForm(ModelForm):
             "cluster_dns_svc_ip": wid.TextInput(attrs={'class':'smallinput', 'value':"10.68.0.2"}),
             "cluster_dns_domain": wid.TextInput(attrs={'class':'smallinput', 'value':"cluster.local."}),
 
-            "basic_auth_user": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：admin"}),
-            "basic_auth_pass": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：admin123456"}),
+            "basic_auth_user": wid.TextInput(attrs={'class':'smallinput', 'placeholder':'如：admin'}),
+            "basic_auth_pass": wid.TextInput(attrs={'class':'smallinput', 'placeholder':'如：admin123456'}),
 
             "bin_dir": wid.TextInput(attrs={'class':'smallinput', 'readonly': 'readonly','value': '/opt/kube/bin'}),
             "ca_dir": wid.TextInput(attrs={'class':'smallinput', 'readonly': 'readonly','value': '/etc/kubernetes/ssl'}),
             "base_dir": wid.TextInput(attrs={'class':'smallinput', 'readonly': 'readonly','value': '/etc/ansible'}),
             
-            "kube_desc": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"集群描述信息"}),
+            "kube_desc": wid.Textarea(attrs={'class':'smallinput'}),
             "id": wid.HiddenInput(),
             "deploy": wid.HiddenInput(),
+        }
+
+
+class KubeClusterForm(ModelForm):
+    class Meta:
+        model = KubeCluster
+        fields = ('node_ip','node_domain','node_type','node_user','node_password','node_port','node_name',
+            'node_role','ssh_enabled','install_type','id'
+        )
+        exclude = None          #排除的字段
+        labels = None           #提示信息
+        help_texts = None       #帮助提示信息
+        widgets = None          #自定义插件
+        error_messages = None   #自定义错误信息
+        widgets = {
+            "node_ip": wid.TextInput(attrs={'class':'smallinput'}),
+            "node_domain": wid.TextInput(attrs={'class':'smallinput'}),
+            "node_type": wid.Select(choices=common.K8S_NODE_TYPE,attrs={'style':'margin: 0px;height:30px'}),
+            "node_user": wid.TextInput(attrs={'class':'smallinput'}),
+            "node_password": wid.TextInput(attrs={'class':'smallinput'}),
+            "node_port": wid.TextInput(attrs={'class':'smallinput'}),
+            "node_name": wid.TextInput(attrs={'class':'smallinput'}),
+            "node_role": wid.Select(choices=common.K8S_NODE_ROLE,attrs={'style':'margin: 0px;height:30px'}),
+            "ssh_enabled": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
+            "install_type": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
+            "id": wid.HiddenInput(),
         }
 
 class ServerForm(ModelForm):
