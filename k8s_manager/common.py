@@ -67,10 +67,10 @@ K8S_NODE_ROLE = (
 )
 
 K8S_NODE_TYPE = (
-    ("k8s","k8s"),
-    ("loadblance","loadblance"),
-    ("etcd","etcd"),
-    ("harbor","harbor")
+    ("k8s","k8s节点"),
+    ("loadbalance","负载均衡节点"),
+    ("etcd","etcd节点"),
+    ("harbor","harbor节点")
 )
 
 K8S_FLAG = (

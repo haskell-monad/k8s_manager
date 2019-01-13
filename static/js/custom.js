@@ -1,12 +1,16 @@
 
 
-function flushHtmlByAjax(url,tagId){
+function flushHtmlByAjax(url,tagId,_callback){
 	jQuery.ajax({
 		  url: url,
 		  type: 'get',
 		  dataType: 'html',
 		  success: function (data, status) {
 			jQuery("#"+tagId).html(data);
+		 	if(typeof _callback === "function"){
+		 		_callback();
+		 	}
+			
 		  },
 		  fail: function (err, status) {
 			console.log("加载页面失败",url,err);
@@ -57,3 +61,31 @@ function k8sAdd(){
 function k8sInstall(id){
 	 flushHtmlByAjax("/k8s/install/"+id,"centerContent");
 }
+
+
+function line(){
+		var line_num = jQuery(".form-line").length;
+		console.log(line_num);
+		return line_num;
+}
+
+function k8s_all_line_call(){
+	jQuery('#add-line').on('click', function(){  
+		console.log("-----");
+		var num = line(); 
+
+		jQuery("#form-body").append("<tr>aaa-"+num+"-bbb</tr>");
+	});
+}
+
+function k8sClusterAdd(kube_id){
+	flushHtmlByAjax("/k8s/cluster/add/"+kube_id,"centerContent");
+
+}
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 import logging
 
 from .models import KubeConfig, KubeCluster
-from .forms import KubeConfigForm, KubeClusterForm
+from .forms import KubeConfigForm
 from . import common
 
 logger = logging.getLogger('django')
@@ -23,7 +23,6 @@ def index(request):
 
     listData = KubeConfig.objects.all()
 
-    
     context['listData'] = listData
 
     return render(request, 'kube/index.html', context)
@@ -53,11 +52,6 @@ def add(request):
     context['title'] = "新增"
     context['formUrl'] = "/k8s/add"
     context['form'] = form
-    context['lb_form'] = lb_form
-    context['etcd_form'] = etcd_form
-    context['master_form'] = master_form
-    context['node_form'] = node_form
-    context['harbor_form'] = harbor_form
     return render(request, 'kube/form.html', context)
 
 

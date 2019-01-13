@@ -160,7 +160,7 @@ class KubeCluster(models.Model):
     # 节点域名
     node_domain = models.CharField(max_length=40)
     # 节点类型
-    node_type = models.CharField(max_length=40,choices=common.TYPE_VALUE)
+    node_type = models.CharField(max_length=40,choices=common.K8S_NODE_TYPE)
     # 节点用户名
     node_user = models.CharField(max_length=30)
     # 节点密码
