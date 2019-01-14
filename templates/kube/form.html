@@ -53,68 +53,6 @@
                     </span>
                 </p>
 
-                <!-- <p style="align:center;color:blue">集群节点配置,文本框中每行一个IP</p>
-
-                <p>
-                    <label>负载均衡节点</label>
-                    <span class="field">
-                        {{ form.lb_node }}
-                        <a>用来安装haproxy+keepalived</a>
-                    </span>
-                </p>
-
-                <p>
-                    <label>Etcd集群节点</label>
-                    <span class="field">
-                        {{ form.etcd_node }}
-                        <a>etcd集群必须是1,3,5,7...奇数个节点</a>
-                    </span>
-                </p>
-
-                
-
-                <p>
-                    <label>Master节点</label>
-                    <span class="field">
-                        {{ form.kube_master }}
-                        <a>待安装的Master节点</a>
-                    </span>
-                </p>
-
-                <p>
-                    <label>Node节点</label>
-                    <span class="field">
-                        {{ form.kube_node }}
-                        <a>待安装的Node节点列表</a>
-                    </span>
-                </p>
-
-                <p style="align:center;color:blue">harbor服务器配置</p>
-
-                <p>
-                    <label>harbor服务器节点</label>
-                    <span class="field">
-                        {{ form.harbor_node }}
-                        <a>harbor服务器ip</a>
-                    </span>
-                </p>
-
-                <p>
-                    <label>harbor服务器域名</label>
-                    <span class="field">
-                        {{ form.harbor_domain }}
-                        <a>harbor服务器域名</a>
-                    </span>
-                </p>
-
-                <p>
-                    <label>harbor安装类型</label>
-                    <span class="field">
-                        {{ form.harbor_install }}
-                        <a>yes表示新建，no表示使用已有harbor服务器</a>
-                    </span>
-                </p> -->
-
                 <p style="align:center;color:blue">Kubernetes集群网路信息配置</p>
                 
                 <p>
@@ -137,7 +75,7 @@
                     <label>Api Server</label>
                     <span class="field">
                         {{ form.kube_api_server }}
-                        <a></a>
+                        <a>https://负载均衡VIP:8443</a>
                     </span>
                 </p>
 

@@ -1,0 +1,3 @@
+# Miscellaneous
+*.log
+k8s_manager/migrations/

@@ -7,6 +7,7 @@ import logging
 from django import forms
 from .models import KubeConfig, KubeCluster
 from .forms import KubeClusterForm
+from django.db import models
 from . import common
 
 logger = logging.getLogger('django')
@@ -20,40 +21,35 @@ def index(request,kube_id):
     context = build_context()
 
     context['kube_id'] = kube_id
-    context['listData'] = []
+    context['listData'] = KubeCluster.objects.filter(kube_id=kube_id)
 
     return render(request, 'kube_cluster/index.html', context)
 
 def add(request,kube_id):
     context = build_context()
-    default_line = 2
+    default_line = 0
     KubeClusterFormSet = forms.formset_factory(KubeClusterForm,extra=default_line,)
 
-    context['title'] = "新增集群节点"
-    context['formUrl'] = "/k8s/cluster/add/"+kube_id
-    context['defalut_line'] = default_line
     if request.method == 'GET':
-        formset = KubeClusterFormSet()
+        formset = KubeClusterFormSet(initial = [{"kube_id":kube_id}])
+        context['title'] = "新增集群节点"
+        context['formUrl'] = "/k8s/cluster/add/"+kube_id
+        context['defalut_line'] = 1
         context['formset'] = formset
         return render(request,"kube_cluster/form.html",context)
 
     formset = KubeClusterFormSet(request.POST)
-    print("--------formset--------")
-    print(formset)
+    context['formset'] = formset
     if formset.is_valid():
         flag = False  # 标志位
         for row in formset.cleaned_data:
             if row:
                 # **表示将字典扩展为关键字参数
-                res = models.KubeCluster.objects.create(**row)
+                res = KubeCluster.objects.create(**row)
                 if res:  # 判断返回信息
                     flag = True
-        if flag:
-            return HttpResponse('添加成功')
-        else:
-            return HttpResponse('添加失败')
 
-    return render(request, "kube_cluster/index.html", {'formset': formset})
+    return HttpResponseRedirect('/k8s/cluster/'+kube_id)
 
 
 # def edit(request, pk):

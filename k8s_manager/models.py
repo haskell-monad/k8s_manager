@@ -158,7 +158,7 @@ class KubeCluster(models.Model):
     # 节点ip
     node_ip = models.CharField(max_length=20)
     # 节点域名
-    node_domain = models.CharField(max_length=40)
+    node_domain = models.CharField(max_length=40,blank=True,null=True)
     # 节点类型
     node_type = models.CharField(max_length=40,choices=common.K8S_NODE_TYPE)
     # 节点用户名
@@ -168,13 +168,15 @@ class KubeCluster(models.Model):
     # 节点端口号
     node_port = models.IntegerField(null=True,blank=True)
     # 节点主机名
-    node_name = models.CharField(max_length=100)
+    node_name = models.CharField(max_length=50,blank=True,null=True)
     # 节点角色，如: master/backup
     node_role = models.CharField(max_length=10,choices=common.K8S_NODE_ROLE)
     # 是否已经配置过ssh免密钥登陆
     ssh_enabled = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
     # 安装类型 yes为新安装 no为使用已有服务器
     install_type = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
+    # 节点状态
+    node_status = models.CharField(max_length=20,blank=True,null=True)
     # 创建日期
     create_date = models.DateField(auto_now_add=True)
     # 修改日期
@@ -212,7 +214,6 @@ class Server(models.Model):
 
     class Meta:
         db_table = "server"
-
 
 class Template(models.Model):
     name = models.CharField(max_length=20)

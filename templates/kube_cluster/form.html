@@ -6,47 +6,45 @@
         <button id="set-line">设置默认用户名密码端口</button>
     </div
     <div id="validation" class="subcontent" >
-            <form id="_kubeClusterConfig" class="stdform" method="post" action="{{ formUrl }}">
-                {{ formset.management_form }}
-                {% csrf_token %}
-                <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable">
-                    <colgroup>
-                        <col class="con0" />
-                        <col class="con1" />
-                        <col class="con0" />
-                        <col class="con1" />
-                        <col class="con0" />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th class="head1">节点Ip</th>
-                            <th class="head0">节点域名</th>
-                            <th class="head1">节点类型</th>
-                            <th class="head0">用户名</th>
-                            <th class="head1">用户密码</th>
-
-                            <th class="head0">SSH端口</th>
-                            <th class="head1">节点主机名</th>
-                            <th class="head0">节点角色</th>
-                            <th class="head1">安装类型</th>
+        <form id="_kube_cluster" class="stdform" method="post" action="{{ formUrl }}">
+            {{ formset.management_form }}
+            {% csrf_token %}
+            <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable">
+                <colgroup>
+                    <col class="con0" />
+                    <col class="con1" />
+                    <col class="con0" />
+                    <col class="con1" />
+                    <col class="con0" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="head1">节点Ip</th>
+                        <th class="head0">节点域名</th>
+                        <th class="head1">节点主机名</th>
+                        <th class="head1">节点类型</th>
+                        <th class="head0">节点角色</th>
+                        <th class="head1">安装类型</th>
+                        <th class="head0">用户名</th>
+                        <th class="head1">用户密码</th>
+                        <th class="head0">SSH端口</th>
+                    </tr>
+                </thead>
+               
+                <tbody class="form-body">
+                    {% for form in formset %}
+                        <tr class="gradeX form-line">
+                            {% for field in form %}
+                               <td class="center form-td">{{ field }} {{ field.errors.0 }} </td>
+                            {% endfor %}
                         </tr>
-                    </thead>
-                   
-                    <tbody class="form-body">
-                        {% for form in formset %}
-                            <tr class="gradeX form-line">
-                                {% for field in form %}
-                                   <td class="center form-td">{{ field }} {{ field.errors.0 }} </td>
-                                {% endfor %}
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                <p class="stdformbutton">
-                	<button class="submit radius2">确定</button>
-                </p>
-            </form>
-
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p class="stdformbutton">
+            	<button class="submit radius2">确定</button>
+            </p>
+        </form>
     </div>
 </div>
 

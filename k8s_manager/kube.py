@@ -32,8 +32,6 @@ def add(request):
     context = build_context()
     if request.method == "POST":
         form = KubeConfigForm(request.POST)
-        logging.debug("-----444444-------")
-        logging.debug(form)
         print(form.errors)
         if form.is_valid():
              kube = form.save(commit=False)
@@ -43,11 +41,6 @@ def add(request):
         return HttpResponseRedirect('/k8s')
     else:
         form = KubeConfigForm()
-        lb_form = KubeClusterForm()
-        etcd_form = KubeClusterForm()
-        master_form = KubeClusterForm()
-        node_form = KubeClusterForm()
-        harbor_form = KubeClusterForm()
 
     context['title'] = "新增"
     context['formUrl'] = "/k8s/add"

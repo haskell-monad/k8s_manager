@@ -20,7 +20,8 @@ from . import home, assets, product, product_version, kube, kube_cluster
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index$', home.index),
+
+    url(r'^$', home.index),
 
     #assets
     url(r'^assets$', assets.index),

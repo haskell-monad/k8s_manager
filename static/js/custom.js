@@ -63,21 +63,6 @@ function k8sInstall(id){
 }
 
 
-function line(){
-		var line_num = jQuery(".form-line").length;
-		console.log(line_num);
-		return line_num;
-}
-
-function k8s_all_line_call(){
-	jQuery('#add-line').on('click', function(){  
-		console.log("-----");
-		var num = line(); 
-
-		jQuery("#form-body").append("<tr>aaa-"+num+"-bbb</tr>");
-	});
-}
-
 function k8sClusterAdd(kube_id){
 	flushHtmlByAjax("/k8s/cluster/add/"+kube_id,"centerContent");
 

@@ -153,8 +153,7 @@ class KubeConfigForm(ModelForm):
 class KubeClusterForm(ModelForm):
     class Meta:
         model = KubeCluster
-        fields = ('id','node_ip','node_domain','node_type','node_user','node_password','node_port','node_name',
-            'node_role','install_type'
+        fields = ('node_ip','node_domain','node_name','node_type','node_role','install_type','node_user','node_password','node_port','kube_id'
         )
         exclude = None          #排除的字段
         labels = None           #提示信息
@@ -162,16 +161,16 @@ class KubeClusterForm(ModelForm):
         widgets = None          #自定义插件
         error_messages = None   #自定义错误信息
         widgets = {
-            "id": wid.HiddenInput(),
             "node_ip": wid.TextInput(attrs={'class':'smallinput'}),
             "node_domain": wid.TextInput(attrs={'class':'smallinput'}),
-            "node_type": wid.Select(choices=common.K8S_NODE_TYPE,attrs={'class': 'css-node-type','style':'margin: 0px;height:30px'}),
-            "node_user": wid.TextInput(attrs={'class':'smallinput'}),
-            "node_password": wid.TextInput(attrs={'class':'smallinput'}),
-            "node_port": wid.TextInput(attrs={'class':'smallinput'}),
             "node_name": wid.TextInput(attrs={'class':'smallinput'}),
+            "node_type": wid.Select(choices=common.K8S_NODE_TYPE,attrs={'class': 'css-node-type','style':'margin: 0px;height:30px'}),
             "node_role": wid.Select(choices=common.K8S_NODE_ROLE,attrs={'class': 'css-node-role','style':'margin: 0px;height:30px'}),
             "install_type": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
+            "node_user": wid.TextInput(attrs={'class':'smallinput','value':'root'}),
+            "node_password": wid.TextInput(attrs={'class':'smallinput'}),
+            "node_port": wid.TextInput(attrs={'class':'smallinput','value':'22'}),
+            "kube_id": wid.HiddenInput(),
         }
 
 class ServerForm(ModelForm):
