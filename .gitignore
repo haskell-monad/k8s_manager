@@ -1,3 +1,4 @@
 # Miscellaneous
+.DS_Store
 *.log
 k8s_manager/migrations/

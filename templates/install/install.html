@@ -1,0 +1,87 @@
+<div class="pageheader notab">
+    <h1 class="pagetitle">实时日志</h1>
+    <span class="pagedesc">实时查看k8s安装日志</span>
+</div>
+
+<div id="contentwrapper" class="contentwrapper withrightpanel">
+    <div class="subcontent chatcontent">
+           <div id="chatmessage" class="chatmessage radius2">
+                <!--内容区域-->
+                <div id="chatmessageinner">    
+                    <p class="reply" id="reply">
+                       
+                    </p>
+                </div>
+           </div>
+           <div class="messagebox radius2">
+                <button onclick="sendChat()">发送</button>
+                <span class="inputbox">
+                    <input type="text" id="msg" name="msg"/>
+                </span>
+           </div>
+    </div>
+</div>
+
+<!--右侧内容-->
+<div class="rightpanel">
+    <div class="rightpanelinner">
+
+        <div class="widgetbox uncollapsible">
+            <div class="title"><h4>帮助手册</h4></div>
+            <div class="widgetcontent nopadding">
+
+                <!-- <div class="chatsearch">
+                    <input type="text" name="" value="Search" />
+                </div> -->
+                <span>环境准备(必须)</span>
+                <!--环境准备-->
+                <ul class="contactlist">
+                    {% for prepare in k8s_prepare %}
+                        <li class="online new">
+                            <a href="#">
+                                    <img src="images/thumbs/avatar5.png" alt="" />
+                                    <span>{{ prepare.1 }}</span>
+                            </a>
+                            <span class="msgcount">{{ prepare.0 }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <span>分步安装(推荐)</span>
+                <!--分步安装-->
+                <ul class="contactlist">
+                    {% for step in k8s_step %}
+                        <li class="online new">
+                            <a href="#">
+                                    <img src="images/thumbs/avatar5.png" alt="" />
+                                    <span>{{ step.1 }}</span>
+                            </a>
+                            <span class="msgcount">{{ step.0 }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <span>快速安装</span>
+                <ul class="contactlist">
+                        <!--一键安装-->
+                        <li class="online new">
+                            <a href="#">
+                                    <img src="images/thumbs/avatar5.png" alt="" />
+                                    <span>{{ k8s_install.1 }}</span>
+                            </a>
+                            <span class="msgcount">{{ k8s_install.0 }}</span>
+                        </li>
+                        <!--清理集群-->
+                        <li class="online new">
+                            <a href="#">
+                                    <img src="images/thumbs/avatar5.png" alt="" />
+                                    <span>{{ k8s_clean.1 }}</span>
+                            </a>
+                            <span class="msgcount">{{ k8s_clean.0 }}</span>
+                        </li>     
+                </ul>
+            </div><!--widgetcontent-->
+        </div><!--widgetbox-->
+    </div><!--rightpanelinner-->
+</div>
+
+{% load staticfiles  %}
+<script type="text/javascript" src="{% static 'js/install.js' %}" ></script>

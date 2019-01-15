@@ -18715,3 +18715,1273 @@ NameError: global name 'KubeClusterForm' is not defined
 [2019-01-14 06:09:12,909] [INFO] "GET /k8s HTTP/1.1" 200 7389
 [2019-01-14 06:09:15,147] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
 [2019-01-14 06:09:15,158] [INFO] "GET /static/js/product-form.js?_=1547446155152 HTTP/1.1" 200 3174
+[2019-01-14 06:24:49,069] [INFO] "GET /product HTTP/1.1" 200 6867
+[2019-01-14 06:24:49,090] [INFO] "GET /static/js/custom.js HTTP/1.1" 304 0
+[2019-01-14 06:24:50,083] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:24:51,341] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:24:53,176] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 06:24:53,186] [INFO] "GET /static/js/product-form.js?_=1547447093180 HTTP/1.1" 200 3174
+[2019-01-14 06:24:54,068] [INFO] "GET /k8s/install/1 HTTP/1.1" 302 0
+[2019-01-14 06:24:54,076] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:24:54,087] [INFO] "GET /static/js/plugins/jquery-1.7.min.js?_=1547447094084 HTTP/1.1" 200 94020
+[2019-01-14 06:24:54,118] [INFO] "GET /static/js/plugins/jquery-ui-1.8.16.custom.min.js?_=1547447094116 HTTP/1.1" 200 210463
+[2019-01-14 06:24:54,134] [INFO] "GET /static/js/plugins/jquery.cookie.js?_=1547447094131 HTTP/1.1" 200 1782
+[2019-01-14 06:24:54,137] [INFO] "GET /static/js/plugins/jquery.dataTables.min.js?_=1547447094135 HTTP/1.1" 200 70883
+[2019-01-14 06:24:54,142] [INFO] "GET /static/js/plugins/jquery.uniform.min.js?_=1547447094141 HTTP/1.1" 200 9323
+[2019-01-14 06:24:54,146] [INFO] "GET /static/js/plugins/jquery.validate.min.js?_=1547447094144 HTTP/1.1" 200 21601
+[2019-01-14 06:24:54,152] [INFO] "GET /static/js/plugins/jquery.tagsinput.min.js?_=1547447094149 HTTP/1.1" 200 6400
+[2019-01-14 06:24:54,156] [INFO] "GET /static/js/plugins/ui.spinner.min.js?_=1547447094154 HTTP/1.1" 200 8253
+[2019-01-14 06:24:54,159] [INFO] "GET /static/js/plugins/charCount.js?_=1547447094157 HTTP/1.1" 200 1571
+[2019-01-14 06:24:54,162] [INFO] "GET /static/js/plugins/chosen.jquery.min.js?_=1547447094160 HTTP/1.1" 200 22939
+[2019-01-14 06:24:54,167] [INFO] "GET /static/js/custom/general.js?_=1547447094165 HTTP/1.1" 200 9570
+[2019-01-14 06:24:54,171] [INFO] "GET /static/js/custom/tables.js?_=1547447094169 HTTP/1.1" 200 4662
+[2019-01-14 06:24:54,175] [INFO] "GET /static/js/custom.js?_=1547447094172 HTTP/1.1" 200 1396
+[2019-01-14 06:24:55,450] [INFO] "GET /product/add HTTP/1.1" 200 4711
+[2019-01-14 06:24:55,457] [INFO] "GET /static/js/product-form.js?_=1547447095456 HTTP/1.1" 200 3174
+[2019-01-14 06:24:56,029] [INFO] "GET /product/add HTTP/1.1" 200 4711
+[2019-01-14 06:24:56,034] [INFO] "GET /static/js/product-form.js?_=1547447096032 HTTP/1.1" 200 3174
+[2019-01-14 06:24:56,847] [INFO] "GET /product/add HTTP/1.1" 200 4711
+[2019-01-14 06:24:56,851] [INFO] "GET /static/js/product-form.js?_=1547447096849 HTTP/1.1" 200 3174
+[2019-01-14 06:24:57,694] [INFO] "GET /product/add HTTP/1.1" 200 4711
+[2019-01-14 06:24:57,699] [INFO] "GET /static/js/product-form.js?_=1547447097698 HTTP/1.1" 200 3174
+[2019-01-14 06:24:58,447] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 06:24:58,451] [INFO] "GET /static/js/product-form.js?_=1547447098450 HTTP/1.1" 200 3174
+[2019-01-14 06:37:06,662] [INFO] "GET /k8s/cluster/1 HTTP/1.1" 200 7621
+[2019-01-14 06:37:10,852] [INFO] "GET /k8s/cluster/add/1 HTTP/1.1" 200 4999
+[2019-01-14 06:37:10,859] [INFO] "GET /static/js/product-form.js?_=1547447830857 HTTP/1.1" 200 3174
+[2019-01-14 06:37:10,864] [INFO] "GET /static/js/cluster-form.js?_=1547447830861 HTTP/1.1" 200 1741
+[2019-01-14 06:37:12,917] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:37:17,385] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 06:37:17,391] [INFO] "GET /static/js/product-form.js?_=1547447837389 HTTP/1.1" 200 3174
+[2019-01-14 06:37:18,827] [INFO] "GET /k8s/install/1 HTTP/1.1" 302 0
+[2019-01-14 06:37:18,837] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:37:18,846] [INFO] "GET /static/js/plugins/jquery-1.7.min.js?_=1547447838842 HTTP/1.1" 200 94020
+[2019-01-14 06:37:18,868] [INFO] "GET /static/js/plugins/jquery-ui-1.8.16.custom.min.js?_=1547447838865 HTTP/1.1" 200 210463
+[2019-01-14 06:37:18,890] [INFO] "GET /static/js/plugins/jquery.cookie.js?_=1547447838888 HTTP/1.1" 200 1782
+[2019-01-14 06:37:18,894] [INFO] "GET /static/js/plugins/jquery.dataTables.min.js?_=1547447838892 HTTP/1.1" 200 70883
+[2019-01-14 06:37:18,902] [INFO] "GET /static/js/plugins/jquery.uniform.min.js?_=1547447838899 HTTP/1.1" 200 9323
+[2019-01-14 06:37:18,906] [INFO] "GET /static/js/plugins/jquery.validate.min.js?_=1547447838904 HTTP/1.1" 200 21601
+[2019-01-14 06:37:18,912] [INFO] "GET /static/js/plugins/jquery.tagsinput.min.js?_=1547447838910 HTTP/1.1" 200 6400
+[2019-01-14 06:37:18,916] [INFO] "GET /static/js/plugins/ui.spinner.min.js?_=1547447838914 HTTP/1.1" 200 8253
+[2019-01-14 06:37:18,920] [INFO] "GET /static/js/plugins/charCount.js?_=1547447838919 HTTP/1.1" 200 1571
+[2019-01-14 06:37:18,923] [INFO] "GET /static/js/plugins/chosen.jquery.min.js?_=1547447838922 HTTP/1.1" 200 22939
+[2019-01-14 06:37:18,927] [INFO] "GET /static/js/custom/general.js?_=1547447838926 HTTP/1.1" 200 9570
+[2019-01-14 06:37:18,931] [INFO] "GET /static/js/custom/tables.js?_=1547447838929 HTTP/1.1" 200 4662
+[2019-01-14 06:37:18,935] [INFO] "GET /static/js/custom.js?_=1547447838933 HTTP/1.1" 200 1396
+[2019-01-14 06:37:36,497] [INFO] "GET /k8s/install/1 HTTP/1.1" 302 0
+[2019-01-14 06:37:36,507] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:37:36,518] [INFO] "GET /static/js/plugins/jquery-1.7.min.js?_=1547447856516 HTTP/1.1" 200 94020
+[2019-01-14 06:37:36,541] [INFO] "GET /static/js/plugins/jquery-ui-1.8.16.custom.min.js?_=1547447856538 HTTP/1.1" 200 210463
+[2019-01-14 06:37:36,553] [INFO] "GET /static/js/plugins/jquery.cookie.js?_=1547447856550 HTTP/1.1" 200 1782
+[2019-01-14 06:37:36,557] [INFO] "GET /static/js/plugins/jquery.dataTables.min.js?_=1547447856554 HTTP/1.1" 200 70883
+[2019-01-14 06:37:36,562] [INFO] "GET /static/js/plugins/jquery.uniform.min.js?_=1547447856559 HTTP/1.1" 200 9323
+[2019-01-14 06:37:36,567] [INFO] "GET /static/js/plugins/jquery.validate.min.js?_=1547447856564 HTTP/1.1" 200 21601
+[2019-01-14 06:37:36,571] [INFO] "GET /static/js/plugins/jquery.tagsinput.min.js?_=1547447856569 HTTP/1.1" 200 6400
+[2019-01-14 06:37:36,575] [INFO] "GET /static/js/plugins/ui.spinner.min.js?_=1547447856573 HTTP/1.1" 200 8253
+[2019-01-14 06:37:36,581] [INFO] "GET /static/js/plugins/charCount.js?_=1547447856577 HTTP/1.1" 200 1571
+[2019-01-14 06:37:36,585] [INFO] "GET /static/js/plugins/chosen.jquery.min.js?_=1547447856583 HTTP/1.1" 200 22939
+[2019-01-14 06:37:36,590] [INFO] "GET /static/js/custom/general.js?_=1547447856588 HTTP/1.1" 200 9570
+[2019-01-14 06:37:36,595] [INFO] "GET /static/js/custom/tables.js?_=1547447856592 HTTP/1.1" 200 4662
+[2019-01-14 06:37:36,599] [INFO] "GET /static/js/custom.js?_=1547447856598 HTTP/1.1" 200 1396
+[2019-01-14 06:37:47,109] [INFO] "GET /k8s/install/1 HTTP/1.1" 302 0
+[2019-01-14 06:37:47,119] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:37:47,130] [INFO] "GET /static/js/plugins/jquery-1.7.min.js?_=1547447867127 HTTP/1.1" 200 94020
+[2019-01-14 06:37:47,151] [INFO] "GET /static/js/plugins/jquery-ui-1.8.16.custom.min.js?_=1547447867149 HTTP/1.1" 200 210463
+[2019-01-14 06:37:47,159] [INFO] "GET /static/js/plugins/jquery.cookie.js?_=1547447867157 HTTP/1.1" 200 1782
+[2019-01-14 06:37:47,164] [INFO] "GET /static/js/plugins/jquery.dataTables.min.js?_=1547447867162 HTTP/1.1" 200 70883
+[2019-01-14 06:37:47,169] [INFO] "GET /static/js/plugins/jquery.uniform.min.js?_=1547447867166 HTTP/1.1" 200 9323
+[2019-01-14 06:37:47,173] [INFO] "GET /static/js/plugins/jquery.validate.min.js?_=1547447867171 HTTP/1.1" 200 21601
+[2019-01-14 06:37:47,177] [INFO] "GET /static/js/plugins/jquery.tagsinput.min.js?_=1547447867175 HTTP/1.1" 200 6400
+[2019-01-14 06:37:47,181] [INFO] "GET /static/js/plugins/ui.spinner.min.js?_=1547447867179 HTTP/1.1" 200 8253
+[2019-01-14 06:37:47,186] [INFO] "GET /static/js/plugins/charCount.js?_=1547447867184 HTTP/1.1" 200 1571
+[2019-01-14 06:37:47,190] [INFO] "GET /static/js/plugins/chosen.jquery.min.js?_=1547447867187 HTTP/1.1" 200 22939
+[2019-01-14 06:37:47,194] [INFO] "GET /static/js/custom/general.js?_=1547447867192 HTTP/1.1" 200 9570
+[2019-01-14 06:37:47,198] [INFO] "GET /static/js/custom/tables.js?_=1547447867196 HTTP/1.1" 200 4662
+[2019-01-14 06:37:47,203] [INFO] "GET /static/js/custom.js?_=1547447867200 HTTP/1.1" 200 1396
+[2019-01-14 06:41:50,894] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:41:53,354] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2361
+[2019-01-14 06:41:53,368] [INFO] "GET /static/js/install.js?_=1547448113359 HTTP/1.1" 200 1435
+[2019-01-14 06:41:53,376] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:41:53,378] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:41:53,383] [INFO] "GET /static/images/chat.png HTTP/1.1" 200 280
+[2019-01-14 06:41:53,388] [INFO] "GET /static/images/search.png HTTP/1.1" 200 581
+[2019-01-14 06:41:53,392] [INFO] "GET /static/images/online.png HTTP/1.1" 200 751
+[2019-01-14 06:41:53,393] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:41:53,397] [WARNING] Not Found: /images/thumbs/avatar6.png
+[2019-01-14 06:41:53,404] [WARNING] Not Found: /images/thumbs/avatar7.png
+[2019-01-14 06:41:53,410] [WARNING] Not Found: /images/thumbs/avatar8.png
+[2019-01-14 06:41:53,417] [WARNING] Not Found: /images/thumbs/avatar9.png
+[2019-01-14 06:41:53,418] [WARNING] "GET /images/thumbs/avatar6.png HTTP/1.1" 404 3733
+[2019-01-14 06:41:53,420] [WARNING] "GET /images/thumbs/avatar7.png HTTP/1.1" 404 3733
+[2019-01-14 06:41:53,420] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:41:53,425] [WARNING] "GET /images/thumbs/avatar8.png HTTP/1.1" 404 3733
+[2019-01-14 06:41:53,427] [WARNING] Not Found: /images/thumbs/avatar10.png
+[2019-01-14 06:41:53,434] [WARNING] Not Found: /images/thumbs/avatar11.png
+[2019-01-14 06:41:53,434] [WARNING] "GET /images/thumbs/avatar9.png HTTP/1.1" 404 3733
+[2019-01-14 06:41:53,435] [WARNING] "GET /images/thumbs/avatar10.png HTTP/1.1" 404 3736
+[2019-01-14 06:41:53,435] [WARNING] "GET /images/thumbs/avatar11.png HTTP/1.1" 404 3736
+[2019-01-14 06:42:13,793] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:42:16,976] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2361
+[2019-01-14 06:42:16,985] [INFO] "GET /static/js/install.js?_=1547448136982 HTTP/1.1" 200 1435
+[2019-01-14 06:42:16,993] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:42:16,994] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:42:17,009] [WARNING] Not Found: /images/thumbs/avatar6.png
+[2019-01-14 06:42:17,015] [WARNING] Not Found: /images/thumbs/avatar8.png
+[2019-01-14 06:42:17,018] [WARNING] Not Found: /images/thumbs/avatar7.png
+[2019-01-14 06:42:17,023] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:42:17,030] [WARNING] Not Found: /images/thumbs/avatar9.png
+[2019-01-14 06:42:17,034] [WARNING] "GET /images/thumbs/avatar6.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:17,034] [WARNING] "GET /images/thumbs/avatar8.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:17,037] [WARNING] Not Found: /images/thumbs/avatar10.png
+[2019-01-14 06:42:17,044] [WARNING] Not Found: /images/thumbs/avatar11.png
+[2019-01-14 06:42:17,044] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:17,044] [WARNING] "GET /images/thumbs/avatar7.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:17,045] [WARNING] "GET /images/thumbs/avatar9.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:17,046] [WARNING] "GET /images/thumbs/avatar11.png HTTP/1.1" 404 3736
+[2019-01-14 06:42:17,047] [WARNING] "GET /images/thumbs/avatar10.png HTTP/1.1" 404 3736
+[2019-01-14 06:42:18,803] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:42:22,476] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2361
+[2019-01-14 06:42:22,484] [INFO] "GET /static/js/install.js?_=1547448142481 HTTP/1.1" 200 1435
+[2019-01-14 06:42:22,493] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:42:22,494] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:42:22,508] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:42:22,514] [WARNING] Not Found: /images/thumbs/avatar7.png
+[2019-01-14 06:42:22,526] [WARNING] Not Found: /images/thumbs/avatar10.png
+[2019-01-14 06:42:22,531] [WARNING] Not Found: /images/thumbs/avatar6.png
+[2019-01-14 06:42:22,533] [WARNING] Not Found: /images/thumbs/avatar9.png
+[2019-01-14 06:42:22,538] [WARNING] Not Found: /images/thumbs/avatar8.png
+[2019-01-14 06:42:22,538] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:22,538] [WARNING] "GET /images/thumbs/avatar7.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:22,540] [WARNING] "GET /images/thumbs/avatar6.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:22,540] [WARNING] "GET /images/thumbs/avatar8.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:22,541] [WARNING] "GET /images/thumbs/avatar9.png HTTP/1.1" 404 3733
+[2019-01-14 06:42:22,541] [WARNING] "GET /images/thumbs/avatar10.png HTTP/1.1" 404 3736
+[2019-01-14 06:42:22,547] [WARNING] Not Found: /images/thumbs/avatar11.png
+[2019-01-14 06:42:22,548] [WARNING] "GET /images/thumbs/avatar11.png HTTP/1.1" 404 3736
+[2019-01-14 06:44:21,024] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:44:23,838] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 06:44:23,844] [INFO] "GET /static/js/product-form.js?_=1547448263842 HTTP/1.1" 200 3174
+[2019-01-14 06:44:24,503] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2361
+[2019-01-14 06:44:24,510] [INFO] "GET /static/js/install.js?_=1547448264508 HTTP/1.1" 200 1435
+[2019-01-14 06:44:24,517] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:44:24,517] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:44:24,531] [WARNING] Not Found: /images/thumbs/avatar7.png
+[2019-01-14 06:44:24,546] [WARNING] Not Found: /images/thumbs/avatar8.png
+[2019-01-14 06:44:24,549] [WARNING] Not Found: /images/thumbs/avatar10.png
+[2019-01-14 06:44:24,553] [WARNING] "GET /images/thumbs/avatar7.png HTTP/1.1" 404 3733
+[2019-01-14 06:44:24,556] [WARNING] Not Found: /images/thumbs/avatar6.png
+[2019-01-14 06:44:24,558] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:44:24,560] [WARNING] "GET /images/thumbs/avatar8.png HTTP/1.1" 404 3733
+[2019-01-14 06:44:24,559] [WARNING] Not Found: /images/thumbs/avatar9.png
+[2019-01-14 06:44:24,565] [WARNING] Not Found: /images/thumbs/avatar11.png
+[2019-01-14 06:44:24,566] [WARNING] "GET /images/thumbs/avatar10.png HTTP/1.1" 404 3736
+[2019-01-14 06:44:24,567] [WARNING] "GET /images/thumbs/avatar6.png HTTP/1.1" 404 3733
+[2019-01-14 06:44:24,568] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:44:24,569] [WARNING] "GET /images/thumbs/avatar11.png HTTP/1.1" 404 3736
+[2019-01-14 06:44:24,569] [WARNING] "GET /images/thumbs/avatar9.png HTTP/1.1" 404 3733
+[2019-01-14 06:45:05,752] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:45:08,099] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 1510
+[2019-01-14 06:45:08,106] [INFO] "GET /static/js/install.js?_=1547448308103 HTTP/1.1" 200 1435
+[2019-01-14 06:45:08,115] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:45:08,115] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:45:21,568] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:45:23,674] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 06:45:23,679] [INFO] "GET /static/js/product-form.js?_=1547448323678 HTTP/1.1" 200 3174
+[2019-01-14 06:45:24,322] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2361
+[2019-01-14 06:45:24,328] [INFO] "GET /static/js/install.js?_=1547448324326 HTTP/1.1" 200 1435
+[2019-01-14 06:45:24,340] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:45:24,347] [WARNING] Not Found: /images/thumbs/avatar6.png
+[2019-01-14 06:45:24,351] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:45:24,357] [WARNING] Not Found: /images/thumbs/avatar7.png
+[2019-01-14 06:45:24,357] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:45:24,358] [WARNING] "GET /images/thumbs/avatar6.png HTTP/1.1" 404 3733
+[2019-01-14 06:45:24,360] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:45:24,365] [WARNING] Not Found: /images/thumbs/avatar9.png
+[2019-01-14 06:45:24,374] [WARNING] Not Found: /images/thumbs/avatar10.png
+[2019-01-14 06:45:24,375] [WARNING] "GET /images/thumbs/avatar7.png HTTP/1.1" 404 3733
+[2019-01-14 06:45:24,376] [WARNING] Not Found: /images/thumbs/avatar8.png
+[2019-01-14 06:45:24,384] [WARNING] Not Found: /images/thumbs/avatar11.png
+[2019-01-14 06:45:24,384] [WARNING] "GET /images/thumbs/avatar9.png HTTP/1.1" 404 3733
+[2019-01-14 06:45:24,385] [WARNING] "GET /images/thumbs/avatar10.png HTTP/1.1" 404 3736
+[2019-01-14 06:45:24,387] [WARNING] "GET /images/thumbs/avatar8.png HTTP/1.1" 404 3733
+[2019-01-14 06:45:24,387] [WARNING] "GET /images/thumbs/avatar11.png HTTP/1.1" 404 3736
+[2019-01-14 06:45:45,763] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:45:47,688] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 1581
+[2019-01-14 06:45:47,695] [INFO] "GET /static/js/install.js?_=1547448347693 HTTP/1.1" 200 1435
+[2019-01-14 06:45:47,707] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:45:47,708] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:46:02,891] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:46:04,674] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2362
+[2019-01-14 06:46:04,681] [INFO] "GET /static/js/install.js?_=1547448364678 HTTP/1.1" 200 1435
+[2019-01-14 06:46:04,696] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:46:04,700] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:46:04,707] [WARNING] Not Found: /images/thumbs/avatar6.png
+[2019-01-14 06:46:04,707] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:46:04,715] [WARNING] Not Found: /images/thumbs/avatar7.png
+[2019-01-14 06:46:04,716] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:04,720] [WARNING] Not Found: /images/thumbs/avatar8.png
+[2019-01-14 06:46:04,721] [WARNING] "GET /images/thumbs/avatar6.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:04,736] [WARNING] Not Found: /images/thumbs/avatar10.png
+[2019-01-14 06:46:04,738] [WARNING] Not Found: /images/thumbs/avatar9.png
+[2019-01-14 06:46:04,738] [WARNING] "GET /images/thumbs/avatar7.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:04,738] [WARNING] "GET /images/thumbs/avatar8.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:04,744] [WARNING] Not Found: /images/thumbs/avatar11.png
+[2019-01-14 06:46:04,745] [WARNING] "GET /images/thumbs/avatar10.png HTTP/1.1" 404 3736
+[2019-01-14 06:46:04,746] [WARNING] "GET /images/thumbs/avatar9.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:04,747] [WARNING] "GET /images/thumbs/avatar11.png HTTP/1.1" 404 3736
+[2019-01-14 06:46:17,999] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:46:21,542] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2361
+[2019-01-14 06:46:21,550] [INFO] "GET /static/js/install.js?_=1547448381547 HTTP/1.1" 200 1435
+[2019-01-14 06:46:21,586] [WARNING] Not Found: /images/thumbs/avatar7.png
+[2019-01-14 06:46:21,589] [WARNING] Not Found: /images/thumbs/avatar8.png
+[2019-01-14 06:46:21,593] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:46:21,595] [WARNING] Not Found: /images/thumbs/avatar6.png
+[2019-01-14 06:46:21,601] [WARNING] Not Found: /images/thumbs/avatar9.png
+[2019-01-14 06:46:21,602] [WARNING] "GET /images/thumbs/avatar7.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:21,602] [WARNING] "GET /images/thumbs/avatar8.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:21,603] [WARNING] "GET /images/thumbs/avatar6.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:21,610] [WARNING] Not Found: /images/thumbs/avatar10.png
+[2019-01-14 06:46:21,611] [WARNING] "GET /images/thumbs/avatar9.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:21,611] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:21,617] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:46:21,618] [WARNING] "GET /images/thumbs/avatar10.png HTTP/1.1" 404 3736
+[2019-01-14 06:46:21,622] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:46:21,625] [WARNING] Not Found: /images/thumbs/avatar11.png
+[2019-01-14 06:46:21,625] [WARNING] "GET /images/thumbs/avatar11.png HTTP/1.1" 404 3736
+[2019-01-14 06:46:30,193] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:46:30,207] [INFO] "GET /static/js/custom.js HTTP/1.1" 304 0
+[2019-01-14 06:46:38,143] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2361
+[2019-01-14 06:46:38,152] [INFO] "GET /static/js/install.js?_=1547448398148 HTTP/1.1" 200 1435
+[2019-01-14 06:46:38,166] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:46:38,171] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:46:38,183] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:46:38,188] [WARNING] Not Found: /images/thumbs/avatar7.png
+[2019-01-14 06:46:38,189] [WARNING] Not Found: /images/thumbs/avatar6.png
+[2019-01-14 06:46:38,190] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:38,198] [WARNING] Not Found: /images/thumbs/avatar8.png
+[2019-01-14 06:46:38,198] [WARNING] "GET /images/thumbs/avatar6.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:38,199] [WARNING] "GET /images/thumbs/avatar7.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:38,206] [WARNING] Not Found: /images/thumbs/avatar9.png
+[2019-01-14 06:46:38,207] [WARNING] "GET /images/thumbs/avatar8.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:38,214] [WARNING] Not Found: /images/thumbs/avatar10.png
+[2019-01-14 06:46:38,215] [WARNING] "GET /images/thumbs/avatar9.png HTTP/1.1" 404 3733
+[2019-01-14 06:46:38,224] [WARNING] Not Found: /images/thumbs/avatar11.png
+[2019-01-14 06:46:38,224] [WARNING] "GET /images/thumbs/avatar10.png HTTP/1.1" 404 3736
+[2019-01-14 06:46:38,225] [WARNING] "GET /images/thumbs/avatar11.png HTTP/1.1" 404 3736
+[2019-01-14 06:48:44,436] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:48:46,386] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 06:48:46,391] [INFO] "GET /static/js/product-form.js?_=1547448526390 HTTP/1.1" 200 3174
+[2019-01-14 06:48:48,081] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 1752
+[2019-01-14 06:48:48,087] [INFO] "GET /static/js/install.js?_=1547448528085 HTTP/1.1" 200 1435
+[2019-01-14 06:48:48,096] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:48:48,104] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:48:48,104] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:48:48,105] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:48:49,893] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:48:58,033] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 1753
+[2019-01-14 06:48:58,041] [INFO] "GET /static/js/install.js?_=1547448538038 HTTP/1.1" 200 1435
+[2019-01-14 06:48:58,051] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:48:58,059] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:48:58,060] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:48:58,060] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 06:49:08,761] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 06:49:11,289] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 1753
+[2019-01-14 06:49:11,296] [INFO] "GET /static/js/install.js?_=1547448551294 HTTP/1.1" 200 1435
+[2019-01-14 06:49:11,306] [WARNING] Not Found: /k8s/log
+[2019-01-14 06:49:11,311] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 06:49:11,315] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 06:49:11,315] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:39:34,832] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:39:34,844] [INFO] "GET /static/js/custom.js HTTP/1.1" 304 0
+[2019-01-14 07:39:35,426] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:39:37,507] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 07:39:37,517] [INFO] "GET /static/js/product-form.js?_=1547451577511 HTTP/1.1" 200 3174
+[2019-01-14 07:39:38,235] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[1]' from 'prepare[1]'
+[2019-01-14 07:39:38,340] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18537
+[2019-01-14 07:39:40,113] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[1]' from 'prepare[1]'
+[2019-01-14 07:39:40,217] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18537
+[2019-01-14 07:39:40,398] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[1]' from 'prepare[1]'
+[2019-01-14 07:39:40,492] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18537
+[2019-01-14 07:39:40,537] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[1]' from 'prepare[1]'
+[2019-01-14 07:39:40,628] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18537
+[2019-01-14 07:39:40,682] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[1]' from 'prepare[1]'
+[2019-01-14 07:39:40,791] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18537
+[2019-01-14 07:45:44,208] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:45:49,566] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[0][1]' from 'prepare[0][1]'
+[2019-01-14 07:45:49,672] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18561
+[2019-01-14 07:45:51,248] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[0][1]' from 'prepare[0][1]'
+[2019-01-14 07:45:51,377] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18561
+[2019-01-14 07:45:52,298] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[0][1]' from 'prepare[0][1]'
+[2019-01-14 07:45:52,392] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18561
+[2019-01-14 07:45:52,544] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[0][1]' from 'prepare[0][1]'
+[2019-01-14 07:45:52,637] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18561
+[2019-01-14 07:45:52,707] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[0][1]' from 'prepare[0][1]'
+[2019-01-14 07:45:52,798] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18561
+[2019-01-14 07:49:06,024] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:49:08,543] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 3575
+[2019-01-14 07:49:08,557] [INFO] "GET /static/js/install.js?_=1547452148548 HTTP/1.1" 200 1435
+[2019-01-14 07:49:08,565] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:49:08,565] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:49:08,579] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:49:08,579] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:49:23,619] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:49:26,196] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[0]' from 'prepare[0]'
+[2019-01-14 07:49:26,293] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18534
+[2019-01-14 07:49:27,015] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[0]' from 'prepare[0]'
+[2019-01-14 07:49:27,107] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18534
+[2019-01-14 07:49:27,179] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[0]' from 'prepare[0]'
+[2019-01-14 07:49:27,267] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18534
+[2019-01-14 07:51:58,893] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:52:01,886] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[1]' from 'prepare[1]'
+[2019-01-14 07:52:01,977] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18534
+[2019-01-14 07:52:03,140] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[1]' from 'prepare[1]'
+[2019-01-14 07:52:03,233] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18534
+[2019-01-14 07:52:05,445] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 07:52:05,451] [INFO] "GET /static/js/product-form.js?_=1547452325449 HTTP/1.1" 200 3174
+[2019-01-14 07:52:06,256] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 79, in install
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/usr/local/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 515, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Could not parse the remainder: '[1]' from 'prepare[1]'
+[2019-01-14 07:52:06,350] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 18534
+[2019-01-14 07:52:54,271] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:52:56,463] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 3313
+[2019-01-14 07:52:56,470] [INFO] "GET /static/js/install.js?_=1547452376468 HTTP/1.1" 200 1435
+[2019-01-14 07:52:56,486] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:52:56,493] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:52:56,493] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:52:56,494] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:53:13,028] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:53:16,114] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 2983
+[2019-01-14 07:53:16,120] [INFO] "GET /static/js/install.js?_=1547452396118 HTTP/1.1" 200 1435
+[2019-01-14 07:53:16,137] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:53:16,143] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:53:16,144] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:53:16,144] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:54:36,761] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:54:38,895] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 5736
+[2019-01-14 07:54:38,901] [INFO] "GET /static/js/install.js?_=1547452478900 HTTP/1.1" 200 1435
+[2019-01-14 07:54:38,916] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:54:38,922] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:54:38,923] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:54:38,923] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:55:41,173] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:55:44,388] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 5807
+[2019-01-14 07:55:44,394] [INFO] "GET /static/js/install.js?_=1547452544392 HTTP/1.1" 200 1435
+[2019-01-14 07:55:44,410] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:55:44,422] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:55:44,423] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:55:44,423] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:55:58,580] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 07:55:58,585] [INFO] "GET /static/js/product-form.js?_=1547452558583 HTTP/1.1" 200 3174
+[2019-01-14 07:56:00,888] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 5807
+[2019-01-14 07:56:00,895] [INFO] "GET /static/js/install.js?_=1547452560893 HTTP/1.1" 200 1435
+[2019-01-14 07:56:00,905] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:56:00,914] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:56:00,914] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:56:00,915] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:56:01,788] [INFO] "GET /product/add HTTP/1.1" 200 4711
+[2019-01-14 07:56:01,793] [INFO] "GET /static/js/product-form.js?_=1547452561791 HTTP/1.1" 200 3174
+[2019-01-14 07:56:02,424] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 5807
+[2019-01-14 07:56:02,431] [INFO] "GET /static/js/install.js?_=1547452562429 HTTP/1.1" 200 1435
+[2019-01-14 07:56:02,440] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:56:02,440] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:56:02,448] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:56:02,448] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:56:03,134] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 07:56:03,138] [INFO] "GET /static/js/product-form.js?_=1547452563137 HTTP/1.1" 200 3174
+[2019-01-14 07:56:03,941] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 5807
+[2019-01-14 07:56:03,947] [INFO] "GET /static/js/install.js?_=1547452563945 HTTP/1.1" 200 1435
+[2019-01-14 07:56:03,956] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:56:03,957] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 07:56:03,966] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:56:03,966] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:59:34,510] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 07:59:36,740] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6488
+[2019-01-14 07:59:36,747] [INFO] "GET /static/js/install.js?_=1547452776744 HTTP/1.1" 200 1435
+[2019-01-14 07:59:36,762] [WARNING] Not Found: /k8s/log
+[2019-01-14 07:59:36,767] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 07:59:36,768] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 07:59:36,768] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 08:00:56,553] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:00:58,386] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6682
+[2019-01-14 08:00:58,393] [INFO] "GET /static/js/install.js?_=1547452858390 HTTP/1.1" 200 1435
+[2019-01-14 08:00:58,411] [WARNING] Not Found: /k8s/log
+[2019-01-14 08:00:58,416] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 08:00:58,417] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 08:00:58,417] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 08:14:44,725] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:14:44,737] [INFO] "GET /static/js/custom.js HTTP/1.1" 304 0
+[2019-01-14 08:14:46,766] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 4320
+[2019-01-14 08:14:46,773] [INFO] "GET /static/js/install.js?_=1547453686771 HTTP/1.1" 200 1435
+[2019-01-14 08:14:46,787] [WARNING] Not Found: /k8s/log
+[2019-01-14 08:14:46,792] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 08:14:46,793] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 08:14:46,794] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 08:23:06,679] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:23:08,559] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 10001
+[2019-01-14 08:23:08,566] [INFO] "GET /static/js/install.js?_=1547454188563 HTTP/1.1" 200 1435
+[2019-01-14 08:23:08,579] [WARNING] Not Found: /k8s/log
+[2019-01-14 08:23:08,580] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 08:23:08,587] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 08:23:08,587] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 08:24:04,172] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:24:04,795] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:24:06,244] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 4847
+[2019-01-14 08:24:06,250] [INFO] "GET /static/js/install.js?_=1547454246248 HTTP/1.1" 200 1435
+[2019-01-14 08:24:06,265] [WARNING] Not Found: /k8s/log
+[2019-01-14 08:24:06,266] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 08:24:45,909] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:24:47,862] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6729
+[2019-01-14 08:24:47,870] [INFO] "GET /static/js/install.js?_=1547454287868 HTTP/1.1" 200 1435
+[2019-01-14 08:24:48,313] [WARNING] Not Found: /k8s/log
+[2019-01-14 08:24:48,313] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 08:24:48,321] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 08:24:48,322] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 08:25:30,942] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:25:36,357] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6806
+[2019-01-14 08:25:36,364] [INFO] "GET /static/js/install.js?_=1547454336362 HTTP/1.1" 200 1435
+[2019-01-14 08:25:36,379] [WARNING] Not Found: /k8s/log
+[2019-01-14 08:25:36,379] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 08:25:36,389] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 08:25:36,390] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 08:26:37,220] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:26:39,504] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-14 08:26:39,514] [INFO] "GET /static/js/product-form.js?_=1547454399508 HTTP/1.1" 200 3174
+[2019-01-14 08:26:40,168] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6825
+[2019-01-14 08:26:40,176] [INFO] "GET /static/js/install.js?_=1547454400174 HTTP/1.1" 200 1435
+[2019-01-14 08:26:40,191] [WARNING] Not Found: /k8s/log
+[2019-01-14 08:26:40,199] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 08:26:40,200] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-14 08:26:40,201] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 08:27:08,399] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-14 08:27:10,287] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6828
+[2019-01-14 08:27:10,293] [INFO] "GET /static/js/install.js?_=1547454430291 HTTP/1.1" 200 1435
+[2019-01-14 08:27:10,316] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-14 08:27:10,317] [WARNING] Not Found: /k8s/log
+[2019-01-14 08:27:10,318] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-14 08:27:10,318] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 04:44:40,720] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-15 04:44:40,746] [INFO] "GET /static/js/custom.js HTTP/1.1" 304 0
+[2019-01-15 04:44:41,180] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-15 04:44:43,677] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6828
+[2019-01-15 04:44:43,690] [INFO] "GET /static/js/install.js?_=1547527483681 HTTP/1.1" 200 1435
+[2019-01-15 04:44:43,697] [WARNING] Not Found: /k8s/log
+[2019-01-15 04:44:43,698] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 04:44:43,709] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-15 04:44:43,710] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-15 04:44:45,558] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-15 04:44:45,564] [INFO] "GET /static/js/product-form.js?_=1547527485561 HTTP/1.1" 200 3174
+[2019-01-15 04:44:47,376] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6828
+[2019-01-15 04:44:47,383] [INFO] "GET /static/js/install.js?_=1547527487381 HTTP/1.1" 200 1435
+[2019-01-15 04:44:47,397] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-15 04:44:47,404] [WARNING] Not Found: /k8s/log
+[2019-01-15 04:44:47,404] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-15 04:44:47,405] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 04:44:51,141] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-15 04:44:51,147] [INFO] "GET /static/js/product-form.js?_=1547527491145 HTTP/1.1" 200 3174
+[2019-01-15 04:44:53,859] [INFO] "GET /k8s HTTP/1.1" 200 7389
+[2019-01-15 04:45:01,994] [INFO] "GET /k8s/cluster/1 HTTP/1.1" 200 7621
+[2019-01-15 04:45:10,785] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 6828
+[2019-01-15 04:45:10,794] [INFO] "GET /static/js/install.js?_=1547527510791 HTTP/1.1" 200 1435
+[2019-01-15 04:45:10,809] [WARNING] Not Found: /k8s/log
+[2019-01-15 04:45:10,816] [WARNING] Not Found: /images/thumbs/avatar5.png
+[2019-01-15 04:45:10,817] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 04:45:10,817] [WARNING] "GET /images/thumbs/avatar5.png HTTP/1.1" 404 3733
+[2019-01-15 04:46:32,589] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 04:46:34,268] [INFO] "GET /k8s/cluster/1 HTTP/1.1" 200 7621
+[2019-01-15 04:46:42,700] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 04:46:45,314] [INFO] "GET /k8s/cluster/1 HTTP/1.1" 200 7621
+[2019-01-15 04:52:11,222] [INFO] "GET /k8s/cluster/1 HTTP/1.1" 200 7621
+[2019-01-15 04:52:12,335] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 04:52:16,379] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 81, in install
+    return render(request, 'install/index.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 68, in render
+    reraise(exc, self.backend)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 89, in reraise
+    six.reraise(exc.__class__, new, sys.exc_info()[2])
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 66, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 207, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 957, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 204, in render
+    template = context.template.engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 148, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+TemplateDoesNotExist: kube/install.html
+[2019-01-15 04:52:16,525] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 146901
+[2019-01-15 04:52:27,363] [INFO] "GET /k8s/cluster/1 HTTP/1.1" 200 7621
+[2019-01-15 13:31:15,006] [INFO] "GET /static/images/default/icons_sprite2.png HTTP/1.1" 304 0
+[2019-01-15 13:31:15,384] [INFO] "GET /static/images/line.dashed.png HTTP/1.1" 304 0
+[2019-01-15 13:31:18,466] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 81, in install
+    return render(request, 'install/index.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 68, in render
+    reraise(exc, self.backend)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 89, in reraise
+    six.reraise(exc.__class__, new, sys.exc_info()[2])
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 66, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 207, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 957, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 204, in render
+    template = context.template.engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 148, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+TemplateDoesNotExist: kube/install.html
+[2019-01-15 13:31:18,614] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 146901
+[2019-01-15 13:31:28,901] [INFO] "GET /static/images/default/bghover.png HTTP/1.1" 304 0
+[2019-01-15 13:32:30,717] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 81, in install
+    return render(request, 'install/index.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 68, in render
+    reraise(exc, self.backend)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 89, in reraise
+    six.reraise(exc.__class__, new, sys.exc_info()[2])
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 66, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 207, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 957, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 204, in render
+    template = context.template.engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 148, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+TemplateDoesNotExist: kube/install.html
+[2019-01-15 13:32:30,874] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 146901
+[2019-01-15 13:33:16,358] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 13:33:16,382] [INFO] "GET /static/js/plugins/jquery-ui-1.8.16.custom.min.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,382] [INFO] "GET /static/js/plugins/jquery.cookie.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,382] [INFO] "GET /static/css/style.default.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,383] [INFO] "GET /static/js/plugins/jquery.dataTables.min.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,383] [INFO] "GET /static/js/plugins/jquery-1.7.min.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,383] [INFO] "GET /static/js/plugins/jquery.uniform.min.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,386] [INFO] "GET /static/js/plugins/jquery.validate.min.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,394] [INFO] "GET /static/js/plugins/chosen.jquery.min.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,394] [INFO] "GET /static/js/plugins/jquery.tagsinput.min.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,394] [INFO] "GET /static/js/custom/tables.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,395] [INFO] "GET /static/js/plugins/ui.spinner.min.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,395] [INFO] "GET /static/js/plugins/charCount.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,396] [INFO] "GET /static/js/custom/general.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,406] [INFO] "GET /static/css/plugins/jquery.ui.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,407] [INFO] "GET /static/fonts/roboto.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,407] [INFO] "GET /static/css/plugins/uniform.tp.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,408] [INFO] "GET /static/js/custom.js HTTP/1.1" 304 0
+[2019-01-15 13:33:16,408] [INFO] "GET /static/css/plugins/jquery.alerts.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,408] [INFO] "GET /static/css/plugins/jquery.ui.autocomplete.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,410] [INFO] "GET /static/css/plugins/fullcalendar.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,415] [INFO] "GET /static/css/plugins/jquery.jgrowl.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,415] [INFO] "GET /static/css/plugins/jquery.tagsinput.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,415] [INFO] "GET /static/css/plugins/colorpicker.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,415] [INFO] "GET /static/css/plugins/ui.spinner.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,415] [INFO] "GET /static/css/plugins/colorbox.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,415] [INFO] "GET /static/css/plugins/jquery.chosen.css HTTP/1.1" 304 0
+[2019-01-15 13:33:16,420] [INFO] "GET /static/images/thumbs/avatar.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,420] [INFO] "GET /static/images/thumbs/avatarbig.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,438] [INFO] "GET /static/images/default/topheaderbg.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,438] [INFO] "GET /static/images/line.ccc.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,439] [INFO] "GET /static/images/default/userinfoarrow.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,440] [INFO] "GET /static/images/default/searchbutton.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,442] [INFO] "GET /static/images/default/headerbg.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,443] [INFO] "GET /static/images/default/arrow-active.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,443] [INFO] "GET /static/fonts/Roboto-Condensed-webfont.woff HTTP/1.1" 304 0
+[2019-01-15 13:33:16,446] [INFO] "GET /static/fonts/Roboto-BoldCondensed-webfont.woff HTTP/1.1" 304 0
+[2019-01-15 13:33:16,449] [INFO] "GET /static/images/icons/flatscreen.white.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,454] [INFO] "GET /static/images/icons/message.white.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,458] [INFO] "GET /static/images/default/noise.white.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,461] [INFO] "GET /static/images/default/icons_sprite.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,461] [INFO] "GET /static/images/menucollapsed.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,463] [INFO] "GET /static/images/icons/pencil.white.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,462] [INFO] "GET /static/images/icons/chart.white.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,465] [INFO] "GET /static/images/default/menuarrow.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,466] [INFO] "GET /static/images/sort_both.png HTTP/1.1" 304 0
+[2019-01-15 13:33:16,466] [INFO] "GET /static/images/uniform/sprite.png HTTP/1.1" 304 0
+[2019-01-15 13:33:18,401] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 81, in install
+    return render(request, 'install/index.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 68, in render
+    reraise(exc, self.backend)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 89, in reraise
+    six.reraise(exc.__class__, new, sys.exc_info()[2])
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 66, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 207, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 957, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 204, in render
+    template = context.template.engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 148, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+TemplateDoesNotExist: kube/install.html
+[2019-01-15 13:33:18,540] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 146901
+[2019-01-15 13:33:58,385] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 13:33:59,828] [ERROR] Internal Server Error: /k8s/install/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 81, in install
+    return render(request, 'install/index.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 68, in render
+    reraise(exc, self.backend)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 89, in reraise
+    six.reraise(exc.__class__, new, sys.exc_info()[2])
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 66, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 207, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 957, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 204, in render
+    template = context.template.engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 148, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+TemplateDoesNotExist: kube/install.html
+[2019-01-15 13:33:59,966] [ERROR] "GET /k8s/install/1 HTTP/1.1" 500 146905
+[2019-01-15 13:34:36,050] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 13:34:36,466] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 13:34:39,910] [ERROR] Internal Server Error: /k8s/install/2
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 81, in install
+    return render(request, 'install/index.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 68, in render
+    reraise(exc, self.backend)
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 89, in reraise
+    six.reraise(exc.__class__, new, sys.exc_info()[2])
+  File "/usr/local/lib/python2.7/site-packages/django/template/backends/django.py", line 66, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 207, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/base.py", line 957, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 204, in render
+    template = context.template.engine.get_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python2.7/site-packages/django/template/engine.py", line 148, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+TemplateDoesNotExist: kube/install.html
+[2019-01-15 13:34:40,048] [ERROR] "GET /k8s/install/2 HTTP/1.1" 500 146905
+[2019-01-15 13:35:24,760] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 13:35:25,996] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 11469
+[2019-01-15 13:35:26,017] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-15 13:35:26,018] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3769
+[2019-01-15 13:35:26,030] [INFO] "GET /static/js/install.js HTTP/1.1" 200 1435
+[2019-01-15 13:35:26,041] [INFO] "GET /static/images/chat.png HTTP/1.1" 304 0
+[2019-01-15 13:35:26,041] [INFO] "GET /static/images/online.png HTTP/1.1" 304 0
+[2019-01-15 13:35:26,062] [WARNING] Not Found: /k8s/log
+[2019-01-15 13:35:26,063] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 13:35:31,736] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 13:35:34,901] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 11469
+[2019-01-15 13:35:34,916] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-15 13:35:34,917] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3769
+[2019-01-15 13:35:34,959] [WARNING] Not Found: /k8s/log
+[2019-01-15 13:35:34,959] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 13:40:56,358] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13106
+[2019-01-15 13:40:56,373] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-15 13:40:56,374] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3769
+[2019-01-15 13:40:56,420] [WARNING] Not Found: /k8s/log
+[2019-01-15 13:40:56,420] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 13:43:42,830] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13136
+[2019-01-15 13:43:42,845] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-15 13:43:42,845] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3769
+[2019-01-15 13:43:42,889] [WARNING] Not Found: /k8s/log
+[2019-01-15 13:43:42,890] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 13:44:37,825] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13144
+[2019-01-15 13:44:37,841] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-15 13:44:37,841] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3769
+[2019-01-15 13:44:37,889] [WARNING] Not Found: /k8s/log
+[2019-01-15 13:44:37,889] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 13:46:17,103] [INFO] "GET /product HTTP/1.1" 200 6867
+[2019-01-15 13:46:18,698] [INFO] "GET /k8s HTTP/1.1" 200 7513
+[2019-01-15 13:46:27,879] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13144
+[2019-01-15 13:46:27,898] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-15 13:46:27,899] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3769
+[2019-01-15 13:46:27,948] [WARNING] Not Found: /k8s/log
+[2019-01-15 13:46:27,949] [WARNING] "GET /k8s/log HTTP/1.1" 404 3679
+[2019-01-15 13:50:17,377] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-15 13:50:17,384] [INFO] "GET /static/js/product-form.js?_=1547560217382 HTTP/1.1" 200 3174
+[2019-01-15 13:50:19,201] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-15 13:50:19,206] [INFO] "GET /static/js/product-form.js?_=1547560219204 HTTP/1.1" 200 3174
+[2019-01-15 13:50:19,991] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-15 13:50:19,996] [INFO] "GET /static/js/product-form.js?_=1547560219995 HTTP/1.1" 200 3174
+[2019-01-15 13:50:20,772] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
+[2019-01-15 13:50:20,778] [INFO] "GET /static/js/product-form.js?_=1547560220776 HTTP/1.1" 200 3174

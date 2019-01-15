@@ -27,6 +27,7 @@ def index(request):
 
     return render(request, 'kube/index.html', context)
 
+# 新增k8s集群配置
 def add(request):
     request.encoding = 'utf-8'
     context = build_context()
@@ -47,7 +48,6 @@ def add(request):
     context['form'] = form
     return render(request, 'kube/form.html', context)
 
-
 def edit(request, pk):
     context = build_context()
     obj = KubeConfig.objects.filter(pk=pk).first()
@@ -67,9 +67,35 @@ def edit(request, pk):
             kube.save()
         return redirect('/k8s')
 
+
+# 安装集群页面
 def install(request,pk):
 
-    return redirect("/k8s")
+    context = build_context()
+
+    context['k8s_prepare'] = common.K8S_INSTALL_PRE
+    context['k8s_install'] = common.K8S_INSTALL
+    context['k8s_step'] = common.K8S_INSTALL_STEP
+    context['k8s_clean'] = common.K8S_INSTALL_CLEAN
+    context['kube_id'] = pk
+    return render(request, 'install/index.html', context)
+
+
+# 安装命令
+def install_command(request,pk,step_id):
+
+    context = build_context()
+
+    return render(request, 'kube/install.html', context)
+
+
+
+
+
+
+
+
+
 
 
 

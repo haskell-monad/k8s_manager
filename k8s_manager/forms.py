@@ -91,9 +91,6 @@ class KubeConfigForm(ModelForm):
     class Meta:
         model = KubeConfig
         fields = ('kube_name','kube_version','deploy_mode','ntp_enabled','etcd_node_name_prefix',
-                    # 'lb_node','etcd_node','kube_master','kube_node','harbor_node',
-                    # 'harbor_domain','harbor_install',
-                    #'kube_new_master','kube_new_node',
                     'ssh_addkey','node_port_range','master_ip','kube_api_server','cluster_network',
                     'service_cidr',
                     'cluster_cidr','cluster_k8s_svc_ip','cluster_dns_svc_ip','cluster_dns_domain',
@@ -111,18 +108,7 @@ class KubeConfigForm(ModelForm):
             "deploy_mode": wid.Select(choices=common.K8S_DEPLOY_MODE,attrs={'style':'margin: 0px;height:30px'}),
             "ntp_enabled": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
 
-            # "lb_node": wid.Textarea(attrs={'class':'smallinput','style':'margin: 0px; width: 174px; height: 91px;'}),
-            # "etcd_node": wid.Textarea(attrs={'class':'smallinput', 'style':'margin: 0px; width: 174px; height: 91px;'}),
             "etcd_node_name_prefix": wid.TextInput(attrs={'class':'smallinput', 'value': 'etcd','style':'margin: 0px; width: 100px'}),
-            # "kube_master": wid.Textarea(attrs={'class':'smallinput','style':'margin: 0px; width: 174px; height: 91px;'}),
-            # "kube_node": wid.Textarea(attrs={'class':'smallinput','style':'margin: 0px; width: 174px; height: 91px;'}),
-
-            # "harbor_node": wid.TextInput(attrs={'class':'smallinput'}),
-            # "harbor_domain": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：harbor.ikang.com"}),
-            # "harbor_install": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
-
-            #"kube_new_master": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.181;192.168.150.182"}),
-            #"kube_new_node": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：192.168.150.184"}),
             "ssh_addkey": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
             "node_port_range": wid.TextInput(attrs={'class':'smallinput', 'value':'20000-40000','readonly':'readonly'}),
 

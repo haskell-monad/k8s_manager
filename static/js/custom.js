@@ -69,6 +69,12 @@ function k8sClusterAdd(kube_id){
 }
 
 
+// 安装命令
+function k8s_install_command(kube_id,step_id){
+	
+
+}
+
 
 
 

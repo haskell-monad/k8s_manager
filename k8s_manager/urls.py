@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^k8s/edit/(\d+)$', kube.edit),
     url(r'^k8s/install/(\d+)$', kube.install),
 
+    url(r'^k8s/install/command/(\d+)/(-?\d+)$', kube.install_command),
+
     url(r'^k8s/cluster/(\d+)$', kube_cluster.index),
     url(r'^k8s/cluster/add/(\d+)$', kube_cluster.add),
     # url(r'^k8s/cluster/edit/(\d+)$', kube_cluster.edit),
