@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from celery import shared_task, task
 import time
 import os
- 
+
 
 # 准备安装环境
 @task
