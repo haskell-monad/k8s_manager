@@ -134,21 +134,27 @@ LOGGING = {
     },
     'handlers': {
         'console':{
-            'level':'INFO',
+            'level':'DEBUG',
             'class':'logging.StreamHandler',
             'formatter': 'verbose'
         },
         'file': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/Users/limengyu/open/k8s_manager/django.log',
+            'filename': '/tmp/django.log',
             'formatter': 'verbose'
         },
         'email': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
             'include_html' : True,
-        }
+        },
+        'celery': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/tmp/install_k8s.log',
+            'formatter': 'verbose'
+        },
     },
     'loggers': {
         'django': {
@@ -156,6 +162,12 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
+        'install': {
+            'handlers': ['celery'],
+            'level': 'INFO',
+            'propagate': True,
+         }
+
     },
 }
 

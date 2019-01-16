@@ -4,6 +4,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.views.decorators import csrf
 from django.http import HttpResponseRedirect
 import logging
+import json
 
 from .models import KubeConfig, KubeCluster
 from .forms import KubeConfigForm
@@ -85,8 +86,10 @@ def install(request,pk):
 def install_command(request,pk,step_id):
 
     context = build_context()
+    # result = {"status":"ok","data":"","city":"北京"}
+    # return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
 
-    return render(request, 'kube/install.html', context)
+    return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
 
 
 

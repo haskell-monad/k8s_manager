@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 from celery import shared_task, task
+from celery.utils.log import get_task_logger
 import time
 import os
+
+log = get_task_logger("install")
 
 
 # 准备安装环境
 @task
 def k8s_prepare_install_env():
+    print("------------k8s_prepare_install_env------------------");
     c1 = os.system("yum install epel-release git ansible -y")
     c2 = os.system("which git && which ansible")
     if c2 == 0:
@@ -16,12 +20,13 @@ def k8s_prepare_install_env():
         if(c4 == 0):
             os.system("rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /tmp/k8s-cluster")
             result = os.popen("ansible all -m ping")
+            log.info(result)
         else:
-            result = "git clone 失败"
+            log.error("git clone 失败")
     else:
-        result = "安装 git/ansible 异常"
+        log.error("安装 git/ansible 异常")
 
-    return result
+    print("------------k8s_prepare_install_env--end----------------");
 
 
 # 生成host配置文件

@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 """k8s_manager URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,7 +18,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from . import home, assets, product, product_version, kube, kube_cluster
+from . import home, assets, product, product_version, kube, kube_cluster, kube_install
 
 
 urlpatterns = [
@@ -40,9 +43,11 @@ urlpatterns = [
     url(r'^k8s$', kube.index),
     url(r'^k8s/add$', kube.add),
     url(r'^k8s/edit/(\d+)$', kube.edit),
+    # 安装页面
     url(r'^k8s/install/(\d+)$', kube.install),
 
-    url(r'^k8s/install/command/(\d+)/(-?\d+)$', kube.install_command),
+    # 安装命令
+    url(r'^k8s/install/command/(\d+)/(-?\d+)$', kube_install.install_command),
 
     url(r'^k8s/cluster/(\d+)$', kube_cluster.index),
     url(r'^k8s/cluster/add/(\d+)$', kube_cluster.add),

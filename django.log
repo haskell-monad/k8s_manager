@@ -19985,3 +19985,281 @@ TemplateDoesNotExist: kube/install.html
 [2019-01-15 13:50:19,996] [INFO] "GET /static/js/product-form.js?_=1547560219995 HTTP/1.1" 200 3174
 [2019-01-15 13:50:20,772] [INFO] "GET /k8s/add HTTP/1.1" 200 9864
 [2019-01-15 13:50:20,778] [INFO] "GET /static/js/product-form.js?_=1547560220776 HTTP/1.1" 200 3174
+[2019-01-16 09:21:30,134] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13343
+[2019-01-16 09:21:30,194] [INFO] "GET /static/js/websocket-install.js HTTP/1.1" 200 1435
+[2019-01-16 09:21:30,196] [INFO] "GET /static/js/custom.js HTTP/1.1" 200 2036
+[2019-01-16 09:21:30,207] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:21:30,207] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:21:30,271] [WARNING] Not Found: /k8s/log
+[2019-01-16 09:21:30,272] [WARNING] "GET /k8s/log HTTP/1.1" 404 3814
+[2019-01-16 09:21:31,316] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13343
+[2019-01-16 09:21:31,332] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:21:31,332] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:21:31,391] [WARNING] Not Found: /k8s/log
+[2019-01-16 09:21:31,391] [WARNING] "GET /k8s/log HTTP/1.1" 404 3814
+[2019-01-16 09:21:33,647] [ERROR] Internal Server Error: /k8s/install/command/1/-4
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 89, in install_command
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: kube/install.html
+[2019-01-16 09:21:33,730] [ERROR] "GET /k8s/install/command/1/-4 HTTP/1.1" 500 16755
+[2019-01-16 09:21:40,830] [ERROR] Internal Server Error: /k8s/install/command/1/-4
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 89, in install_command
+    return render(request, 'kube/install.html', context)
+  File "/usr/local/lib/python2.7/site-packages/django/shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/django/template/loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: kube/install.html
+[2019-01-16 09:21:40,917] [ERROR] "GET /k8s/install/command/1/-4 HTTP/1.1" 500 16812
+[2019-01-16 09:24:27,847] [INFO] "GET /static/images/default/bghover.png HTTP/1.1" 200 17273
+[2019-01-16 09:24:30,283] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13343
+[2019-01-16 09:24:30,316] [INFO] "GET /static/js/plugins/jquery.cookie.js HTTP/1.1" 200 1782
+[2019-01-16 09:24:30,323] [INFO] "GET /static/js/plugins/jquery.uniform.min.js HTTP/1.1" 200 9323
+[2019-01-16 09:24:30,325] [INFO] "GET /static/js/plugins/jquery-1.7.min.js HTTP/1.1" 200 94020
+[2019-01-16 09:24:30,325] [INFO] "GET /static/css/style.default.css HTTP/1.1" 200 121140
+[2019-01-16 09:24:30,327] [INFO] "GET /static/js/plugins/jquery.validate.min.js HTTP/1.1" 200 21601
+[2019-01-16 09:24:30,328] [INFO] "GET /static/js/plugins/jquery.dataTables.min.js HTTP/1.1" 200 70883
+[2019-01-16 09:24:30,330] [INFO] "GET /static/js/plugins/jquery-ui-1.8.16.custom.min.js HTTP/1.1" 200 210463
+[2019-01-16 09:24:30,337] [INFO] "GET /static/js/plugins/jquery.tagsinput.min.js HTTP/1.1" 200 6400
+[2019-01-16 09:24:30,343] [INFO] "GET /static/js/plugins/ui.spinner.min.js HTTP/1.1" 200 8253
+[2019-01-16 09:24:30,345] [INFO] "GET /static/js/plugins/charCount.js HTTP/1.1" 200 1571
+[2019-01-16 09:24:30,345] [INFO] "GET /static/js/plugins/chosen.jquery.min.js HTTP/1.1" 200 22939
+[2019-01-16 09:24:30,350] [INFO] "GET /static/fonts/roboto.css HTTP/1.1" 200 6933
+[2019-01-16 09:24:30,351] [INFO] "GET /static/css/plugins/jquery.alerts.css HTTP/1.1" 200 2503
+[2019-01-16 09:24:30,358] [INFO] "GET /static/css/plugins/uniform.tp.css HTTP/1.1" 200 10550
+[2019-01-16 09:24:30,361] [INFO] "GET /static/css/plugins/fullcalendar.css HTTP/1.1" 200 11810
+[2019-01-16 09:24:30,361] [INFO] "GET /static/css/plugins/jquery.ui.autocomplete.css HTTP/1.1" 200 901
+[2019-01-16 09:24:30,366] [INFO] "GET /static/css/plugins/jquery.ui.css HTTP/1.1" 200 9186
+[2019-01-16 09:24:30,368] [INFO] "GET /static/css/plugins/colorpicker.css HTTP/1.1" 200 3435
+[2019-01-16 09:24:30,372] [INFO] "GET /static/css/plugins/colorbox.css HTTP/1.1" 200 2259
+[2019-01-16 09:24:30,373] [INFO] "GET /static/css/plugins/ui.spinner.css HTTP/1.1" 200 506
+[2019-01-16 09:24:30,374] [INFO] "GET /static/css/plugins/jquery.jgrowl.css HTTP/1.1" 200 1943
+[2019-01-16 09:24:30,378] [INFO] "GET /static/css/plugins/jquery.chosen.css HTTP/1.1" 200 11789
+[2019-01-16 09:24:30,379] [INFO] "GET /static/css/plugins/jquery.tagsinput.css HTTP/1.1" 200 918
+[2019-01-16 09:24:30,381] [INFO] "GET /static/js/custom/general.js HTTP/1.1" 200 9570
+[2019-01-16 09:24:30,385] [INFO] "GET /static/js/custom.js HTTP/1.1" 200 2036
+[2019-01-16 09:24:30,385] [INFO] "GET /static/js/custom/tables.js HTTP/1.1" 200 4662
+[2019-01-16 09:24:30,388] [INFO] "GET /static/js/websocket-install.js HTTP/1.1" 200 1435
+[2019-01-16 09:24:30,389] [INFO] "GET /static/images/thumbs/avatar.png HTTP/1.1" 200 1473
+[2019-01-16 09:24:30,389] [INFO] "GET /static/images/thumbs/avatarbig.png HTTP/1.1" 200 16493
+[2019-01-16 09:24:30,456] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:24:30,457] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:24:30,462] [INFO] "GET /static/images/line.ccc.png HTTP/1.1" 200 109
+[2019-01-16 09:24:30,463] [INFO] "GET /static/images/default/topheaderbg.png HTTP/1.1" 200 4093
+[2019-01-16 09:24:30,463] [INFO] "GET /static/images/default/userinfoarrow.png HTTP/1.1" 200 207
+[2019-01-16 09:24:30,463] [INFO] "GET /static/images/default/searchbutton.png HTTP/1.1" 200 3462
+[2019-01-16 09:24:30,464] [INFO] "GET /static/images/default/headerbg.png HTTP/1.1" 200 1144
+[2019-01-16 09:24:30,468] [INFO] "GET /static/fonts/Roboto-Condensed-webfont.woff HTTP/1.1" 200 21836
+[2019-01-16 09:24:30,470] [INFO] "GET /static/fonts/Roboto-BoldCondensed-webfont.woff HTTP/1.1" 200 21440
+[2019-01-16 09:24:30,472] [INFO] "GET /static/images/default/arrow-active.png HTTP/1.1" 200 21122
+[2019-01-16 09:24:30,474] [INFO] "GET /static/images/icons/message.white.png HTTP/1.1" 200 556
+[2019-01-16 09:24:30,474] [INFO] "GET /static/images/icons/flatscreen.white.png HTTP/1.1" 200 337
+[2019-01-16 09:24:30,476] [INFO] "GET /static/images/icons/pencil.white.png HTTP/1.1" 200 464
+[2019-01-16 09:24:30,478] [INFO] "GET /static/images/icons/chart.white.png HTTP/1.1" 200 231
+[2019-01-16 09:24:30,479] [INFO] "GET /static/images/default/icons_sprite.png HTTP/1.1" 200 3631
+[2019-01-16 09:24:30,485] [INFO] "GET /static/images/default/noise.white.png HTTP/1.1" 200 7924
+[2019-01-16 09:24:30,485] [INFO] "GET /static/images/online.png HTTP/1.1" 200 751
+[2019-01-16 09:24:30,488] [INFO] "GET /static/images/menucollapsed.png HTTP/1.1" 200 875
+[2019-01-16 09:24:30,489] [INFO] "GET /static/images/default/menuarrow.png HTTP/1.1" 200 2884
+[2019-01-16 09:24:30,490] [INFO] "GET /static/images/chat.png HTTP/1.1" 200 280
+[2019-01-16 09:24:30,503] [WARNING] Not Found: /k8s/log
+[2019-01-16 09:24:30,503] [WARNING] "GET /k8s/log HTTP/1.1" 404 3814
+[2019-01-16 09:24:33,254] [INFO] "GET /static/images/default/icons_sprite2.png HTTP/1.1" 200 2934
+[2019-01-16 09:24:34,054] [INFO] "GET /static/images/line.dashed.png HTTP/1.1" 200 128
+[2019-01-16 09:24:35,903] [ERROR] Internal Server Error: /k8s/install/command/1/-4
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/limengyu/open/k8s_manager/k8s_manager/kube.py", line 90, in install_command
+    return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
+NameError: global name 'json' is not defined
+[2019-01-16 09:24:35,987] [ERROR] "GET /k8s/install/command/1/-4 HTTP/1.1" 500 15825
+[2019-01-16 09:24:36,454] [INFO] "GET /static/images/default/bghover.png HTTP/1.1" 200 17273
+[2019-01-16 09:25:55,745] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13343
+[2019-01-16 09:25:55,847] [INFO] "GET /static/js/plugins/jquery.cookie.js HTTP/1.1" 200 1782
+[2019-01-16 09:25:55,851] [INFO] "GET /static/js/plugins/jquery.validate.min.js HTTP/1.1" 200 21601
+[2019-01-16 09:25:55,851] [INFO] "GET /static/js/plugins/jquery.uniform.min.js HTTP/1.1" 200 9323
+[2019-01-16 09:25:55,852] [INFO] "GET /static/js/plugins/jquery.dataTables.min.js HTTP/1.1" 200 70883
+[2019-01-16 09:25:55,857] [INFO] "GET /static/css/style.default.css HTTP/1.1" 200 121140
+[2019-01-16 09:25:55,858] [INFO] "GET /static/js/plugins/jquery-ui-1.8.16.custom.min.js HTTP/1.1" 200 210463
+[2019-01-16 09:25:55,858] [INFO] "GET /static/js/plugins/jquery.tagsinput.min.js HTTP/1.1" 200 6400
+[2019-01-16 09:25:55,858] [INFO] "GET /static/js/plugins/charCount.js HTTP/1.1" 200 1571
+[2019-01-16 09:25:55,859] [INFO] "GET /static/js/plugins/ui.spinner.min.js HTTP/1.1" 200 8253
+[2019-01-16 09:25:55,863] [INFO] "GET /static/js/plugins/chosen.jquery.min.js HTTP/1.1" 200 22939
+[2019-01-16 09:25:55,865] [INFO] "GET /static/js/custom/general.js HTTP/1.1" 200 9570
+[2019-01-16 09:25:55,866] [INFO] "GET /static/js/plugins/jquery-1.7.min.js HTTP/1.1" 200 94020
+[2019-01-16 09:25:55,870] [INFO] "GET /static/js/custom/tables.js HTTP/1.1" 200 4662
+[2019-01-16 09:25:55,870] [INFO] "GET /static/js/custom.js HTTP/1.1" 200 2036
+[2019-01-16 09:25:55,871] [INFO] "GET /static/js/websocket-install.js HTTP/1.1" 200 1435
+[2019-01-16 09:25:55,875] [INFO] "GET /static/fonts/roboto.css HTTP/1.1" 200 6933
+[2019-01-16 09:25:55,876] [INFO] "GET /static/css/plugins/jquery.alerts.css HTTP/1.1" 200 2503
+[2019-01-16 09:25:55,884] [INFO] "GET /static/css/plugins/fullcalendar.css HTTP/1.1" 200 11810
+[2019-01-16 09:25:55,885] [INFO] "GET /static/css/plugins/jquery.ui.css HTTP/1.1" 200 9186
+[2019-01-16 09:25:55,885] [INFO] "GET /static/css/plugins/uniform.tp.css HTTP/1.1" 200 10550
+[2019-01-16 09:25:55,886] [INFO] "GET /static/css/plugins/jquery.ui.autocomplete.css HTTP/1.1" 200 901
+[2019-01-16 09:25:55,887] [INFO] "GET /static/css/plugins/colorbox.css HTTP/1.1" 200 2259
+[2019-01-16 09:25:55,888] [INFO] "GET /static/css/plugins/colorpicker.css HTTP/1.1" 200 3435
+[2019-01-16 09:25:55,889] [INFO] "GET /static/css/plugins/jquery.jgrowl.css HTTP/1.1" 200 1943
+[2019-01-16 09:25:55,890] [INFO] "GET /static/css/plugins/jquery.tagsinput.css HTTP/1.1" 200 918
+[2019-01-16 09:25:55,893] [INFO] "GET /static/css/plugins/ui.spinner.css HTTP/1.1" 200 506
+[2019-01-16 09:25:55,894] [INFO] "GET /static/css/plugins/jquery.chosen.css HTTP/1.1" 200 11789
+[2019-01-16 09:25:55,895] [INFO] "GET /static/images/thumbs/avatar.png HTTP/1.1" 200 1473
+[2019-01-16 09:25:55,896] [INFO] "GET /static/images/thumbs/avatarbig.png HTTP/1.1" 200 16493
+[2019-01-16 09:25:55,947] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:25:55,948] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:25:55,952] [INFO] "GET /static/images/line.ccc.png HTTP/1.1" 200 109
+[2019-01-16 09:25:55,954] [INFO] "GET /static/images/default/searchbutton.png HTTP/1.1" 200 3462
+[2019-01-16 09:25:55,954] [INFO] "GET /static/images/default/topheaderbg.png HTTP/1.1" 200 4093
+[2019-01-16 09:25:55,956] [INFO] "GET /static/images/default/userinfoarrow.png HTTP/1.1" 200 207
+[2019-01-16 09:25:55,957] [INFO] "GET /static/images/default/headerbg.png HTTP/1.1" 200 1144
+[2019-01-16 09:25:55,960] [INFO] "GET /static/fonts/Roboto-Condensed-webfont.woff HTTP/1.1" 200 21836
+[2019-01-16 09:25:55,961] [INFO] "GET /static/images/default/arrow-active.png HTTP/1.1" 200 21122
+[2019-01-16 09:25:55,961] [INFO] "GET /static/fonts/Roboto-BoldCondensed-webfont.woff HTTP/1.1" 200 21440
+[2019-01-16 09:25:55,962] [INFO] "GET /static/images/icons/flatscreen.white.png HTTP/1.1" 200 337
+[2019-01-16 09:25:55,963] [INFO] "GET /static/images/icons/message.white.png HTTP/1.1" 200 556
+[2019-01-16 09:25:55,965] [INFO] "GET /static/images/icons/pencil.white.png HTTP/1.1" 200 464
+[2019-01-16 09:25:55,969] [INFO] "GET /static/images/online.png HTTP/1.1" 200 751
+[2019-01-16 09:25:55,971] [INFO] "GET /static/images/default/noise.white.png HTTP/1.1" 200 7924
+[2019-01-16 09:25:55,974] [INFO] "GET /static/images/default/icons_sprite.png HTTP/1.1" 200 3631
+[2019-01-16 09:25:55,976] [INFO] "GET /static/images/menucollapsed.png HTTP/1.1" 200 875
+[2019-01-16 09:25:55,978] [INFO] "GET /static/images/default/menuarrow.png HTTP/1.1" 200 2884
+[2019-01-16 09:25:55,978] [INFO] "GET /static/images/icons/chart.white.png HTTP/1.1" 200 231
+[2019-01-16 09:25:55,979] [INFO] "GET /static/images/chat.png HTTP/1.1" 200 280
+[2019-01-16 09:25:56,000] [WARNING] Not Found: /k8s/log
+[2019-01-16 09:25:56,000] [WARNING] "GET /k8s/log HTTP/1.1" 404 3814
+[2019-01-16 09:25:58,266] [INFO] "GET /static/images/default/icons_sprite2.png HTTP/1.1" 200 2934
+[2019-01-16 09:25:59,483] [INFO] "GET /static/images/line.dashed.png HTTP/1.1" 200 128
+[2019-01-16 09:26:00,251] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:01,005] [INFO] "GET /static/images/default/bghover.png HTTP/1.1" 200 17273
+[2019-01-16 09:26:30,346] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:31,107] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:32,218] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13343
+[2019-01-16 09:26:32,241] [INFO] "GET /static/js/plugins/jquery.uniform.min.js HTTP/1.1" 200 9323
+[2019-01-16 09:26:32,242] [INFO] "GET /static/js/plugins/jquery.cookie.js HTTP/1.1" 200 1782
+[2019-01-16 09:26:32,243] [INFO] "GET /static/js/plugins/jquery-1.7.min.js HTTP/1.1" 200 94020
+[2019-01-16 09:26:32,244] [INFO] "GET /static/js/plugins/jquery.dataTables.min.js HTTP/1.1" 200 70883
+[2019-01-16 09:26:32,247] [INFO] "GET /static/css/style.default.css HTTP/1.1" 200 121140
+[2019-01-16 09:26:32,247] [INFO] "GET /static/js/plugins/jquery-ui-1.8.16.custom.min.js HTTP/1.1" 200 210463
+[2019-01-16 09:26:32,254] [INFO] "GET /static/js/plugins/jquery.validate.min.js HTTP/1.1" 200 21601
+[2019-01-16 09:26:32,257] [INFO] "GET /static/js/plugins/jquery.tagsinput.min.js HTTP/1.1" 200 6400
+[2019-01-16 09:26:32,259] [INFO] "GET /static/js/plugins/charCount.js HTTP/1.1" 200 1571
+[2019-01-16 09:26:32,259] [INFO] "GET /static/js/plugins/ui.spinner.min.js HTTP/1.1" 200 8253
+[2019-01-16 09:26:32,270] [INFO] "GET /static/js/plugins/chosen.jquery.min.js HTTP/1.1" 200 22939
+[2019-01-16 09:26:32,271] [INFO] "GET /static/js/custom/general.js HTTP/1.1" 200 9570
+[2019-01-16 09:26:32,272] [INFO] "GET /static/js/custom/tables.js HTTP/1.1" 200 4662
+[2019-01-16 09:26:32,279] [INFO] "GET /static/fonts/roboto.css HTTP/1.1" 200 6933
+[2019-01-16 09:26:32,281] [INFO] "GET /static/css/plugins/jquery.alerts.css HTTP/1.1" 200 2503
+[2019-01-16 09:26:32,281] [INFO] "GET /static/css/plugins/uniform.tp.css HTTP/1.1" 200 10550
+[2019-01-16 09:26:32,289] [INFO] "GET /static/css/plugins/jquery.ui.css HTTP/1.1" 200 9186
+[2019-01-16 09:26:32,289] [INFO] "GET /static/css/plugins/jquery.ui.autocomplete.css HTTP/1.1" 200 901
+[2019-01-16 09:26:32,294] [INFO] "GET /static/css/plugins/colorbox.css HTTP/1.1" 200 2259
+[2019-01-16 09:26:32,296] [INFO] "GET /static/css/plugins/colorpicker.css HTTP/1.1" 200 3435
+[2019-01-16 09:26:32,297] [INFO] "GET /static/css/plugins/jquery.jgrowl.css HTTP/1.1" 200 1943
+[2019-01-16 09:26:32,297] [INFO] "GET /static/css/plugins/fullcalendar.css HTTP/1.1" 200 11810
+[2019-01-16 09:26:32,301] [INFO] "GET /static/css/plugins/jquery.tagsinput.css HTTP/1.1" 200 918
+[2019-01-16 09:26:32,305] [INFO] "GET /static/css/plugins/ui.spinner.css HTTP/1.1" 200 506
+[2019-01-16 09:26:32,308] [INFO] "GET /static/css/plugins/jquery.chosen.css HTTP/1.1" 200 11789
+[2019-01-16 09:26:32,311] [INFO] "GET /static/js/custom.js HTTP/1.1" 200 2036
+[2019-01-16 09:26:32,311] [INFO] "GET /static/js/websocket-install.js HTTP/1.1" 200 1435
+[2019-01-16 09:26:32,313] [INFO] "GET /static/images/thumbs/avatarbig.png HTTP/1.1" 200 16493
+[2019-01-16 09:26:32,313] [INFO] "GET /static/images/thumbs/avatar.png HTTP/1.1" 200 1473
+[2019-01-16 09:26:32,378] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:26:32,379] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:26:32,381] [INFO] "GET /static/images/line.ccc.png HTTP/1.1" 200 109
+[2019-01-16 09:26:32,383] [INFO] "GET /static/images/default/topheaderbg.png HTTP/1.1" 200 4093
+[2019-01-16 09:26:32,385] [INFO] "GET /static/images/default/searchbutton.png HTTP/1.1" 200 3462
+[2019-01-16 09:26:32,386] [INFO] "GET /static/images/default/headerbg.png HTTP/1.1" 200 1144
+[2019-01-16 09:26:32,387] [INFO] "GET /static/images/default/userinfoarrow.png HTTP/1.1" 200 207
+[2019-01-16 09:26:32,390] [INFO] "GET /static/fonts/Roboto-Condensed-webfont.woff HTTP/1.1" 200 21836
+[2019-01-16 09:26:32,393] [INFO] "GET /static/fonts/Roboto-BoldCondensed-webfont.woff HTTP/1.1" 200 21440
+[2019-01-16 09:26:32,394] [INFO] "GET /static/images/default/arrow-active.png HTTP/1.1" 200 21122
+[2019-01-16 09:26:32,395] [INFO] "GET /static/images/icons/flatscreen.white.png HTTP/1.1" 200 337
+[2019-01-16 09:26:32,397] [INFO] "GET /static/images/icons/message.white.png HTTP/1.1" 200 556
+[2019-01-16 09:26:32,399] [INFO] "GET /static/images/icons/pencil.white.png HTTP/1.1" 200 464
+[2019-01-16 09:26:32,404] [INFO] "GET /static/images/default/noise.white.png HTTP/1.1" 200 7924
+[2019-01-16 09:26:32,404] [INFO] "GET /static/images/icons/chart.white.png HTTP/1.1" 200 231
+[2019-01-16 09:26:32,404] [INFO] "GET /static/images/online.png HTTP/1.1" 200 751
+[2019-01-16 09:26:32,407] [INFO] "GET /static/images/menucollapsed.png HTTP/1.1" 200 875
+[2019-01-16 09:26:32,407] [INFO] "GET /static/images/default/icons_sprite.png HTTP/1.1" 200 3631
+[2019-01-16 09:26:32,408] [INFO] "GET /static/images/default/menuarrow.png HTTP/1.1" 200 2884
+[2019-01-16 09:26:32,409] [INFO] "GET /static/images/chat.png HTTP/1.1" 200 280
+[2019-01-16 09:26:32,417] [WARNING] Not Found: /k8s/log
+[2019-01-16 09:26:32,417] [WARNING] "GET /k8s/log HTTP/1.1" 404 3814
+[2019-01-16 09:26:33,174] [INFO] "GET /static/images/default/icons_sprite2.png HTTP/1.1" 200 2934
+[2019-01-16 09:26:33,794] [INFO] "GET /static/images/default/bghover.png HTTP/1.1" 200 17273
+[2019-01-16 09:26:34,696] [INFO] "GET /static/images/line.dashed.png HTTP/1.1" 200 128
+[2019-01-16 09:26:35,445] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:56,456] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:57,878] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:58,078] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:58,243] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:58,374] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:58,530] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:58,668] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:26:58,882] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:30,354] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13343
+[2019-01-16 09:28:30,370] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:28:30,371] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:28:30,372] [INFO] "GET /static/js/custom.js HTTP/1.1" 200 2056
+[2019-01-16 09:28:30,463] [WARNING] Not Found: /k8s/log
+[2019-01-16 09:28:30,469] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:28:30,469] [WARNING] "GET /k8s/log HTTP/1.1" 404 3814
+[2019-01-16 09:28:30,470] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:28:32,062] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:32,732] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:32,880] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:33,019] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:33,157] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:33,281] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:33,421] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:34,749] [INFO] "GET /k8s/install/command/1/-3 HTTP/1.1" 200 50
+[2019-01-16 09:28:35,183] [INFO] "GET /k8s/install/command/1/-3 HTTP/1.1" 200 50
+[2019-01-16 09:28:35,331] [INFO] "GET /k8s/install/command/1/-3 HTTP/1.1" 200 50
+[2019-01-16 09:28:35,906] [INFO] "GET /k8s/install/command/1/-2 HTTP/1.1" 200 50
+[2019-01-16 09:28:36,044] [INFO] "GET /k8s/install/command/1/-2 HTTP/1.1" 200 50
+[2019-01-16 09:28:53,920] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13343
+[2019-01-16 09:28:53,943] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:28:53,944] [INFO] "GET /static/js/custom.js HTTP/1.1" 200 2056
+[2019-01-16 09:28:53,945] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:28:54,004] [WARNING] Not Found: /k8s/log
+[2019-01-16 09:28:54,005] [WARNING] "GET /k8s/log HTTP/1.1" 404 3814
+[2019-01-16 09:28:54,458] [INFO] "GET /k8s/install/1 HTTP/1.1" 200 13343
+[2019-01-16 09:28:54,476] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:28:54,477] [INFO] "GET /static/js/custom.js HTTP/1.1" 304 0
+[2019-01-16 09:28:54,477] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:28:54,528] [WARNING] Not Found: /k8s/log
+[2019-01-16 09:28:54,532] [WARNING] "GET /k8s/log HTTP/1.1" 404 3814
+[2019-01-16 09:28:54,535] [WARNING] Not Found: /k8s/install/images/thumbs/avatar5.png
+[2019-01-16 09:28:54,536] [WARNING] "GET /k8s/install/images/thumbs/avatar5.png HTTP/1.1" 404 3904
+[2019-01-16 09:28:55,636] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:56,019] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:56,176] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:56,322] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:56,447] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50
+[2019-01-16 09:28:56,585] [INFO] "GET /k8s/install/command/1/-4 HTTP/1.1" 200 50

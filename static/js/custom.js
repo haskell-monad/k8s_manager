@@ -68,11 +68,35 @@ function k8sClusterAdd(kube_id){
 
 }
 
+// 显示消息
+function show_msg(msg){
+
+	jQuery("#reply").append("<span class=\"msg\">"+msg+"</span>");
+}
+
+function request_by_ajax(kube_id,step_id,_callback){
+	jQuery.ajax({
+		  url: "/k8s/install/command/"+kube_id+"/"+step_id,
+		  type: 'get',
+		  dataType: 'html',
+		  success: function (data, status) {
+		  	console.log("request_by_ajax",data);
+			show_msg(data);
+		 	if(typeof _callback === "function"){
+		 		_callback();
+		 	}
+		  },
+		  fail: function (err, status) {
+			console.log("request_by_ajax失败",url,err);
+		  }
+	})
+}
+
 
 // 安装命令
 function k8s_install_command(kube_id,step_id){
-	
 
+	request_by_ajax(kube_id,step_id);
 }
 
 
