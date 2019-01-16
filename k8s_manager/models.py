@@ -97,9 +97,6 @@ class KubeConfig(models.Model):
     # 集群是否安装 chrony 时间同步,yes/no
     ntp_enabled = models.CharField(max_length=10)
 
-    # etcd节点主机名前缀
-    etcd_node_name_prefix = models.CharField(max_length=150)
-    
     # 是否自动配置免密钥
     ssh_addkey = models.CharField(max_length=10,choices=common.COMMON_STATUS)
 

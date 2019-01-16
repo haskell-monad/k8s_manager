@@ -82,17 +82,6 @@ def install(request,pk):
     return render(request, 'install/index.html', context)
 
 
-# 安装命令
-def install_command(request,pk,step_id):
-
-    context = build_context()
-    # result = {"status":"ok","data":"","city":"北京"}
-    # return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
-
-    return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
-
-
-
 
 
 

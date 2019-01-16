@@ -90,7 +90,7 @@ class ProductVersionForm(ModelForm):
 class KubeConfigForm(ModelForm):
     class Meta:
         model = KubeConfig
-        fields = ('kube_name','kube_version','deploy_mode','ntp_enabled','etcd_node_name_prefix',
+        fields = ('kube_name','kube_version','deploy_mode','ntp_enabled',
                     'ssh_addkey','node_port_range','master_ip','kube_api_server','cluster_network',
                     'service_cidr',
                     'cluster_cidr','cluster_k8s_svc_ip','cluster_dns_svc_ip','cluster_dns_domain',
@@ -108,7 +108,6 @@ class KubeConfigForm(ModelForm):
             "deploy_mode": wid.Select(choices=common.K8S_DEPLOY_MODE,attrs={'style':'margin: 0px;height:30px'}),
             "ntp_enabled": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
 
-            "etcd_node_name_prefix": wid.TextInput(attrs={'class':'smallinput', 'value': 'etcd','style':'margin: 0px; width: 100px'}),
             "ssh_addkey": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
             "node_port_range": wid.TextInput(attrs={'class':'smallinput', 'value':'20000-40000','readonly':'readonly'}),
 
