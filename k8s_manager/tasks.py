@@ -101,7 +101,7 @@ def k8s_import_install_package(kube_id,step_id):
         return
     else:
         if not os.listdir(target_dir):
-            r = exec_system("cp -Rf "+target_dir+"/* "+target_dir)
+            r = exec_system("cp -u "+target_dir+"/* "+target_dir)
             if r == 0:
                 update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[1][0],step_id)
             else:
