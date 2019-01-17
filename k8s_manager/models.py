@@ -137,6 +137,10 @@ class KubeConfig(models.Model):
     deploy = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
     # 该集群部署错误信息
     deploy_error = models.CharField(max_length=255)
+
+    # 部署状态
+    deploy_status = models.IntegerField(null=True,blank=True)
+    
     # 集群描述信息
     kube_desc = models.CharField(max_length=255)
 

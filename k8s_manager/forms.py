@@ -95,7 +95,7 @@ class KubeConfigForm(ModelForm):
                     'service_cidr',
                     'cluster_cidr','cluster_k8s_svc_ip','cluster_dns_svc_ip','cluster_dns_domain',
                     'basic_auth_user','basic_auth_pass','bin_dir','ca_dir','base_dir','kube_desc',
-                    'id','deploy'
+                    'id','deploy','deploy_status'
         )
         exclude = None          #排除的字段
         labels = None           #提示信息
@@ -132,6 +132,7 @@ class KubeConfigForm(ModelForm):
             "kube_desc": wid.Textarea(attrs={'class':'smallinput'}),
             "id": wid.HiddenInput(),
             "deploy": wid.HiddenInput(),
+            "deploy_status": wid.HiddenInput(),
         }
 
 

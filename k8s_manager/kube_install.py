@@ -26,11 +26,14 @@ def install_command(request,pk,step_id):
 
     logging.debug("---------install_command(%s,%s)-------------" % (pk,step_id))
     context = build_context()
-    result = {"status":"ok","data":"","city":"北京"}
+    result = {"status":"ok","data":"","step":step_id}
     # return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
 
-
-    k8s_prepare_install_env.delay(pk,step_id);
+    kube_config = KubeConfig.objects.get(id=pk)
+    if kube_config.deploy_status >= step_id:
+        result = {"status":"error","data":"已经部署过，不可以重复部署"}
+    else:
+        k8s_prepare_install_env.delay(pk,step_id);
 
     return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
 

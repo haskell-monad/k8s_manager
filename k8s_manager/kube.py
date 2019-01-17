@@ -38,6 +38,7 @@ def add(request):
         if form.is_valid():
              kube = form.save(commit=False)
              kube.create_user = "admin"
+             kube.deploy_status = -100
              kube.save()
 
         return HttpResponseRedirect('/k8s')
