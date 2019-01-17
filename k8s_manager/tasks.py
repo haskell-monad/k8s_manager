@@ -42,12 +42,15 @@ def k8s_prepare_install_env(kube_id,step_id):
         c3 = exec_system("yum update -y")
         c4 = exec_system("git clone https://github.com/limengyu1990/k8s-cluster.git /tmp/k8s-cluster")
         if(c4 == 0):
-            exec_system("rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /tmp/k8s-cluster")
-            k8s_generate_hosts(kube_id)
-            if os.path.exists("/etc/ansible/hosts"):
-                result = exec_system_result("ansible all -m ping")
+            c5 = exec_system("mkdir -p /etc/ansible && rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /tmp/k8s-cluster")
+            if (c5 == 0):
+                k8s_generate_hosts(kube_id)
+                if os.path.exists("/etc/ansible/hosts"):
+                    result = exec_system_result("ansible all -m ping")
+                else:
+                    log.error("生成/etc/ansible/hosts失败")
             else:
-                log.error("生成/etc/ansible/hosts失败")
+                log.error("安装ansible异常")
         else:
             log.error("git clone 失败")
     else:
@@ -110,7 +113,7 @@ def k8s_install_plugins():
 
 # 生成host配置文件
 def k8s_generate_hosts(kube_id):
-    kube_config = KubeConfig.objects.get(kube_id=kube_id)
+    kube_config = KubeConfig.objects.get(id=kube_id)
     node_list = KubeCluster.objects.filter(kube_id=kube_id).filter(node_status=common.K8S_NODE_STATUS[0][0])
     if not kube_config:
         log.warn("k8s集群[%s]不存在" % kube_id)
