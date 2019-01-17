@@ -42,7 +42,7 @@ def k8s_prepare_install_env(kube_id,step_id):
         c3 = exec_system("yum update -y")
         c4 = exec_system("git clone https://github.com/limengyu1990/k8s-cluster.git /tmp/k8s-cluster")
         if(c4 == 0):
-            os.exec_system("rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /tmp/k8s-cluster")
+            exec_system("rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /tmp/k8s-cluster")
             k8s_generate_hosts(kube_id)
             if os.path.exists("/etc/ansible/hosts"):
                 result = exec_system_result("ansible all -m ping")
