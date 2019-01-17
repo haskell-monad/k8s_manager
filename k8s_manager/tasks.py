@@ -228,6 +228,14 @@ def k8s_generate_hosts(kube_id):
                 f.write("%s HARBOR_DOMAIN=\"%s\" NEW_INSTALL=%s\n" % (node.node_ip,node.node_domain,node.install_type))
             f.write("\n\n")
 
+
+            f.write("[new-master]\n")
+            f.write("\n\n")
+
+            f.write("[new-node]\n")
+            f.write("\n\n")
+
+
             # ssh-login
             f.write("[ssh-addkey]\n")
             for node in node_list:

@@ -34,9 +34,9 @@ def install_command(request,pk,step_id):
     
     step_id = int(step_id.encode("utf-8"))
 
-    if current_step_id >= step_id:
-        result = {"status":"error","data":"已经执行过该命令，无需重复执行"}
-    elif step_id == common.K8S_INSTALL_PRE[0][0]:
+    # if current_step_id >= step_id:
+    #     result = {"status":"error","data":"已经执行过该命令，无需重复执行"}
+    if step_id == common.K8S_INSTALL_PRE[0][0]:
         s = k8s_prepare_install_env.delay(pk,step_id)
     elif step_id == common.K8S_INSTALL_PRE[1][0]:
         if current_step_id < common.K8S_INSTALL_PRE[0][0]:
