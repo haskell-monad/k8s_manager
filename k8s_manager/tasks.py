@@ -78,7 +78,7 @@ def k8s_config_ssh_login(kube_id,step_id):
 
     if not os.path.exists("/root/.ssh/id_rsa"):
         k = exec_system("ssh-keygen -N '' -f /root/.ssh/id_rsa")
-        if f != 0:
+        if k != 0:
             log.error("任务[%s:%s][免密钥登陆]执行失败,执行ssh-keygen失败" % (kube_id,step_id))
             return
     r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/roles/ssh/tasks/ssh-addkey.yml")
