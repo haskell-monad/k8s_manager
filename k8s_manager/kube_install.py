@@ -32,9 +32,7 @@ def install_command(request,pk,step_id):
     kube_config = KubeConfig.objects.get(id=pk)
     current_step_id = kube_config.deploy_status
     
-    print(step_id)
-    print(common.K8S_INSTALL_PRE[0][0])
-    print(step_id == common.K8S_INSTALL_PRE[0][0])
+    step_id = int(step_id.encode("utf-8"))
 
     if current_step_id >= step_id:
         result = {"status":"error","data":"已经执行过该命令，无需重复执行"}

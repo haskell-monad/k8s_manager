@@ -59,10 +59,13 @@ def k8s_prepare_install_env(kube_id,step_id):
             return
     k8s_generate_hosts(kube_id)
     if os.path.exists("/etc/ansible/hosts"):
-        result = exec_system_result("ansible all -m ping")
+        result = exec_system("ansible all -m ping")
         if result == 0:
+            exec_system_result("ansible all -m ping")
             # 任务成功执行
             update_kube_deploy_status(kube_id,common.K8S_INSTALL_INIT_STEP,step_id)
+        else:
+            log.debug("命令[%s:%s][ansible all -m ping]执行失败" % (kube_id,step_id))
         log.debug("任务[%s:%s][ansible环境准备]执行完成" % (kube_id,step_id))
     else:
         log.error("生成/etc/ansible/hosts失败")
@@ -72,7 +75,13 @@ def k8s_prepare_install_env(kube_id,step_id):
 @task
 def k8s_config_ssh_login(kube_id,step_id):
     log.debug("开始执行任务[%s:%s][免密钥登陆]" % (kube_id,step_id))
-    r = exec_system_result("chmod +x /etc/ansible/ssh-addkey.sh && /etc/ansible/ssh-addkey.sh")
+
+    if not os.path.exists("/root/.ssh/id_rsa"):
+        k = exec_system("ssh-keygen -N '' -f /root/.ssh/id_rsa")
+        if f != 0:
+            log.error("任务[%s:%s][免密钥登陆]执行失败,执行ssh-keygen失败" % (kube_id,step_id))
+            return
+    r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/roles/ssh/tasks/ssh-addkey.yml")
     if r == 0:
         update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[0][0],step_id)
     else:
@@ -106,7 +115,7 @@ def k8s_import_install_package(kube_id,step_id):
 def install_template(kube_id,last_step_id,step_id,yml_file):
     log.debug("开始执行任务[%s:%s][%s]" % (kube_id,step_id,STEP_MAP[step_id]))
 
-    r = exec_system_result("ansible-playbook /etc/ansible/"+yml_file)
+    r = exec_system("ansible-playbook /etc/ansible/"+yml_file)
     if r == 0:
         update_kube_deploy_status(kube_id,last_step_id,step_id)
     else:
