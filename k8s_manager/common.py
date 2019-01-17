@@ -108,18 +108,18 @@ K8S_INSTALL_STEP = (
 
 
 STEP_MAP = {
-    -3: "ansible环境准备",
-    -2: "免密钥登陆配置",
-    -1: "导入k8s二进制文件",
-    0: "一键安装",
-    99: "清理集群",
-    1: "安装准备",
-    2: "安装k8s-etcd",
-    3: "安装k8s-docker",
-    4: "安装k8s-master",
-    5: "安装k8s-node",
-    6: "安装k8s-network",
-    7: "安装k8s-plugins",
+    -3: "install k8s-ansible",
+    -2: "install k8s-ssh",
+    -1: "install k8s-import",
+    0: "instll k8s-onekey",
+    99: "install k8s-clear",
+    1: "instll k8s-prepare",
+    2: "install k8s-etcd",
+    3: "install k8s-docker",
+    4: "install k8s-master",
+    5: "install k8s-node",
+    6: "install k8s-network",
+    7: "install k8s-plugins",
 }
 
 
