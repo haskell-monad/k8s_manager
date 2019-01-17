@@ -30,7 +30,7 @@ def install_command(request,pk,step_id):
     # return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
 
 
-    k8s_prepare_install_env.delay();
+    k8s_prepare_install_env.delay(pk,step_id);
 
     return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
 

@@ -32,7 +32,7 @@ def filter_by_node_role(node_list,node_role):
 
 # 准备安装环境
 @task
-def k8s_prepare_install_env(kube_id):
+def k8s_prepare_install_env(kube_id,step_id):
     # todo 判断ansible环境是否已经存在
     c1 = exec_system("which git && which ansible")
     if os.path.exists("/etc/ansible/ansible.cfg") and c1 == 0:
