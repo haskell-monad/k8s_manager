@@ -47,7 +47,7 @@ def k8s_prepare_install_env(kube_id,step_id):
         c4 = exec_system("git clone https://github.com/limengyu1990/k8s-cluster.git /tmp/k8s-cluster")
         if(c4 == 0):
             c5 = exec_system("mkdir -p /etc/ansible && rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /tmp/k8s-cluster")
-            if (c5 != 0)
+            if (c5 != 0):
                 log.error("安装ansible异常")
                 return 
         else:
