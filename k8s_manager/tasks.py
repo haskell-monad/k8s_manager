@@ -124,7 +124,7 @@ def k8s_generate_hosts(kube_id):
     elif not node_list:
         log.warn("k8s集群[%s]节点配置缺失" % kube_id)
         return
-    elif kubeConfig.deploy == "yes":
+    elif kube_config.deploy == "yes":
         log.warn("k8s集群[%s]已经部署过，不可以重复部署" % kube_id)
         return
     else:
