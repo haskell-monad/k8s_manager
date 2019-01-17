@@ -103,7 +103,7 @@ def k8s_import_install_package(kube_id,step_id):
     log.debug("任务[%s:%s][导入k8s二进制文件]执行完成" % (kube_id,step_id))
 
 
-def install_template(kube_id,last_step_id,step_id,yml_file)
+def install_template(kube_id,last_step_id,step_id,yml_file):
     log.debug("开始执行任务[%s:%s][%s]" % (kube_id,step_id,STEP_MAP[step_id]))
 
     r = exec_system_result("ansible-playbook /etc/ansible/"+yml_file)
