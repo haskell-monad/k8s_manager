@@ -164,7 +164,7 @@ LOGGING = {
         },
         'install': {
             'handlers': ['celery'],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': True,
          }
 

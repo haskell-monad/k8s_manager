@@ -19,7 +19,7 @@ def exec_system(command):
 def exec_system_result(command):
     log.debug("开始执行命令: %s" % command)
     result = os.popen(command)
-    log.debug("命令执行结果: (%s|%s)" % (result,command))
+    log.debug("命令执行结果: (%s|%s)" % (result.read(),command))
 
 
 def filter_by_node_type(node_list,node_type):
