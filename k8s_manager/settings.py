@@ -153,7 +153,6 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': '/tmp/install_k8s.log',
-            'maxBytes': 400 * 1024 * 1024,
             'formatter': 'verbose'
         },
     },
