@@ -35,26 +35,29 @@ def filter_by_node_role(node_list,node_role):
 def k8s_prepare_install_env(kube_id,step_id):
     # todo 判断ansible环境是否已经存在
     c1 = exec_system("which git && which ansible")
-    if os.path.exists("/etc/ansible/ansible.cfg") and c1 == 0:
-        return
-    c2 = exec_system("yum install epel-release git ansible -y")
-    if c1 == 0:
-        c3 = exec_system("yum update -y")
+    if c1 != 0:
+        c2 = exec_system("yum install epel-release git ansible -y")
+        if c2 != 0:
+            log.error("安装ansible失败")
+            return
+        else:
+            c3 = exec_system("yum update -y")
+
+    if not os.path.exists("/etc/ansible/ansible.cfg"):
         c4 = exec_system("git clone https://github.com/limengyu1990/k8s-cluster.git /tmp/k8s-cluster")
         if(c4 == 0):
             c5 = exec_system("mkdir -p /etc/ansible && rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /tmp/k8s-cluster")
-            if (c5 == 0):
-                k8s_generate_hosts(kube_id)
-                if os.path.exists("/etc/ansible/hosts"):
-                    result = exec_system_result("ansible all -m ping")
-                else:
-                    log.error("生成/etc/ansible/hosts失败")
-            else:
+            if (c5 != 0)
                 log.error("安装ansible异常")
+                return 
         else:
             log.error("git clone 失败")
+            return
+    k8s_generate_hosts(kube_id)
+    if os.path.exists("/etc/ansible/hosts"):
+        result = exec_system_result("ansible all -m ping")
     else:
-        log.error("安装 git/ansible 异常")
+        log.error("生成/etc/ansible/hosts失败")
 
 
 

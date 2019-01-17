@@ -139,7 +139,7 @@ class KubeConfigForm(ModelForm):
 class KubeClusterForm(ModelForm):
     class Meta:
         model = KubeCluster
-        fields = ('node_ip','node_domain','node_name','node_type','node_role','install_type','ntp_enabled','node_user','node_password','node_port','kube_id'
+        fields = ('node_ip','node_domain','node_name','node_type','node_role','install_type','ntp_enabled','node_user','node_password','node_port','kube_id','node_status'
         )
         exclude = None          #排除的字段
         labels = None           #提示信息
@@ -158,6 +158,7 @@ class KubeClusterForm(ModelForm):
             "node_password": wid.TextInput(attrs={'class':'smallinput'}),
             "node_port": wid.TextInput(attrs={'class':'smallinput','value':'22'}),
             "kube_id": wid.HiddenInput(),
+            "node_status": wid.HiddenInput(),
         }
 
 class ServerForm(ModelForm):
