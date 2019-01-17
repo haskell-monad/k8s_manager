@@ -147,49 +147,41 @@ def k8s_generate_hosts(kube_id):
             f.write("[deploy]\n")
             for node in node_list:
                 f.write("%s NTP_ENABLED=no\n" % (node.node_ip,node.ntp_enabled) 
-            
             f.write("\n\n")
-
             # etcd
             f.write("[etcd]\n")
             for node in etcd_node_list:
                 f.write("%s NODE_NAME=%s\n" % (node.node_ip,node.node_name))
-            
-            f.write("\n\n")  
+            f.write("\n\n")
 
             # loadbalance
             f.write("[lb]\n")
             for node in lb_node_list:
                 f.write("%s LB_ROLE=%s\n" % (node.node_ip,node.node_role))
-            
             f.write("\n\n")
 
             # k8s-master
             f.write("[kube-master]\n")
             for node in k8s_master_list:
                 f.write("%s\n" % node.node_ip)
-
             f.write("\n\n")
 
             # k8s-node
             f.write("[kube-node]\n")
             for node in k8s_node_list:
                 f.write("%s\n" % node.node_ip)
-
             f.write("\n\n")
 
             # harbor
             f.write("[harbor]\n")
             for node in harbor_node_list:
                 f.write("%s HARBOR_DOMAIN=\"%s\" NEW_INSTALL=%s\n" % (node.node_ip,node.node_domain,node.install_type))
-
             f.write("\n\n")
 
             # ssh-login
             f.write("[ssh-addkey]\n")
             for node in node_list:
                 f.write("%s ansible_ssh_user=\"%s\" ansible_ssh_pass=\"%s\" ansible_ssh_port=\"%s\"\n" % (node.node_ip,node.node_user,node.node_password,node.node_port))
-            
             f.write("\n\n")
 
             # [all:vars]
