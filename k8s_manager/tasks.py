@@ -113,14 +113,14 @@ def k8s_import_install_package(kube_id,step_id):
 
 
 def install_template(kube_id,last_step_id,step_id,yml_file):
-    log.debug("开始执行任务[%s:%s][%s]" % (kube_id,step_id,STEP_MAP[step_id]))
+    log.debug("开始执行任务[%s:%s][%s]" % (kube_id,step_id,common.STEP_MAP[step_id]))
 
     r = exec_system("ansible-playbook /etc/ansible/"+yml_file)
     if r == 0:
         update_kube_deploy_status(kube_id,last_step_id,step_id)
     else:
-        log.error("任务[%s:%s][%s]执行失败" % (kube_id,step_id,STEP_MAP[step_id]))
-    log.debug("任务[%s:%s][%s]执行完成" % (kube_id,step_id,STEP_MAP[step_id]))
+        log.error("任务[%s:%s][%s]执行失败" % (kube_id,step_id,common.STEP_MAP[step_id]))
+    log.debug("任务[%s:%s][%s]执行完成" % (kube_id,step_id,common.STEP_MAP[step_id]))
 
 
 # 安装依赖
