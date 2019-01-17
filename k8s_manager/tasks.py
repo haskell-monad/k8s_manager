@@ -19,7 +19,7 @@ def exec_system(command):
 def exec_system_result(command):
     log.debug("开始执行命令: %s" % command)
     result = os.popen(command)
-    log.debug("命令执行结果: (%s|%s)" % (result.read(),command))
+    log.debug("命令执行结果[%s]: \n%s" % (command,result.read()))
 
 
 def filter_by_node_type(node_list,node_type):
@@ -30,10 +30,14 @@ def filter_by_node_role(node_list,node_role):
     node_data = filter(lambda node: node.node_role == node_role,node_list)
     return node_data
 
+def update_kube_deploy_status(kube_id,last_step_id,step_id):
+    log.debug("更新集群[%s]部署状态[%s,%s]" % (kube_id,last_step_id,step_id))
+    KubeConfig.objects.filter(id=kube_id).filter(deploy_status=last_step_id).update(deploy_status=step_id)
+
 # 准备安装环境
 @task
 def k8s_prepare_install_env(kube_id,step_id):
-    # todo 判断ansible环境是否已经存在
+    log.debug("开始执行任务[%s:%s][ansible环境准备]" % (kube_id,step_id))
     c1 = exec_system("which git && which ansible")
     if c1 != 0:
         c2 = exec_system("yum install epel-release git ansible -y")
@@ -56,63 +60,94 @@ def k8s_prepare_install_env(kube_id,step_id):
     k8s_generate_hosts(kube_id)
     if os.path.exists("/etc/ansible/hosts"):
         result = exec_system_result("ansible all -m ping")
+        if result == 0:
+            # 任务成功执行
+            update_kube_deploy_status(kube_id,common.K8S_INSTALL_INIT_STEP,step_id)
+        log.debug("任务[%s:%s][ansible环境准备]执行完成" % (kube_id,step_id))
     else:
         log.error("生成/etc/ansible/hosts失败")
 
 
-
 # 执行免密钥登陆
 @task
-def k8s_config_ssh_login():
-
-    return ""
-
+def k8s_config_ssh_login(kube_id,step_id):
+    log.debug("开始执行任务[%s:%s][免密钥登陆]" % (kube_id,step_id))
+    r = exec_system_result("chmod +x /etc/ansible/ssh-addkey.sh && /etc/ansible/ssh-addkey.sh")
+    if r == 0:
+        update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[0][0],step_id)
+    else:
+        log.error("任务[%s:%s][免密钥登陆]执行失败" % (kube_id,step_id))
+    log.debug("任务[%s:%s][免密钥登陆]执行完成" % (kube_id,step_id))
 
 # 导入k8s二进制文件
 @task
-def k8s_import_install_package():
+def k8s_import_install_package(kube_id,step_id):
+    log.debug("开始执行任务[%s:%s][导入k8s二进制文件]" % (kube_id,step_id))
+    kube_config = KubeConfig.objects.get(id=kube_id)
+    source_dir = kube_config.bin_dir
+    exec_system("mkdir -p "+source_dir)
+    target_dir = "/etc/ansible/bin"
+    if not os.listdir(source_dir):
+        log.warn("请先将k8s二进制文件放到[%s]目录下" % source_dir);
+        return
+    else:
+        if not os.listdir(target_dir):
+            r = exec_system("cp -Rf "+target_dir+"/* "+target_dir)
+            if r == 0:
+                update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[1][0],step_id)
+            else:
+                log.error("任务[%s:%s][导入k8s二进制文件]执行失败" % (kube_id,step_id))
+        else:
+            log.warn("目标目录[%s]中已经存在k8s二进制文件,不用重新从源目录[%s]导入,放弃本次操作" % (target_dir,source_dir))
+            return
+    log.debug("任务[%s:%s][导入k8s二进制文件]执行完成" % (kube_id,step_id))
 
-    return ""
+
+def install_template(kube_id,last_step_id,step_id,yml_file)
+    log.debug("开始执行任务[%s:%s][%s]" % (kube_id,step_id,STEP_MAP[step_id]))
+
+    r = exec_system_result("ansible-playbook /etc/ansible/"+yml_file)
+    if r == 0:
+        update_kube_deploy_status(kube_id,last_step_id,step_id)
+    else:
+        log.error("任务[%s:%s][%s]执行失败" % (kube_id,step_id,STEP_MAP[step_id]))
+    log.debug("任务[%s:%s][%s]执行完成" % (kube_id,step_id,STEP_MAP[step_id]))
 
 
 # 安装依赖
 @task
-def k8s_init_depend():
-    return ""
+def k8s_init_depend(kube_id,step_id):
+    install_template(kube_id,common.K8S_INSTALL_PRE[2][0],step_id,"01.prepare.yml")
 
 # 安装etcd集群
 @task
-def k8s_instll_etcd():
-    return ""
-
+def k8s_instll_etcd(kube_id,step_id):
+    install_template(kube_id,common.K8S_INSTALL_STEP[0][0],step_id,"02.etcd.yml")
 
 # 安装docker
 @task
-def k8s_install_docker():
-    return ""
-
+def k8s_install_docker(kube_id,step_id):
+    install_template(kube_id,common.K8S_INSTALL_STEP[1][0],step_id,"03.docker.yml")
 
 # 安装master
 @task
-def k8s_install_master():
-    return ""
+def k8s_install_master(kube_id,step_id):
+    install_template(kube_id,common.K8S_INSTALL_STEP[2][0],step_id,"04.kube-master.yml")
 
 # 安装node
 @task
-def k8s_install_node():
-    return ""
+def k8s_install_node(kube_id,step_id):
+    install_template(kube_id,common.K8S_INSTALL_STEP[3][0],step_id,"05.kube-node.yml")
 
 # 安装network
 @task
-def k8s_install_network():
-    return ""
-
+def k8s_install_network(kube_id,step_id):
+    install_template(kube_id,common.K8S_INSTALL_STEP[4][0],step_id,"06.network.yml")
 
 # 安装插件
 @task
-def k8s_install_plugins():
-    return ""
-
+def k8s_install_plugins(kube_id,step_id):
+    install_template(kube_id,common.K8S_INSTALL_STEP[5][0],step_id,"07.cluster-addon.yml")
 
 # 生成host配置文件
 def k8s_generate_hosts(kube_id):

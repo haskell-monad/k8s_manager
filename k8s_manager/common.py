@@ -84,10 +84,10 @@ K8S_FLAG = (
     ("pro","pro")
 )
 
+K8S_INSTALL_INIT_STEP = -100
 
 K8S_INSTALL_PRE = (
-     (-4,"ansible环境准备"),
-     (-3,"加载配置文件"),
+     (-3,"ansible环境准备"),
      (-2,"免密钥登陆配置"),
      (-1,"导入k8s二进制文件"),
 )
@@ -105,6 +105,25 @@ K8S_INSTALL_STEP = (
      (6,"安装k8s-network"),
      (7,"安装k8s-plugins"),
 )
+
+
+STEP_MAP = {
+    -3: "ansible环境准备",
+    -2: "免密钥登陆配置",
+    -1: "导入k8s二进制文件",
+    0: "一键安装",
+    99: "清理集群",
+    1: "安装准备",
+    2: "安装k8s-etcd",
+    3: "安装k8s-docker",
+    4: "安装k8s-master",
+    5: "安装k8s-node",
+    6: "安装k8s-network",
+    7: "安装k8s-plugins",
+}
+
+
+
 
 
 
