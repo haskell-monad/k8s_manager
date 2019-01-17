@@ -26,7 +26,7 @@ def install_command(request,pk,step_id):
 
     logging.debug("---------install_command(%s,%s)-------------" % (pk,step_id))
     context = build_context()
-    # result = {"status":"ok","data":"","city":"北京"}
+    result = {"status":"ok","data":"","city":"北京"}
     # return HttpResponse(json.dumps(result,ensure_ascii=False),content_type="application/json,charset=utf-8")
 
 

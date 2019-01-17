@@ -146,7 +146,7 @@ def k8s_generate_hosts(kube_id):
             # 时钟同步
             f.write("[deploy]\n")
             for node in node_list:
-                f.write("%s NTP_ENABLED=no\n" % (node.node_ip,node.ntp_enabled) 
+                f.write("%s NTP_ENABLED=no\n" % (node.node_ip,node.ntp_enabled))
             f.write("\n\n")
             # etcd
             f.write("[etcd]\n")
