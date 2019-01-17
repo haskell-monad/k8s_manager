@@ -170,10 +170,12 @@ class KubeCluster(models.Model):
     node_role = models.CharField(max_length=10,choices=common.K8S_NODE_ROLE)
     # 是否已经配置过ssh免密钥登陆
     ssh_enabled = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
+    # 是否安装chrony时钟同步
+    ntp_enabled = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
     # 安装类型 yes为新安装 no为使用已有服务器
     install_type = models.CharField(max_length=5,choices=common.COMMON_STATUS,blank=True,null=True)
     # 节点状态
-    node_status = models.CharField(max_length=20,blank=True,null=True)
+    node_status = models.CharField(max_length=20,choices=common.K8S_NODE_STATUS,blank=True,null=True)
     # 创建日期
     create_date = models.DateField(auto_now_add=True)
     # 修改日期

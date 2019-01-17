@@ -31,7 +31,7 @@ def add(request,kube_id):
     KubeClusterFormSet = forms.formset_factory(KubeClusterForm,extra=default_line,)
 
     if request.method == 'GET':
-        formset = KubeClusterFormSet(initial = [{"kube_id":kube_id}])
+        formset = KubeClusterFormSet(initial = [{"kube_id":kube_id,"node_status":common.K8S_NODE_STATUS[0][0]}])
         context['title'] = "新增集群节点"
         context['formUrl'] = "/k8s/cluster/add/"+kube_id
         context['defalut_line'] = 1

@@ -138,7 +138,7 @@ class KubeConfigForm(ModelForm):
 class KubeClusterForm(ModelForm):
     class Meta:
         model = KubeCluster
-        fields = ('node_ip','node_domain','node_name','node_type','node_role','install_type','node_user','node_password','node_port','kube_id'
+        fields = ('node_ip','node_domain','node_name','node_type','node_role','install_type','ntp_enabled','node_user','node_password','node_port','kube_id'
         )
         exclude = None          #排除的字段
         labels = None           #提示信息
@@ -152,6 +152,7 @@ class KubeClusterForm(ModelForm):
             "node_type": wid.Select(choices=common.K8S_NODE_TYPE,attrs={'class': 'css-node-type','style':'margin: 0px;height:30px'}),
             "node_role": wid.Select(choices=common.K8S_NODE_ROLE,attrs={'class': 'css-node-role','style':'margin: 0px;height:30px'}),
             "install_type": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
+            "ntp_enabled": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
             "node_user": wid.TextInput(attrs={'class':'smallinput','value':'root'}),
             "node_password": wid.TextInput(attrs={'class':'smallinput'}),
             "node_port": wid.TextInput(attrs={'class':'smallinput','value':'22'}),

@@ -66,6 +66,11 @@ K8S_NODE_ROLE = (
     ("backup","backup")
 )
 
+K8S_NODE_STATUS = (
+    (1,"未部署"),
+    (2,"已部署")
+)
+
 K8S_NODE_TYPE = (
     ("k8s","k8s节点"),
     ("loadbalance","负载均衡节点"),
