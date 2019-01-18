@@ -88,6 +88,17 @@ def k8s_config_ssh_login(kube_id,step_id):
         log.error("任务[%s:%s][免密钥登陆]执行失败" % (kube_id,step_id))
     log.debug("任务[%s:%s][免密钥登陆]执行完成" % (kube_id,step_id))
 
+# 执行自定义操作   
+@task
+def k8s_install_custom(kube_id,step_id):
+    log.debug("开始执行任务[%s:%s][自定义操作]" % (kube_id,step_id))
+    r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/roles/custom/tasks/custom.yml")
+    if r == 0:
+        update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[1][0],step_id)
+    else:
+        log.error("任务[%s:%s][自定义操作]执行失败" % (kube_id,step_id))
+    log.debug("任务[%s:%s][自定义操作]执行完成" % (kube_id,step_id))
+
 # 导入k8s二进制文件
 @task
 def k8s_import_install_package(kube_id,step_id):
@@ -103,7 +114,7 @@ def k8s_import_install_package(kube_id,step_id):
         if not os.listdir(target_dir):
             r = exec_system("cp -u "+source_dir+"/* "+target_dir)
             if r == 0:
-                update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[1][0],step_id)
+                update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[2][0],step_id)
             else:
                 log.error("任务[%s:%s][导入k8s二进制文件]执行失败" % (kube_id,step_id))
         else:
@@ -122,6 +133,15 @@ def install_template(kube_id,last_step_id,step_id,yml_file):
         log.error("任务[%s:%s][%s]执行失败" % (kube_id,step_id,common.STEP_MAP[step_id]))
     log.debug("任务[%s:%s][%s]执行完成" % (kube_id,step_id,common.STEP_MAP[step_id]))
 
+# 清理集群
+@task
+def k8s_install_clear(kube_id,step_id):
+    log.debug("开始清理集群[%s:%s][%s]" % (kube_id,step_id,common.STEP_MAP[step_id]))
+    r = exec_system("ansible-playbook /etc/ansible/99.clean.yml")
+    if r == 0:
+        log.debug("成功清理集群[%s:%s]" % (kube_id,step_id))
+    else:
+        log.debug("清理集群失败[%s:%s]" % (kube_id,step_id))
 
 # 安装依赖
 @task
