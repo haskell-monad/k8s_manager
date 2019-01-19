@@ -350,7 +350,7 @@ def k8s_generate_hosts(kube_id,deploy_type):
             f.write("\n\n")
 
             f.write("[new-node]\n")
-             for node in k8s_new_node_list:
+            for node in k8s_new_node_list:
                 f.write("%s\n" % node.node_ip)
             f.write("\n\n")
 
