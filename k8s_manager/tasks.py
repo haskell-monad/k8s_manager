@@ -242,7 +242,7 @@ def filter_by_node_role(install_node_list,node_role):
     return node_data
 
 def filter_k8s_node(install_k8s_node_list,node_status,node_role):
-    node_data = filter(lambda node: node.node_role == node_role and node.node_status = node_status,install_k8s_node_list)
+    node_data = filter(lambda node: node.node_role == node_role and node.node_status == node_status,install_k8s_node_list)
     return node_data
 
 
@@ -250,7 +250,7 @@ def filter_k8s_node(install_k8s_node_list,node_status,node_role):
 def k8s_generate_hosts(kube_id,deploy_type):
     kube_config = KubeConfig.objects.get(id=kube_id)
     cluster_list = KubeCluster.objects.filter(kube_id=kube_id)
-    install_cluster_list = filter(lambda node: node.install_type = common.COMMON_STATUS[0][0],cluster_list)
+    install_cluster_list = filter(lambda node: node.install_type == common.COMMON_STATUS[0][0],cluster_list)
     if not kube_config:
         log.warn("k8s集群[%s]不存在" % kube_id)
         return False
