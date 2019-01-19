@@ -36,11 +36,15 @@ python manage.py migrate k8s_manager
 ```
 
 ### TODO
+```
 1.实时输出/查看日志
 2.执行远程命令
 3.集群状态查看
 4.安装常用插件/个性化插件配置
 5.部署应用
+...
+
+```
 
 
 ![image](https://github.com/limengyu1990/k8s_manager/raw/master/images/1.jpg)
