@@ -40,6 +40,8 @@ def add(request,kube_id):
 
     formset = KubeClusterFormSet(request.POST)
     context['formset'] = formset
+    print("-------add cluster-----------")
+    print(formset.errors)
     if formset.is_valid():
         flag = False  # 标志位
         for row in formset.cleaned_data:
