@@ -1,0 +1,50 @@
+<div id="contentwrapper" class="contentwrapper">
+    <div class="contenttitle2">
+        <h3>安装验证_命令手册维护</h3>
+    </div
+    <div id="validation" class="subcontent" >
+    	
+            <form id="_installCheck" class="stdform" method="post" action="{{ formUrl }}">
+                {% csrf_token %}
+            	<p>
+                	<label>命令名称</label>
+                    <span class="field">
+                        {{ form.command_name }}
+                        <a>左侧tab树展示用</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>命令类别</label>
+                    <span class="field">
+                        {{ form.command_category }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>具体命令</label>
+                    <span class="field">
+                        {{ form.command }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>命令描述</label>
+                    <span class="field">
+                         {{ form.command_desc }}
+                        <a></a> 
+                    </span>
+                </p>
+               
+                <br />
+                <p class="stdformbutton">
+                    {{ form.id }}
+                	<button class="submit radius2">确定</button>
+                </p>
+            </form>
+
+    </div>
+</div>
+
+{% load staticfiles  %}
+<script type="text/javascript" src="{% static 'js/product-form.js' %}" ></script>

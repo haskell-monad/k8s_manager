@@ -53,9 +53,24 @@ function serverEdit(assetsId){
    flushHtmlByAjax("/assets/server/edit/"+assetsId,"centerContent");
 }
 
-//kubernetes
+//添加kubernetes集群页面
 function k8sAdd(){
 	 flushHtmlByAjax("/k8s/add","centerContent");
+}
+
+// 添加 安装验证 命令 手册
+function installCheckAdd(){
+	flushHtmlByAjax("/k8s/command/add","centerContent");
+}
+
+// 安装验证命令 列表
+function installCheckList(){
+	flushHtmlByAjax("/k8s/command/list","centerContent");
+}
+
+// 编辑验证命令 
+function installCheckEdit(command_id){
+	flushHtmlByAjax("/k8s/command/edit/"+command_id,"centerContent");
 }
 
 function k8sInstall(id){
@@ -74,12 +89,12 @@ function show_msg(msg){
 	jQuery("#reply").append("<span class=\"msg\">"+msg+"</span>");
 }
 
-function request_by_ajax(kube_id,step_id,_callback){
+function request_by_ajax(_url,_callback){
 	jQuery.ajax({
-		  url: "/k8s/install/command/"+kube_id+"/"+step_id,
+		  url: _url,
 		  type: 'get',
 		  dataType: 'html',
-		  success: function (data, status) {
+		  success: function (data) {
 		  	console.log("request_by_ajax",data);
 			show_msg(data);
 		 	if(typeof _callback === "function"){
@@ -93,12 +108,15 @@ function request_by_ajax(kube_id,step_id,_callback){
 }
 
 
-// 安装命令
+// 执行集群部署命令
 function k8s_install_command(kube_id,step_id){
-
-	request_by_ajax(kube_id,step_id);
+	request_by_ajax("/k8s/install/command/"+kube_id+"/"+step_id);
 }
 
+// 执行集群部署检测命令
+function k8s_check_command(kube_id,command_id){
+	request_by_ajax("/k8s/check/command/"+kube_id+"/"+command_id);
+}
 
 
 

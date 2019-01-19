@@ -46,7 +46,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#install-step" class="editor">分步安装(新手)</a>
+                <a href="#install-step" class="editor">分步安装(推荐)</a>
                 <span class="arrow"></span>
                 <ul id="install-step">
                     {% for step in k8s_step %}
@@ -59,7 +59,25 @@
                 <span class="arrow"></span>
                 <ul id="install-quick">
                     <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_install.0 }})">{{ k8s_install.1 }}</a></li>
-                    <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_clean.0 }})">{{ k8s_clean.1 }}</a></li>
+                    <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_clean.0 }})">{{ k8s_clean.1 }}(危险操作)</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#install-new" class="editor">新增节点</a>
+                <span class="arrow"></span>
+                <ul id="install-new">
+                    <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_add_node.0 }})">{{ k8s_add_node.1 }}</a></li>
+                    <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_add_master.0 }})">{{ k8s_add_master.1 }}</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#install-check" class="editor">验证安装</a>
+                <span class="arrow"></span>
+                <ul id="install-check">
+                    <li><a href="#" onclick="k8s_install_check()">验证说明</a></li>
+                    {% for cmd in install_check %}
+                        <li><a href="#" onclick="k8s_check_command({{ kube_id }},{{ cmd.id }})">{{ cmd.command_name }}</a></li>
+                    {% endfor %}
                 </ul>
             </li>
         </ul>

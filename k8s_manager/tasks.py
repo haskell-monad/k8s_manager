@@ -4,7 +4,7 @@ from celery import shared_task, task
 from celery.utils.log import get_task_logger
 import time
 import os
-from .models import KubeConfig, KubeCluster
+from .models import KubeConfig, KubeCluster, InstallCheck
 from . import common
 
 log = get_task_logger("install")
@@ -19,11 +19,25 @@ def exec_system(command):
 def exec_system_result(command):
     log.debug("开始执行命令: %s" % command)
     result = os.popen(command)
-    log.debug("命令执行结果[%s]: \n%s" % (command,result.read()))
+    data = result.read()
+    log.debug("命令执行结果[%s]: \n%s" % (command,data))
+    return data
 
 def update_kube_deploy_status(kube_id,last_step_id,step_id):
     log.debug("更新集群[%s]部署状态[%s,%s]" % (kube_id,last_step_id,step_id))
     KubeConfig.objects.filter(id=kube_id).filter(deploy_status=last_step_id).update(deploy_status=step_id)
+
+
+# 用来验证集群部署时，每步部署的是否正确，通过执行相应的验证命令
+@task
+def k8s_install_check_command(kube_id,command_id):
+    check_command = InstallCheck.objects.get(id=command_id)
+    log.debug("开始执行集群部署[%s]验证命令[%s]: %s" % (kube_id,command_id,check_command.command))
+    if not check_command:
+        log.warn("安装验证命令不存在[%s]" % (command_id))
+        return "安装验证命令不存在"
+    result = exec_system_result(check_command.command)
+    return result
 
 # 准备安装环境
 @task
@@ -137,7 +151,7 @@ def install_template(kube_id,last_step_id,step_id,yml_file):
         log.error("任务[%s:%s][%s]执行失败" % (kube_id,step_id,common.STEP_MAP[step_id]))
         return False
 
-
+# 新增master
 @task
 def k8s_install_new_master(kube_id,step_id):
     kube_config = KubeConfig.objects.get(id=kube_id)
@@ -156,7 +170,7 @@ def k8s_install_new_master(kube_id,step_id):
     else:
        log.error("新增master节点失败,生成hosts文件异常[%s:%s]" % (kube_id,step_id))
 
-
+# 新增node
 @task
 def k8s_install_new_node(kube_id,step_id):
     if kube_config.deploy != common.COMMON_STATUS[0][0]:

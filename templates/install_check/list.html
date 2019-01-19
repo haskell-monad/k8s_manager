@@ -1,0 +1,47 @@
+<div class="pageheader notab">
+    <h5 class="pagetitle">安装验证_命令手册列表</h5>
+    <span class="pagedesc">部署集群时，可以运行该列表中的命令，查看每一步是否部署正确 </span>            
+</div>
+<div id="contentwrapper" class="contentwrapper">
+    <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+        </colgroup>
+        <!--表头-->
+        <thead>
+            <tr>
+                <th class="head0 nosort"></th>
+                <th class="head0">命令名称</th>
+                <th class="head1">命令类别</th>
+                <th class="head1">命令</th>
+                <th class="head0">命令描述</th>
+                <th class="head0">操作</th>
+            </tr>
+        </thead>
+        <!--内容-->
+        <tbody>
+            {% for c in listData %}
+            <tr class="gradeX">
+                <td align="center">
+                    <span class="center"><input type="checkbox" value="{{ c.id }}"/></span>
+                </td>
+                <td>
+                    <a href="#" onclick="installCheckEdit({{ c.id }})">
+                    {{ c.command_name }}
+                    </a>
+                </td>
+                <td>{{ c.command_category }}</td>
+                <td>{{ c.command }}</td>
+                <td>{{ c.command_desc }}</td>
+                <td class="center">
+                    <a href="#" onclick = "installCheckEdit({{ c.id }})">编辑</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster
+from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster, InstallCheck
 from django.forms import ModelForm
 from django.forms import widgets as wid
 from . import common
@@ -159,6 +159,23 @@ class KubeClusterForm(ModelForm):
             "node_port": wid.TextInput(attrs={'class':'smallinput','value':'22'}),
             "kube_id": wid.HiddenInput(),
             "node_status": wid.HiddenInput(),
+        }
+
+class InstallCheckForm(ModelForm):
+    class Meta:
+        model = InstallCheck
+        fields = ('command_name','command','command_category','command_desc','id')
+        exclude = None          #排除的字段
+        labels = None           #提示信息
+        help_texts = None       #帮助提示信息
+        widgets = None          #自定义插件
+        error_messages = None   #自定义错误信息
+        widgets = {
+            "command_name": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：支付系统"}),
+            "command": wid.Textarea(attrs={'cols': 80, 'rows': 5, 'class':'mediuminput'}),
+            "command_category": wid.TextInput(attrs={'class':'smallinput', 'placeholder':"如：qishan.zhang@gmail.com"}),
+            "command_desc": wid.Textarea(attrs={'cols': 80, 'rows': 5, 'class':'mediuminput'}),
+            "id": wid.HiddenInput()
         }
 
 class ServerForm(ModelForm):

@@ -186,6 +186,19 @@ class KubeCluster(models.Model):
     class Meta:
         db_table = "kube_cluster"
 
+# k8s集群安装验证说明
+class InstallCheck(models.Model):
+     # 命令名称，展示用
+    command_name = models.CharField(max_length=30)
+    # 命令
+    command = models.CharField(max_length=500)
+    # 命令所属类别，如etcd/集群pod状态等
+    command_category = models.CharField(max_length=20,null=True,blank=True)
+    # 命令描述
+    command_desc = models.CharField(max_length=500,null=True,blank=True)
+
+    class Meta:
+        db_table = "install_check"
 
 class Server(models.Model):
     id = models.IntegerField(primary_key=True)

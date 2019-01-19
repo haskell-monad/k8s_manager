@@ -6,8 +6,8 @@ from django.http import HttpResponseRedirect
 import logging
 import json
 
-from .models import KubeConfig, KubeCluster
-from .forms import KubeConfigForm
+from .models import KubeConfig, KubeCluster, InstallCheck
+from .forms import KubeConfigForm, InstallCheckForm
 from . import common
 
 logger = logging.getLogger('django')
@@ -28,7 +28,7 @@ def index(request):
 
     return render(request, 'kube/index.html', context)
 
-# 新增k8s集群配置
+# 新增k8s集群
 def add(request):
     request.encoding = 'utf-8'
     context = build_context()
@@ -80,14 +80,56 @@ def install(request,pk):
     context['k8s_install'] = common.K8S_INSTALL
     context['k8s_step'] = common.K8S_INSTALL_STEP
     context['k8s_clean'] = common.K8S_INSTALL_CLEAN
+
+    context['k8s_add_node'] = common.K8S_INSTALL_ADD_NODE
+    context['k8s_add_master'] = common.K8S_INSTALL_ADD_MASTER
     context['kube_id'] = pk
     return render(request, 'install/index.html', context)
 
 
+# 安装验证命令列表
+def command_add_list(request):
+    listData = InstallCheck.objects.all()
+    context = {}
+    context['listData'] = listData
+    return render(request, 'install_check/list.html', context)
+
+# 新增_安装验证命令
+def command_add(request):
+    request.encoding = 'utf-8'
+    context = {}
+    if request.method == "POST":
+        form = InstallCheckForm(request.POST)
+        if form.is_valid():
+             kube = form.save(commit=False)
+             kube.save()
+        return HttpResponseRedirect('/k8s')
+    else:
+        form = InstallCheckForm()
+    context['title'] = "新增验证命令"
+    context['formUrl'] = "/k8s/command/add"
+    context['form'] = form
+    return render(request, 'install_check/form.html', context)
 
 
-
-
+# 编辑_安装验证命令
+def command_edit(request,pk):
+    context = build_context()
+    obj = InstallCheck.objects.filter(pk=pk).first()
+    if not obj:
+        return redirect('/k8s')
+    if request.method == "GET":
+        form = InstallCheckForm(instance=obj)
+        context['form'] = form
+        context['title'] = "编辑_安装验证命令"
+        context['formUrl'] = "/k8s/command/edit/"+pk
+        return render(request, 'install_check/form.html', context)
+    else:
+        form = InstallCheckForm(request.POST, instance=obj)
+        if form.is_valid():
+            kube = form.save(commit=False)
+            kube.save()
+        return redirect('/k8s')
 
 
 

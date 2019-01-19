@@ -41,14 +41,25 @@ urlpatterns = [
    
 
     url(r'^k8s$', kube.index),
+    # 编辑集群信息
     url(r'^k8s/add$', kube.add),
     url(r'^k8s/edit/(\d+)$', kube.edit),
-    # 安装页面
-    url(r'^k8s/install/(\d+)$', kube.install),
+    # 部署验证名称
+    url(r'^k8s/command/add$', kube.command_add),
+    url(r'^k8s/command/list$', kube.command_add_list),
+    url(r'^k8s/command/edit/(\d+)$', kube.command_edit),
 
-    # 安装命令
+    # 集群安装页面
+    url(r'^k8s/install/(\d+)$', kube_install.install_index),
+
+    # 执行集群安装命令
     url(r'^k8s/install/command/(\d+)/(-?\d+)$', kube_install.install_command),
 
+    # 执行集群检测命令
+    url(r'^k8s/check/command/(\d+)/(\d+)$', kube_install.install_check_command),
+
+
+    # 编辑集群节点信息
     url(r'^k8s/cluster/(\d+)$', kube_cluster.index),
     url(r'^k8s/cluster/add/(\d+)$', kube_cluster.add),
     # url(r'^k8s/cluster/edit/(\d+)$', kube_cluster.edit),
