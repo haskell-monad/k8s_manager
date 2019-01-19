@@ -38,6 +38,7 @@ def add(request):
         if form.is_valid():
              kube = form.save(commit=False)
              kube.create_user = "admin"
+             kube.deploy = common.COMMON_STATUS[1][0]
              kube.deploy_status = common.K8S_INSTALL_INIT_STEP
              kube.save()
 

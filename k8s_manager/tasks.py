@@ -21,15 +21,6 @@ def exec_system_result(command):
     result = os.popen(command)
     log.debug("命令执行结果[%s]: \n%s" % (command,result.read()))
 
-
-def filter_by_node_type(node_list,node_type):
-    node_data = filter(lambda node: node.node_type == node_type,node_list)
-    return node_data
-
-def filter_by_node_role(node_list,node_role):
-    node_data = filter(lambda node: node.node_role == node_role,node_list)
-    return node_data
-
 def update_kube_deploy_status(kube_id,last_step_id,step_id):
     log.debug("更新集群[%s]部署状态[%s,%s]" % (kube_id,last_step_id,step_id))
     KubeConfig.objects.filter(id=kube_id).filter(deploy_status=last_step_id).update(deploy_status=step_id)
@@ -57,8 +48,8 @@ def k8s_prepare_install_env(kube_id,step_id):
         else:
             log.error("git clone 失败")
             return
-    k8s_generate_hosts(kube_id)
-    if os.path.exists("/etc/ansible/hosts"):
+    hf = k8s_generate_hosts(kube_id,common.K8S_DEPLOY_TYPE[0][0])
+    if hf and os.path.exists("/etc/ansible/hosts"):
         result = exec_system("ansible all -m ping")
         if result == 0:
             exec_system_result("ansible all -m ping")
@@ -99,10 +90,11 @@ def k8s_install_custom(kube_id,step_id):
         log.error("任务[%s:%s][自定义操作]执行失败" % (kube_id,step_id))
     log.debug("任务[%s:%s][自定义操作]执行完成" % (kube_id,step_id))
 
-# 导入k8s二进制文件
+# 导入k8s二进制/镜像文件
+# todo 这里需要增加判断，如果二进制/镜像文件已经存在的话，就不再走导入判断逻辑了
 @task
 def k8s_import_install_package(kube_id,step_id):
-    log.debug("开始执行任务[%s:%s][导入k8s二进制文件]" % (kube_id,step_id))
+    log.debug("开始执行任务[%s:%s][导入k8s二进制/镜像文件]" % (kube_id,step_id))
     kube_config = KubeConfig.objects.get(id=kube_id)
     source_dir = kube_config.bin_dir
     exec_system("mkdir -p "+source_dir)
@@ -111,13 +103,25 @@ def k8s_import_install_package(kube_id,step_id):
         log.warn("请先将k8s二进制文件放到[%s]目录下" % source_dir);
         return
     else:
-        r = exec_system("cp -u "+source_dir+"/* "+target_dir)
-        if r == 0:
-            update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[2][0],step_id)
-        else:
+        r = exec_system("cp -ur "+source_dir+"/* "+target_dir)
+        if r != 0:
             log.error("任务[%s:%s][导入k8s二进制文件]执行失败" % (kube_id,step_id))
             return
-    log.debug("任务[%s:%s][导入k8s二进制文件]执行完成" % (kube_id,step_id))
+    # 导入镜像文件
+    source_image_dir = "/opt/kube/images"
+    exec_system("mkdir -p "+source_image_dir)
+    target_image_dir = "/etc/ansible/down"
+    if not os.listdir(source_image_dir):
+        log.warn("请先将k8s镜像文件放到[%s]目录下" % source_image_dir);
+        return
+    else:
+        i = exec_system("cp -ur "+source_image_dir+"/* "+target_image_dir)
+        if i != 0:
+            log.error("任务[%s:%s][导入k8s镜像文件]执行失败" % (kube_id,step_id))
+            return
+    update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[2][0],step_id)
+    log.debug("任务[%s:%s][导入k8s二进制/镜像文件]执行完成" % (kube_id,step_id))
+
 
 
 def install_template(kube_id,last_step_id,step_id,yml_file):
@@ -125,10 +129,50 @@ def install_template(kube_id,last_step_id,step_id,yml_file):
 
     r = exec_system("ansible-playbook /etc/ansible/"+yml_file)
     if r == 0:
-        update_kube_deploy_status(kube_id,last_step_id,step_id)
+        if step_id <= common.K8S_INSTALL_STEP[6][0]:
+            update_kube_deploy_status(kube_id,last_step_id,step_id)
+        log.debug("任务[%s:%s][%s]执行完成" % (kube_id,step_id,common.STEP_MAP[step_id]))
+        return True
     else:
         log.error("任务[%s:%s][%s]执行失败" % (kube_id,step_id,common.STEP_MAP[step_id]))
-    log.debug("任务[%s:%s][%s]执行完成" % (kube_id,step_id,common.STEP_MAP[step_id]))
+        return False
+
+
+@task
+def k8s_install_new_master(kube_id,step_id):
+    kube_config = KubeConfig.objects.get(id=kube_id)
+    if kube_config.deploy != common.COMMON_STATUS[0][0]:
+        log.error("此集群还未部署，不可以新增master节点[%s:%s]" % (kube_id,step_id))
+        return
+    flag = k8s_generate_hosts(kube_id,common.K8S_DEPLOY_TYPE[1][0])
+    if flag and os.path.exists("/etc/ansible/hosts"):
+        r = install_template(kube_id,common.K8S_INSTALL_STEP[6][0],step_id,"21.addmaster.yml")
+        if r:
+            # 更新节点部署状态
+            log.error("更新新增master节点状态为[已部署][%s:%s]" % (kube_id,step_id))
+            KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[0][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
+        else:
+            log.error("新增master节点失败[%s:%s]" % (kube_id,step_id))
+    else:
+       log.error("新增master节点失败,生成hosts文件异常[%s:%s]" % (kube_id,step_id))
+
+
+@task
+def k8s_install_new_node(kube_id,step_id):
+    if kube_config.deploy != common.COMMON_STATUS[0][0]:
+        log.error("此集群还未部署，不可以新增node节点[%s:%s]" % (kube_id,step_id))
+        return
+    flag = k8s_generate_hosts(kube_id,common.K8S_DEPLOY_TYPE[1][0])
+    if flag and os.path.exists("/etc/ansible/hosts"):
+        r = install_template(kube_id,common.K8S_INSTALL_STEP[6][0],step_id,"20.addnode.yml")
+        if r:
+            # 更新节点部署状态
+            log.error("更新新增node节点状态为[已部署][%s:%s]" % (kube_id,step_id))
+            KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[1][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
+        else:
+            log.error("新增node节点失败[%s:%s]" % (kube_id,step_id))
+    else:
+       log.error("新增node节点失败,生成hosts文件异常[%s:%s]" % (kube_id,step_id))
 
 # 清理集群
 @task
@@ -158,12 +202,21 @@ def k8s_install_docker(kube_id,step_id):
 # 安装master
 @task
 def k8s_install_master(kube_id,step_id):
-    install_template(kube_id,common.K8S_INSTALL_STEP[2][0],step_id,"04.kube-master.yml")
+    flag = install_template(kube_id,common.K8S_INSTALL_STEP[2][0],step_id,"04.kube-master.yml")
+    if flag:
+        # 更新节点状态为->已部署
+        log.error("更新master节点状态为[已部署][%s:%s]" % (kube_id,step_id))
+        KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[0][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
+
 
 # 安装node
 @task
 def k8s_install_node(kube_id,step_id):
-    install_template(kube_id,common.K8S_INSTALL_STEP[3][0],step_id,"05.kube-node.yml")
+    flag = install_template(kube_id,common.K8S_INSTALL_STEP[3][0],step_id,"05.kube-node.yml")
+    if flag:
+        # 更新节点状态为->已部署
+        log.error("更新node节点状态为[已部署][%s:%s]" % (kube_id,step_id))
+        KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[1][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
 
 # 安装network
 @task
@@ -173,34 +226,80 @@ def k8s_install_network(kube_id,step_id):
 # 安装插件
 @task
 def k8s_install_plugins(kube_id,step_id):
-    install_template(kube_id,common.K8S_INSTALL_STEP[5][0],step_id,"07.cluster-addon.yml")
+    flag = install_template(kube_id,common.K8S_INSTALL_STEP[5][0],step_id,"07.cluster-addon.yml")
+    if flag:
+        # 更新集群部署状态->已完成
+        log.error("更新集群部署节点状态为[已部署][%s:%s]" % (kube_id,step_id))
+        KubeConfig.objects.filter(id=kube_id).update(deploy=common.COMMON_STATUS[0][0])
+
+
+def filter_by_node_type(node_list,node_type):
+    node_data = filter(lambda node: node.node_type == node_type,node_list)
+    return node_data
+
+def filter_by_node_role(install_node_list,node_role):
+    node_data = filter(lambda node: node.node_role == node_role,install_node_list)
+    return node_data
+
+def filter_k8s_node(install_k8s_node_list,node_status,node_role):
+    node_data = filter(lambda node: node.node_role == node_role and node.node_status = node_status,install_k8s_node_list)
+    return node_data
+
 
 # 生成host配置文件
-def k8s_generate_hosts(kube_id):
+def k8s_generate_hosts(kube_id,deploy_type):
     kube_config = KubeConfig.objects.get(id=kube_id)
-    node_list = KubeCluster.objects.filter(kube_id=kube_id).filter(node_status=common.K8S_NODE_STATUS[0][0])
+    cluster_list = KubeCluster.objects.filter(kube_id=kube_id)
+    install_cluster_list = filter(lambda node: node.install_type = common.COMMON_STATUS[0][0],cluster_list)
     if not kube_config:
         log.warn("k8s集群[%s]不存在" % kube_id)
-        return
-    elif not node_list:
+        return False
+    elif not install_cluster_list:
         log.warn("k8s集群[%s]节点配置缺失" % kube_id)
-        return
+        return False
     elif kube_config.deploy == "yes":
         log.warn("k8s集群[%s]已经部署过，不可以重复部署" % kube_id)
-        return
+        return False
     else:
         hosts_file = kube_config.base_dir + "/hosts"
         # filter install node
-        k8s_list = filter_by_node_type(node_list,common.K8S_NODE_TYPE[0][0])   
-        k8s_master_list = filter_by_node_role(k8s_list,common.K8S_NODE_ROLE[0][0])
-        k8s_node_list = filter_by_node_role(k8s_list,common.K8S_NODE_ROLE[1][0])
+        k8s_list = filter_by_node_type(install_cluster_list,common.K8S_NODE_TYPE[0][0])
+
+        k8s_old_master_list = []
+        k8s_old_node_list = []
+        k8s_new_master_list = []
+        k8s_new_node_list = []
+
+        if deploy_type == common.K8S_DEPLOY_TYPE[0][0]:
+            # 初始部署
+            k8s_old_master_list = filter_by_node_role(k8s_list,common.K8S_NODE_ROLE[0][0])
+            k8s_old_node_list = filter_by_node_role(k8s_list,common.K8S_NODE_ROLE[1][0])
+        else:
+            # 新增节点部署
+            k8s_old_master_list = filter_k8s_node(k8s_list,common.K8S_NODE_STATUS[1][0],common.K8S_NODE_ROLE[0][0])
+            k8s_old_node_list = filter_k8s_node(k8s_list,common.K8S_NODE_STATUS[1][0],common.K8S_NODE_ROLE[1][0])
+
+            k8s_new_master_list = filter_k8s_node(k8s_list,common.K8S_NODE_STATUS[0][0],common.K8S_NODE_ROLE[0][0])
+            k8s_new_node_list = filter_k8s_node(k8s_list,common.K8S_NODE_STATUS[0][0],common.K8S_NODE_ROLE[1][0])
+
+            if not k8s_new_master_list and not k8s_new_node_list:
+                log.warn("新增节点失败,k8s集群[%s]新增节点缺失" % kube_id)
+                return False 
+
+        if not k8s_old_master_list:
+            log.warn("k8s集群[%s]master节点缺失" % kube_id)
+            return False
+
+        if not k8s_old_node_list:
+            log.warn("k8s集群[%s]node节点缺失" % kube_id)
+            return False
 
 
-        lb_node_list = filter_by_node_type(node_list,common.K8S_NODE_TYPE[1][0])
+        lb_node_list = filter_by_node_type(install_cluster_list,common.K8S_NODE_TYPE[1][0])
 
-        etcd_node_list = filter_by_node_type(node_list,common.K8S_NODE_TYPE[2][0])
+        etcd_node_list = filter_by_node_type(install_cluster_list,common.K8S_NODE_TYPE[2][0])
 
-        harbor_node_list = filter_by_node_type(node_list,common.K8S_NODE_TYPE[3][0])
+        harbor_node_list = filter_by_node_type(cluster_list,common.K8S_NODE_TYPE[3][0])
 
         log.debug("集群[%s]k8s-master节点配置: %s" % (kube_id,k8s_master_list))
         log.debug("集群[%s]k8s-node节点配置: %s" % (kube_id,k8s_node_list))
@@ -212,8 +311,7 @@ def k8s_generate_hosts(kube_id):
         with open(hosts_file,'w') as f:
             # 时钟同步
             f.write("[deploy]\n")
-            for node in node_list:
-                f.write("%s NTP_ENABLED=%s\n" % (node.node_ip,node.ntp_enabled))
+            f.write("%s NTP_ENABLED=%s\n" % (kube_config.deploy_node,kube_config.ntp_enabled))
             f.write("\n\n")
             # etcd
             f.write("[etcd]\n")
@@ -229,13 +327,13 @@ def k8s_generate_hosts(kube_id):
 
             # k8s-master
             f.write("[kube-master]\n")
-            for node in k8s_master_list:
+            for node in k8s_old_master_list:
                 f.write("%s\n" % node.node_ip)
             f.write("\n\n")
 
             # k8s-node
             f.write("[kube-node]\n")
-            for node in k8s_node_list:
+            for node in k8s_old_node_list:
                 f.write("%s\n" % node.node_ip)
             f.write("\n\n")
 
@@ -247,15 +345,19 @@ def k8s_generate_hosts(kube_id):
 
 
             f.write("[new-master]\n")
+            for node in k8s_new_master_list:
+                f.write("%s\n" % node.node_ip)
             f.write("\n\n")
 
             f.write("[new-node]\n")
+             for node in k8s_new_node_list:
+                f.write("%s\n" % node.node_ip)
             f.write("\n\n")
 
 
             # ssh-login
             f.write("[ssh-addkey]\n")
-            for node in node_list:
+            for node in install_cluster_list:
                 f.write("%s ansible_ssh_user=\"%s\" ansible_ssh_pass=\"%s\" ansible_ssh_port=\"%s\"\n" % (node.node_ip,node.node_user,node.node_password,node.node_port))
             f.write("\n\n")
 
@@ -282,6 +384,9 @@ def k8s_generate_hosts(kube_id):
             f.write("ca_dir=\"%s\"\n" % kube_config.ca_dir)
             f.write("base_dir=\"%s\"\n" % kube_config.base_dir)
 
+            return True
+
+        return False
 
 
 

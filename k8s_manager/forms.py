@@ -90,7 +90,7 @@ class ProductVersionForm(ModelForm):
 class KubeConfigForm(ModelForm):
     class Meta:
         model = KubeConfig
-        fields = ('kube_name','kube_version','deploy_mode','ntp_enabled',
+        fields = ('kube_name','kube_version','deploy_mode','deploy_node','ntp_enabled',
                     'ssh_addkey','node_port_range','master_ip','kube_api_server','cluster_network',
                     'service_cidr',
                     'cluster_cidr','cluster_k8s_svc_ip','cluster_dns_svc_ip','cluster_dns_domain',
@@ -106,6 +106,7 @@ class KubeConfigForm(ModelForm):
             "kube_name": wid.Select(choices=common.K8S_FLAG,attrs={'style':'margin: 0px;height:30px'}),
             "kube_version": wid.Select(choices=common.K8S_VERSION,attrs={'style':'margin: 0px;height:30px'}),
             "deploy_mode": wid.Select(choices=common.K8S_DEPLOY_MODE,attrs={'style':'margin: 0px;height:30px'}),
+            "deploy_node": wid.TextInput(attrs={'class':'smallinput', 'value':"192.168.150.181"}),
             "ntp_enabled": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
 
             "ssh_addkey": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
@@ -139,7 +140,7 @@ class KubeConfigForm(ModelForm):
 class KubeClusterForm(ModelForm):
     class Meta:
         model = KubeCluster
-        fields = ('node_ip','node_domain','node_name','node_type','node_role','install_type','ntp_enabled','node_user','node_password','node_port','kube_id','node_status'
+        fields = ('node_ip','node_domain','node_name','node_type','node_role','install_type','node_user','node_password','node_port','kube_id','node_status'
         )
         exclude = None          #排除的字段
         labels = None           #提示信息
@@ -153,7 +154,6 @@ class KubeClusterForm(ModelForm):
             "node_type": wid.Select(choices=common.K8S_NODE_TYPE,attrs={'class': 'css-node-type','style':'margin: 0px;height:30px'}),
             "node_role": wid.Select(choices=common.K8S_NODE_ROLE,attrs={'class': 'css-node-role','style':'margin: 0px;height:30px'}),
             "install_type": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
-            "ntp_enabled": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
             "node_user": wid.TextInput(attrs={'class':'smallinput','value':'root'}),
             "node_password": wid.TextInput(attrs={'class':'smallinput'}),
             "node_port": wid.TextInput(attrs={'class':'smallinput','value':'22'}),
