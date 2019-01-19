@@ -30,6 +30,14 @@
                 </p>
 
                 <p>
+                    <label>集群部署节点</label>
+                    <span class="field">
+                        {{ form.deploy_node }}
+                        <a>一般为运行ansible脚本的节点</a>
+                    </span>
+                </p>
+
+                <p>
                     <label>是否启用时钟同步</label>
                     <span class="field">
                         {{ form.ntp_enabled }}
