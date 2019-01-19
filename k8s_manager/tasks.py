@@ -50,7 +50,7 @@ def k8s_prepare_install_env(kube_id,step_id):
     if not os.path.exists("/etc/ansible/ansible.cfg"):
         c4 = exec_system("git clone https://github.com/limengyu1990/k8s-cluster.git /tmp/k8s-cluster")
         if(c4 == 0):
-            c5 = exec_system("mkdir -p /etc/ansible && rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /etc/ansible/bin/readme.md && rm -rf /tmp/k8s-cluster")
+            c5 = exec_system("mkdir -p /etc/ansible && rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/  && rm -rf /tmp/k8s-cluster")
             if (c5 != 0):
                 log.error("安装ansible异常")
                 return 
@@ -111,14 +111,11 @@ def k8s_import_install_package(kube_id,step_id):
         log.warn("请先将k8s二进制文件放到[%s]目录下" % source_dir);
         return
     else:
-        if not os.listdir(target_dir):
-            r = exec_system("cp -u "+source_dir+"/* "+target_dir)
-            if r == 0:
-                update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[2][0],step_id)
-            else:
-                log.error("任务[%s:%s][导入k8s二进制文件]执行失败" % (kube_id,step_id))
+        r = exec_system("cp -u "+source_dir+"/* "+target_dir)
+        if r == 0:
+            update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[2][0],step_id)
         else:
-            log.warn("目标目录[%s]中已经存在k8s二进制文件,不用重新从源目录[%s]导入,放弃本次操作" % (target_dir,source_dir))
+            log.error("任务[%s:%s][导入k8s二进制文件]执行失败" % (kube_id,step_id))
             return
     log.debug("任务[%s:%s][导入k8s二进制文件]执行完成" % (kube_id,step_id))
 
