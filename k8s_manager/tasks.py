@@ -50,7 +50,7 @@ def k8s_prepare_install_env(kube_id,step_id):
     if not os.path.exists("/etc/ansible/ansible.cfg"):
         c4 = exec_system("git clone https://github.com/limengyu1990/k8s-cluster.git /tmp/k8s-cluster")
         if(c4 == 0):
-            c5 = exec_system("mkdir -p /etc/ansible && rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /tmp/k8s-cluster")
+            c5 = exec_system("mkdir -p /etc/ansible && rm -rf /etc/ansible/* && mv /tmp/k8s-cluster/* /etc/ansible/ && rm -rf /etc/ansible/bin/readme.md && rm -rf /tmp/k8s-cluster")
             if (c5 != 0):
                 log.error("安装ansible异常")
                 return 
@@ -81,7 +81,7 @@ def k8s_config_ssh_login(kube_id,step_id):
         if k != 0:
             log.error("任务[%s:%s][免密钥登陆]执行失败,执行ssh-keygen失败" % (kube_id,step_id))
             return
-    r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/roles/ssh/tasks/ssh-addkey.yml")
+    r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/_ssh.yml")
     if r == 0:
         update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[0][0],step_id)
     else:
@@ -92,7 +92,7 @@ def k8s_config_ssh_login(kube_id,step_id):
 @task
 def k8s_install_custom(kube_id,step_id):
     log.debug("开始执行任务[%s:%s][自定义操作]" % (kube_id,step_id))
-    r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/roles/custom/tasks/custom.yml")
+    r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/_custom.yml")
     if r == 0:
         update_kube_deploy_status(kube_id,common.K8S_INSTALL_PRE[1][0],step_id)
     else:
