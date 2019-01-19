@@ -301,8 +301,10 @@ def k8s_generate_hosts(kube_id,deploy_type):
 
         harbor_node_list = filter_by_node_type(cluster_list,common.K8S_NODE_TYPE[3][0])
 
-        log.debug("集群[%s]k8s-master节点配置: %s" % (kube_id,k8s_master_list))
-        log.debug("集群[%s]k8s-node节点配置: %s" % (kube_id,k8s_node_list))
+        log.debug("集群[%s]k8s-master节点配置: %s" % (kube_id,k8s_old_master_list))
+        log.debug("集群[%s]k8s-node节点配置: %s" % (kube_id,k8s_old_node_list))
+        log.debug("集群[%s]k8s-new-master节点配置: %s" % (kube_id,k8s_new_master_list))
+        log.debug("集群[%s]k8s-new-node节点配置: %s" % (kube_id,k8s_new_node_list))
         log.debug("集群[%s]k8s-loadbalance节点配置: %s" % (kube_id,lb_node_list))
         log.debug("集群[%s]k8s-etcd节点配置: %s" % (kube_id,etcd_node_list))
         log.debug("集群[%s]k8s-harbor节点配置: %s" % (kube_id,harbor_node_list))
