@@ -94,7 +94,7 @@ class KubeConfig(models.Model):
     # 集群部署模式：allinone, single-master, multi-master
     deploy_mode = models.CharField(max_length=20,choices=common.K8S_DEPLOY_MODE)
     #部署节点ip
-    deploy_node = models.CharField(max_length=10)
+    deploy_node = models.CharField(max_length=30,blank=True,null=True)
     # 集群是否安装 chrony 时间同步,yes/no
     ntp_enabled = models.CharField(max_length=10)
 
