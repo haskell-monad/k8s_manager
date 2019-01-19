@@ -1,5 +1,6 @@
 # Miscellaneous
 .DS_Store
 *.log
-k8s_manager/migrations/
+k8s_manager/migrations/**
 k8s_manager/*.pyc
+static/html模板/**
