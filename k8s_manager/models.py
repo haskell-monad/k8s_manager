@@ -205,14 +205,18 @@ class InstallCheck(models.Model):
 class InstallStep(models.Model):
     # 步骤id，不可以重复
     step_id = models.IntegerField(primary_key=True)
+    # 要执行该步骤，当前步骤最小值，如：安装master之前，需要先配置免密钥登陆
+    last_step_id = models.IntegerField(null=True,blank=True)
     # 步骤名称，展示用
     step_name = models.CharField(max_length=20)
-    # 改装该步骤，需要调用的函数
+    # 安装该步骤，需要调用的安装函数
     step_function = models.CharField(max_length=40)
+    # 安装函数执行前需调用的函数
+    step_before_function = models.CharField(max_length=40,null=True,blank=True)
+    # 安装函数执行后需调用的函数
+    step_after_function = models.CharField(max_length=40,null=True,blank=True)
     # 步骤所属分类，如：安装准备/分步安装/一键安装等，展示用
     step_category = models.IntegerField(choices=common.INSTALL_STEP_CATEGORY)
-    # 要执行该步骤，当前步骤最小值，如：安装master之前，需要先配置免密钥登陆
-    step_before = models.IntegerField(null=True,blank=True)
     # 该步骤是否可以跳过，意味着该步骤不是强制安装
     step_skip = models.CharField(max_length=5,choices=common.COMMON_STATUS)
     # 该步骤使用的yml文件

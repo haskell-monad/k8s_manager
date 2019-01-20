@@ -26,8 +26,8 @@ def exec_system_result(command):
 def update_kube_deploy_status(kube_id,step_id):
     # 获取到当前步骤的依赖步骤，然后根据步骤id更新
     install_step = InstallStep.objects.get(step_id=step_id)
-    last_step_id = install_step.step_before
-    log.debug("更新集群[%s]部署状态[%s,%s]" % (kube_id,last_step_id,step_id))
+    last_step_id = install_step.last_step_id
+    log.debug("更新集群[%s]节点部署状态deploy_status[%s ---> %s]" % (kube_id,last_step_id,step_id))
     KubeConfig.objects.filter(id=kube_id).filter(deploy_status=last_step_id).update(deploy_status=step_id)
 
 
@@ -89,23 +89,9 @@ def k8s_config_ssh_login(kube_id,step_id):
         if k != 0:
             log.error("任务[%s:%s][免密钥登陆]执行失败,执行ssh-keygen失败" % (kube_id,step_id))
             return
-    r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/_ssh.yml")
-    if r == 0:
-        update_kube_deploy_status(kube_id,step_id)
-    else:
-        log.error("任务[%s:%s][免密钥登陆]执行失败" % (kube_id,step_id))
+    install_template(kube_id,step_id)
     log.debug("任务[%s:%s][免密钥登陆]执行完成" % (kube_id,step_id))
 
-# 执行自定义操作   
-@task
-def k8s_install_custom(kube_id,step_id):
-    log.debug("开始执行任务[%s:%s][自定义操作]" % (kube_id,step_id))
-    r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/_custom.yml")
-    if r == 0:
-        update_kube_deploy_status(kube_id,step_id)
-    else:
-        log.error("任务[%s:%s][自定义操作]执行失败" % (kube_id,step_id))
-    log.debug("任务[%s:%s][自定义操作]执行完成" % (kube_id,step_id))
 
 # 导入k8s二进制/镜像文件
 # todo 这里需要增加判断，如果二进制/镜像文件已经存在的话，就不再走导入判断逻辑了
@@ -140,21 +126,92 @@ def k8s_import_install_package(kube_id,step_id):
     log.debug("任务[%s:%s][导入k8s二进制/镜像文件]执行完成" % (kube_id,step_id))
 
 
+# 执行步骤前，检测集群是否已经部署过
+def before_check_k8s_deploy_status(_kube_config,_install_step):
+    if _kube_config.deploy != common.COMMON_STATUS[0][0]:
+        log.error("此集群还未部署，不可以执行相应操作[%s:%s]" % (_kube_config.id,_install_step.step_id))
+        return False
+    return True
 
-def install_template(kube_id,step_id,yml_file):
+# 基础步骤执行完后，更新集群部署状态deploy为：已部署
+def after_update_kube_config_deploy_status(_kube_config,_install_step):
+    kube_id = _kube_config.kube_id
+    step_id = _install_step.step_id
+    if step_id == common.K8S_INSTALL_COMPLETE_STEP:
+        # 更新集群部署状态->已完成
+        log.info("更新集群部署状态deploy为[已部署][%s:%s]" % (kube_id,step_id))
+        KubeConfig.objects.filter(id=kube_id).update(deploy=common.COMMON_STATUS[0][0])
+
+def after_update_kube_cluster_master_node_status(_kube_config,_install_step):
+    kube_id = _kube_config.kube_id
+    step_id = _install_step.step_id
+    # 更新master节点状态为->已部署
+    log.info("更新master节点状态为[已部署][%s:%s]" % (kube_id,step_id))
+    KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[0][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
+
+
+def after_update_kube_cluster_node_node_status(_kube_config,_install_step):
+    kube_id = _kube_config.kube_id
+    step_id = _install_step.step_id
+    # 更新node节点状态为->已部署
+    log.info("更新node节点状态为[已部署][%s:%s]" % (kube_id,step_id))
+    KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[1][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
+
+
+# 执行自定义函数
+def exec_custom_function(_function,_kube_config,_install_step):
+    if not _function:
+        return
+    try:
+        rs = eval(_function)(_kube_config,_install_step)
+        print("========exec_custom_function结果===========")
+        print(rs)
+    except (NameError,KeyError):
+        log.error(u"执行自定义函数失败[%s][%s][%s],请检查函数名称是否配置正确" % (_kube_config.kube_name,_install_step.step_name,_function))
+    else:
+        log.debug(u"执行自定义函数成功[%s][%s][%s]" % (_kube_config.kube_name,_install_step.step_name,_function))
+
+
+######################## 
+######################## 调用install_template函数的方法近期将会清理掉，统一调用install_template函数，另外根据各个情况调用相应的before**和ater***函数，在install_step表中配置 
+########################
+@task
+def install_template(kube_id,step_id):
+    kube_config = KubeConfig.objects.get(id=kube_id)
     install_step = InstallStep.objects.get(step_id=step_id)
+    if not _kube_config:
+        log.error("集群不存在,不可以执行相应操作")
+        return False
+    elif not _install_step:
+        log.error("集群安装步骤不存在,不可以执行相应操作")
+        return False
+    before_fun = install_step.step_before_function
+    after_fun = install_step.step_after_function
     step_name = install_step.step_name
+    yml_file = install_step.step_yml_file
+
     log.debug("开始执行任务[%s:%s][%s]" % (kube_id,step_id,step_name))
 
-    r = exec_system("ansible-playbook /etc/ansible/"+yml_file)
-    if r == 0:
-        if step_id <= common.K8S_INSTALL_COMPLETE_STEP:
-            update_kube_deploy_status(kube_id,step_id)
-        log.debug("任务[%s:%s][%s]执行完成" % (kube_id,step_id,step_name))
-        return True
+    if before_fun:
+        before_rs = exec_custom_function(before_fun,kube_config,install_step)
+        if not before_rs:
+            return False
+    if yml_file:
+        r = exec_system("ansible-playbook -i /etc/ansible/hosts /etc/ansible/"+yml_file)
+        if r == 0:
+            if step_id <= common.K8S_INSTALL_COMPLETE_STEP:
+                update_kube_deploy_status(kube_id,step_id)
+            if after_fun:
+                exec_custom_function(after_fun,kube_config,install_step)
+            log.debug("任务[%s:%s][%s]执行完成" % (kube_id,step_id,step_name))
+            return True
+        else:
+            log.error("任务[%s:%s][%s]执行失败" % (kube_id,step_id,step_name))
+            return False
     else:
-        log.error("任务[%s:%s][%s]执行失败" % (kube_id,step_id,step_name))
+        log.error("任务[%s:%s][%s]执行失败,yml文件缺失" % (kube_id,step_id,step_name))
         return False
+    
 
 # 新增master
 @task
@@ -165,7 +222,7 @@ def k8s_install_new_master(kube_id,step_id):
         return
     flag = k8s_generate_hosts(kube_id,common.K8S_DEPLOY_TYPE[1][0])
     if flag and os.path.exists("/etc/ansible/hosts"):
-        r = install_template(kube_id,step_id,"21.addmaster.yml")
+        r = install_template(kube_id,step_id)
         if r:
             # 更新节点部署状态
             log.error("更新新增master节点状态为[已部署][%s:%s]" % (kube_id,step_id))
@@ -178,12 +235,13 @@ def k8s_install_new_master(kube_id,step_id):
 # 新增node
 @task
 def k8s_install_new_node(kube_id,step_id):
+    kube_config = KubeConfig.objects.get(id=kube_id)
     if kube_config.deploy != common.COMMON_STATUS[0][0]:
         log.error("此集群还未部署，不可以新增node节点[%s:%s]" % (kube_id,step_id))
         return
     flag = k8s_generate_hosts(kube_id,common.K8S_DEPLOY_TYPE[1][0])
     if flag and os.path.exists("/etc/ansible/hosts"):
-        r = install_template(kube_id,step_id,"20.addnode.yml")
+        r = install_template(kube_id,step_id)
         if r:
             # 更新节点部署状态
             log.error("更新新增node节点状态为[已部署][%s:%s]" % (kube_id,step_id))
@@ -221,12 +279,13 @@ def k8s_install_harbor(kube_id,step_id):
 
 # 安全安装 helm（在线）
 @task
-def k8s_install_helm_online():
-    return
+def k8s_install_helm_online(kube_id,step_id):
+    install_template(kube_id,step_id)
 
 # 安全安装 helm（离线）
 @task
-def k8s_install_helm_offline():
+def k8s_install_helm_offline(kube_id,step_id):
+
     return
 
 # 安装jenkins
@@ -238,67 +297,6 @@ def k8s_install_jenkins():
 @task
 def k8s_install_gitlab():
     return
-
-
-# 清理集群
-@task
-def k8s_install_clear(kube_id,step_id):
-    install_step = InstallStep.objects.get(step_id=step_id)
-    step_name = install_step.step_name
-    log.debug("开始清理集群[%s:%s][%s]" % (kube_id,step_id,step_name))
-    r = exec_system("ansible-playbook /etc/ansible/99.clean.yml")
-    if r == 0:
-        log.debug("成功清理集群[%s:%s]" % (kube_id,step_id))
-    else:
-        log.debug("清理集群失败[%s:%s]" % (kube_id,step_id))
-
-# 安装依赖
-@task
-def k8s_init_depend(kube_id,step_id):
-    install_template(kube_id,step_id,"01.prepare.yml")
-
-# 安装etcd集群
-@task
-def k8s_instll_etcd(kube_id,step_id):
-    install_template(kube_id,step_id,"02.etcd.yml")
-
-# 安装docker
-@task
-def k8s_install_docker(kube_id,step_id):
-    install_template(kube_id,step_id,"03.docker.yml")
-
-# 安装master
-@task
-def k8s_install_master(kube_id,step_id):
-    flag = install_template(kube_id,step_id,"04.kube-master.yml")
-    if flag:
-        # 更新节点状态为->已部署
-        log.error("更新master节点状态为[已部署][%s:%s]" % (kube_id,step_id))
-        KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[0][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
-
-
-# 安装node
-@task
-def k8s_install_node(kube_id,step_id):
-    flag = install_template(kube_id,step_id,"05.kube-node.yml")
-    if flag:
-        # 更新节点状态为->已部署
-        log.error("更新node节点状态为[已部署][%s:%s]" % (kube_id,step_id))
-        KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[1][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
-
-# 安装network
-@task
-def k8s_install_network(kube_id,step_id):
-    install_template(kube_id,step_id,"06.network.yml")
-
-# 安装插件
-@task
-def k8s_install_plugins(kube_id,step_id):
-    flag = install_template(kube_id,step_id,"07.cluster-addon.yml")
-    if flag:
-        # 更新集群部署状态->已完成
-        log.error("更新集群部署节点状态为[已部署][%s:%s]" % (kube_id,step_id))
-        KubeConfig.objects.filter(id=kube_id).update(deploy=common.COMMON_STATUS[0][0])
 
 
 def filter_by_node_type(node_list,node_type):
@@ -457,27 +455,4 @@ def k8s_generate_hosts(kube_id,deploy_type):
             return True
 
         return False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

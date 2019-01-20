@@ -100,16 +100,9 @@ K8S_FLAG = (
 
 # 集群初始步骤step_id
 K8S_INSTALL_INIT_STEP = -100
-
+# 集群完成基本安装后的step_id
 K8S_INSTALL_COMPLETE_STEP = 7
 
-# 集群安装 准备 操作
-K8S_INSTALL_PRE = (
-     (-4,"ansible环境准备"),
-     (-3,"免密钥登陆配置"),
-     (-2,"自定义操作"),
-     (-1,"导入k8s二进制/镜像文件"),
-)
 
 # 步骤类别，展示用
 INSTALL_STEP_CATEGORY = (

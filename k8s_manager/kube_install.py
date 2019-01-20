@@ -11,7 +11,7 @@ from .forms import KubeConfigForm
 from django.forms.models import model_to_dict
 from . import common
 from k8s_manager.celery import app
-from k8s_manager.tasks import k8s_prepare_install_env, k8s_config_ssh_login, k8s_import_install_package, k8s_init_depend,k8s_instll_etcd,k8s_install_docker,k8s_install_master, k8s_install_node,k8s_install_network,k8s_install_plugins,k8s_install_clear,k8s_install_custom,k8s_install_check_command,k8s_install_remove_node,k8s_install_harbor 
+from k8s_manager.tasks import k8s_prepare_install_env, k8s_config_ssh_login, k8s_import_install_package,k8s_install_check_command,k8s_install_remove_node,k8s_install_harbor 
 
 logger = logging.getLogger('django')
 
@@ -60,7 +60,7 @@ def install_command(request,pk,step_id):
         result = {"status":"error","data":u"当前步骤不存在,请检查步骤[%s][%s]配置" % (pk,step_id)}
     else:
         current_step_id = kube_config.deploy_status
-        dep_step_id = install_step.step_before
+        dep_step_id = install_step.last_step_id
         if dep_step_id and current_step_id < dep_step_id:
             dep_install_step = InstallStep.objects.get(step_id=dep_step_id)
             result = {"status":"error","data": u"请先执行步骤[%s]-[%s]" % (dep_step_id,dep_install_step.step_name)}

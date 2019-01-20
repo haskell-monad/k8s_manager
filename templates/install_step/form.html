@@ -13,6 +13,13 @@
                         <a>唯一标识，整数</a>
                     </span>
                 </p>
+                 <p>
+                    <label>依赖步骤id</label>
+                    <span class="field">
+                         {{ form.last_step_id }}
+                        <a>该步骤依赖的上一个步骤(可选)如果要求已部署过集群，则填7即可</a> 
+                    </span>
+                </p>
                 <p>
                     <label>步骤名称</label>
                     <span class="field">
@@ -24,7 +31,23 @@
                     <label>步骤执行函数</label>
                     <span class="field">
                         {{ form.step_function }}
-                        <a>执行该步骤时，将会执行该函数</a>
+                        <a>执行该步骤时，将会执行该函数(tasks.py文件中定义)</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>执行函数前调用的函数</label>
+                    <span class="field">
+                        {{ form.step_before_function }}
+                        <a>比如步骤执行前的校验操作,该函数返回False将会阻挡后续步骤执行(可选)</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>执行函数后调用的函数</label>
+                    <span class="field">
+                        {{ form.step_after_function }}
+                        <a>用来做些收尾操作,比如：个别步骤执行完后需要更新部署状态等(可选)</a>
                     </span>
                 </p>
 
@@ -50,13 +73,7 @@
                         <a>左侧树展示用</a> 
                     </span>
                 </p>
-                <p>
-                    <label>依赖步骤id</label>
-                    <span class="field">
-                         {{ form.step_before }}
-                        <a>该步骤依赖的上一个步骤</a> 
-                    </span>
-                </p>
+               
 
                  <p>
                     <label>该步骤是否可跳过</label>
