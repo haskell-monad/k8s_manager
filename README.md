@@ -1,6 +1,6 @@
 ### 安装说明
 
-本项目依赖[kubeasz](https://github.com/gjmzj/kubeasz/)项目，提供了web操作界面，用于快速搭建k8s集群
+本项目依赖[kubeasz](https://github.com/gjmzj/kubeasz/)项目(作者可厉害了^-^)，提供了web操作界面，用于快速搭建k8s集群
 
 ```
 # 安装python-pip
