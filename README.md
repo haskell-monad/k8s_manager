@@ -33,6 +33,8 @@ python manage.py migrate
 python manage.py makemigrations k8s_manager 
 python manage.py migrate k8s_manager
 
+# init.sql 中 默认录入了一些初始数据，可以导入进去
+
 ```
 
 ### TODO
