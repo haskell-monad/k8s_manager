@@ -125,4 +125,43 @@ jQuery(document).ready(function(){
 				id: "资产id不可以为空",
 			}
 		});
+
+
+		jQuery("#_installCheck").validate({
+			rules: {
+				command_name: "required",
+				command_category: "required",
+				command: "required",
+				command_exec: "required",
+			},
+			messages: {
+				command_name: "请输入命令名称",
+				command_category: "请输入命令分类",
+				command: "请输入命令",
+				command_exec: "请选择命令是否可执行",
+			}
+		});
+
+
+		jQuery("#_installStep").validate({
+			rules: {
+				step_id: "required",
+				step_name: "required",
+				step_function: "required",
+				step_yml_file: "required",
+				step_category: "required",
+				step_skip: "required",
+
+			},
+			messages: {
+				step_id: "请输入步骤id",
+				step_name: "请输入步骤名称",
+				step_function: "请输入步骤执行函数",
+				step_yml_file: "请输入yml文件名",
+				step_category: "请选择步骤所属分类",
+				step_skip: "请选择是否可以跳过该步骤",
+			}
+		});
+
+
 });

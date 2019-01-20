@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster, InstallCheck
+from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster, InstallCheck, InstallStep
 from django.forms import ModelForm
 from django.forms import widgets as wid
 from . import common
@@ -177,6 +177,28 @@ class InstallCheckForm(ModelForm):
             "command_exec": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
             "command_desc": wid.Textarea(attrs={'cols': 80, 'rows': 5, 'class':'mediuminput'}),
             "id": wid.HiddenInput()
+        }
+
+class InstallStepForm(ModelForm):
+    class Meta:
+        model = InstallStep
+        fields = ('step_id','step_name','step_function','step_yml_file','step_yml_file_tmp','step_category','step_before','step_skip','step_sort','step_desc')
+        exclude = None          #排除的字段
+        labels = None           #提示信息
+        help_texts = None       #帮助提示信息
+        widgets = None          #自定义插件
+        error_messages = None   #自定义错误信息
+        widgets = {
+            "step_id": wid.TextInput(attrs={'class':'smallinput',}),
+            "step_name": wid.TextInput(attrs={'class':'smallinput',}),
+            "step_function": wid.TextInput(attrs={'class':'smallinput'}),
+            "step_yml_file": wid.TextInput(attrs={'class':'smallinput'}),
+            "step_yml_file_tmp": wid.TextInput(attrs={'class':'smallinput'}),
+            "step_category": wid.Select(choices=common.INSTALL_STEP_CATEGORY,attrs={'style':'margin: 0px;height:30px'}),
+            "step_before": wid.TextInput(attrs={'class':'smallinput',}),
+            "step_skip": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
+            "step_sort": wid.TextInput(attrs={'class':'smallinput',}),
+            "step_desc": wid.Textarea(attrs={'cols': 80, 'rows': 5, 'class':'mediuminput'}),
         }
 
 class ServerForm(ModelForm):

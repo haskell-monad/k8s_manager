@@ -53,6 +53,9 @@ function serverEdit(assetsId){
    flushHtmlByAjax("/assets/server/edit/"+assetsId,"centerContent");
 }
 
+
+
+
 //添加kubernetes集群页面
 function k8sAdd(){
 	 flushHtmlByAjax("/k8s/add","centerContent");
@@ -73,6 +76,26 @@ function installCheckEdit(command_id){
 	flushHtmlByAjax("/k8s/command/edit/"+command_id,"centerContent");
 }
 
+
+
+
+// 新增 安装步骤
+function installStepAdd(){
+	flushHtmlByAjax("/k8s/install/step/add","centerContent");
+}
+
+// 编辑 安装步骤 
+function installCheckEdit(step_id){
+	flushHtmlByAjax("/k8s/install/step/edit/"+step_id,"centerContent");
+}
+
+// 安装步骤列表
+function installStepList(){
+	flushHtmlByAjax("/k8s/install/step/list","centerContent");
+}
+
+
+// 进入集群操作页面
 function k8sInstall(id){
 	 flushHtmlByAjax("/k8s/install/"+id,"centerContent");
 }

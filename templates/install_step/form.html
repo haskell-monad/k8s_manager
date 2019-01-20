@@ -1,0 +1,93 @@
+<div id="contentwrapper" class="contentwrapper">
+    <div class="contenttitle2">
+        <h3>集群部署_安装步骤</h3>
+    </div
+    <div id="validation" class="subcontent" >
+    	
+            <form id="_installStep" class="stdform" method="post" action="{{ formUrl }}">
+                {% csrf_token %}
+            	<p>
+                	<label>步骤id</label>
+                    <span class="field">
+                        {{ form.step_id }}
+                        <a>唯一标识，整数</a>
+                    </span>
+                </p>
+                <p>
+                    <label>步骤名称</label>
+                    <span class="field">
+                        {{ form.step_name }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>步骤执行函数</label>
+                    <span class="field">
+                        {{ form.step_function }}
+                        <a>执行该步骤时，将会执行该函数</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>步骤对应的yml文件名</label>
+                    <span class="field">
+                        {{ form.step_yml_file }}
+                        <a>例如: /etc/ansible/01.prepare.yml,只需要填写相对于/etc/ansible/的路径，即：01.prepare.yml</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>临时yml文件名</label>
+                    <span class="field">
+                        {{ form.step_yml_file_tmp }}
+                        <a>例如：01.prepare_001.yml,我们将会对该临时文件操作并清理，例如sed等操作，而不是直接操作yml文件</a>
+                    </span>
+                </p>
+                <p>
+                    <label>步骤所属分类</label>
+                    <span class="field">
+                         {{ form.step_category }}
+                        <a>左侧树展示用</a> 
+                    </span>
+                </p>
+                <p>
+                    <label>依赖步骤id</label>
+                    <span class="field">
+                         {{ form.step_before }}
+                        <a>该步骤依赖的上一个步骤</a> 
+                    </span>
+                </p>
+
+                 <p>
+                    <label>该步骤是否可跳过</label>
+                    <span class="field">
+                         {{ form.step_skip }}
+                        <a>是否是必须安装的步骤</a> 
+                    </span>
+                </p>
+
+                 <p>
+                    <label>所属分类顺序</label>
+                    <span class="field">
+                         {{ form.step_sort }}
+                        <a>所属分类下的顺序，整数值，降序</a> 
+                    </span>
+                </p>
+
+                 <p>
+                    <label>步骤描述信息</label>
+                    <span class="field">
+                         {{ form.step_desc }}
+                        <a></a> 
+                    </span>
+                </p>
+                <br />
+                <p class="stdformbutton">
+                	<button class="submit radius2">确定</button>
+                </p>
+            </form>
+    </div>
+</div>
+
+{% load staticfiles  %}
+<script type="text/javascript" src="{% static 'js/product-form.js' %}" ></script>

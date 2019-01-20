@@ -1,0 +1,50 @@
+<div class="pageheader notab">
+    <h5 class="pagetitle">集群部署_安装步骤列表</h5>
+    <span class="pagedesc">部署集群时，需要执行该列表中的步骤 </span>            
+</div>
+<div id="contentwrapper" class="contentwrapper">
+    <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+        </colgroup>
+        <!--表头-->
+        <thead>
+            <tr>
+                <th class="head0 nosort"></th>
+                <th class="head0">步骤名称</th>
+                <th class="head1">步骤所属分类</th>
+                <th class="head1">步骤执行函数</th>
+                <th class="head1">yml文件</th>
+                <th class="head0">是否可跳过</th>
+                <th class="head0">操作</th>
+            </tr>
+        </thead>
+        <!--内容-->
+        <tbody>
+            {% load filter_list %} 
+            {% for step in listData %}
+            <tr class="gradeX">
+                <td align="center">
+                    <span class="center"><input type="checkbox" value="{{ step.step_id }}"/></span>
+                </td>
+                <td>
+                    <a href="#" onclick="installStepEdit({{ step.step_id }})">
+                    {{ step.step_name }}
+                    </a>
+                </td>
+                <td>{{ step_category_list | filter_list:step.step_category}}</td>
+                <td>{{ step.step_function }}</td>
+                <td>{{ step.step_yml_file }}</td>
+                <td>{{ step.step_skip }}</td>
+                <td class="center">
+                    <a href="#" onclick = "installStepEdit({{ step.step_id }})">编辑</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

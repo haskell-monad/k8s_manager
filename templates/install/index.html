@@ -38,10 +38,8 @@
                 <a href="#env-prepare" class="editor">环境准备(必须)</a>
                 <span class="arrow"></span>
                 <ul id="env-prepare">
-                    {% for prepare in k8s_prepare %}
-                        <li>
-                            <a href="#" onclick="k8s_install_command({{ kube_id }},{{ prepare.0 }})">{{ prepare.1 }}</a>
-                        </li>
+                    {% for step in k8s_prepare %}
+                       <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ step.step_id }})">{{ step.step_name }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
@@ -50,24 +48,35 @@
                 <span class="arrow"></span>
                 <ul id="install-step">
                     {% for step in k8s_step %}
-                        <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ step.0 }})">{{ step.1 }}</a></li>
+                        <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ step.step_id }})">{{ step.step_name }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
             <li>
-                <a href="#install-quick" class="editor">一键安装</a>
+                <a href="#install-quick" class="editor">快速安装</a>
                 <span class="arrow"></span>
                 <ul id="install-quick">
-                    <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_install.0 }})">{{ k8s_install.1 }}</a></li>
-                    <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_clean.0 }})">{{ k8s_clean.1 }}(危险操作)</a></li>
+                    {% for step in k8s_install %}
+                        <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ step.step_id }})">{{ step.step_name }}</a></li>
+                    {% endfor %}
                 </ul>
             </li>
             <li>
                 <a href="#install-new" class="editor">新增节点</a>
                 <span class="arrow"></span>
                 <ul id="install-new">
-                    <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_add_node.0 }})">{{ k8s_add_node.1 }}</a></li>
-                    <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ k8s_add_master.0 }})">{{ k8s_add_master.1 }}</a></li>
+                    {% for step in k8s_new_node %}
+                        <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ step.step_id }})">{{ step.step_name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li>
+                <a href="#install-plugins" class="editor">安装常用插件</a>
+                <span class="arrow"></span>
+                <ul id="install-plugins">
+                    {% for step in install_plugins %}
+                        <li><a href="#" onclick="k8s_install_command({{ kube_id }},{{ step.step_id }})">{{ step.step_name }}</a></li>
+                    {% endfor %}
                 </ul>
             </li>
             <li>

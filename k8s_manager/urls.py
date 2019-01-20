@@ -18,7 +18,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from . import home, assets, product, product_version, kube, kube_cluster, kube_install
+from . import home, assets, product, product_version, kube, kube_cluster, kube_install,kube_install_check,kube_install_step
 
 
 urlpatterns = [
@@ -44,10 +44,15 @@ urlpatterns = [
     # 编辑集群信息
     url(r'^k8s/add$', kube.add),
     url(r'^k8s/edit/(\d+)$', kube.edit),
-    # 部署验证名称
-    url(r'^k8s/command/add$', kube.command_add),
-    url(r'^k8s/command/list$', kube.command_add_list),
-    url(r'^k8s/command/edit/(\d+)$', kube.command_edit),
+    # 安装验证命令维护
+    url(r'^k8s/command/add$', kube_install_check.add_check_command),
+    url(r'^k8s/command/list$', kube_install_check.check_command_list),
+    url(r'^k8s/command/edit/(\d+)$', kube_install_check.edit_check_command),
+
+    # 安装部署维护
+    url(r'^k8s/install/step/add$', kube_install_step.add_step),
+    url(r'^k8s/install/step/list$', kube_install_step.step_list),
+    url(r'^k8s/install/step/edit/(\d+)$', kube_install_step.edit_step),
 
     # 集群安装页面
     url(r'^k8s/install/(\d+)$', kube_install.install_index),

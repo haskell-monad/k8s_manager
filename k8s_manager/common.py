@@ -101,6 +101,8 @@ K8S_FLAG = (
 # 集群初始步骤step_id
 K8S_INSTALL_INIT_STEP = -100
 
+K8S_INSTALL_COMPLETE_STEP = 7
+
 # 集群安装 准备 操作
 K8S_INSTALL_PRE = (
      (-4,"ansible环境准备"),
@@ -109,41 +111,19 @@ K8S_INSTALL_PRE = (
      (-1,"导入k8s二进制/镜像文件"),
 )
 
-K8S_INSTALL = (0,"一键安装")
-K8S_INSTALL_CLEAN = (99,"清理集群")
-
-# 集群新增节点
-K8S_INSTALL_ADD_NODE = (20,"新增k8s-node节点")
-K8S_INSTALL_ADD_MASTER = (21,"新增k8s-master节点")
-
-
-# 集群分步安装
-K8S_INSTALL_STEP = (
-     (1,"安装准备"),
-     (2,"安装k8s-etcd"),
-     (3,"安装k8s-docker"),
-     (4,"安装k8s-master"),
-     (5,"安装k8s-node"),
-     (6,"安装k8s-network"),
-     (7,"安装k8s-plugins"),
+# 步骤类别，展示用
+INSTALL_STEP_CATEGORY = (
+    (1,"环境准备"),
+    (2,"分步安装"),
+    (3,"快速安装"),
+    (4,"新增节点"),
+    (5,"删除节点"),
+    (6,"安装常用插件"),
+    (7,"验证安装"),
 )
+step_category_list = map(lambda x: x[1], INSTALL_STEP_CATEGORY)
+category_list = filter(lambda x: x != INSTALL_STEP_CATEGORY[4][0],map(lambda x: x[0], INSTALL_STEP_CATEGORY))
 
-
-# step_id 和 名称 映射
-STEP_MAP = {
-    -3: "install k8s-ansible",
-    -2: "install k8s-ssh",
-    -1: "install k8s-import",
-    0: "instll k8s-onekey",
-    99: "install k8s-clear",
-    1: "instll k8s-prepare",
-    2: "install k8s-etcd",
-    3: "install k8s-docker",
-    4: "install k8s-master",
-    5: "install k8s-node",
-    6: "install k8s-network",
-    7: "install k8s-plugins",
-}
 
 
 

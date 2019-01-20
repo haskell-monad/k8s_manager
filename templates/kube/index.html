@@ -34,12 +34,26 @@
 	<div class="vernav2 iconmenu">
     	<ul>
         	<li>
-                <a href="#formsub" class="editor">K8S管理</a>
+                <a href="#formsub" class="editor">集群维护</a>
                 <span class="arrow"></span>
                 <ul id="formsub">
                     <li><a href="#" onclick="k8sAdd()">新增k8s集群</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#install_command" class="editor">安装验证命令维护</a>
+                <span class="arrow"></span>
+                <ul id="install_command">
                     <li><a href="#" onclick="installCheckAdd()">新增验证命令</a></li>
-                    <li><a href="#" onclick="installCheckList()">安装验证命令列表</a></li>
+                    <li><a href="#" onclick="installCheckList()">验证命令列表</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#install_step" class="editor">安装步骤维护</a>
+                <span class="arrow"></span>
+                <ul id="install_step">
+                    <li><a href="#" onclick="installStepAdd()">新增安装步骤</a></li>
+                    <li><a href="#" onclick="installStepList()">安装步骤列表</a></li>
                 </ul>
             </li>
         </ul>

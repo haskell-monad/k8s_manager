@@ -186,7 +186,7 @@ class KubeCluster(models.Model):
     class Meta:
         db_table = "kube_cluster"
 
-# k8s集群安装验证说明
+# k8s集群安装验证命令手册
 class InstallCheck(models.Model):
      # 命令名称，展示用
     command_name = models.CharField(max_length=30)
@@ -201,6 +201,32 @@ class InstallCheck(models.Model):
 
     class Meta:
         db_table = "install_check"
+
+class InstallStep(models.Model):
+    # 步骤id，不可以重复
+    step_id = models.IntegerField(primary_key=True)
+    # 步骤名称，展示用
+    step_name = models.CharField(max_length=20)
+    # 改装该步骤，需要调用的函数
+    step_function = models.CharField(max_length=40)
+    # 步骤所属分类，如：安装准备/分步安装/一键安装等，展示用
+    step_category = models.IntegerField(choices=common.INSTALL_STEP_CATEGORY)
+    # 要执行该步骤，当前步骤最小值，如：安装master之前，需要先配置免密钥登陆
+    step_before = models.IntegerField(null=True,blank=True)
+    # 该步骤是否可以跳过，意味着该步骤不是强制安装
+    step_skip = models.CharField(max_length=5,choices=common.COMMON_STATUS)
+    # 该步骤使用的yml文件
+    step_yml_file = models.CharField(max_length=100,null=True,blank=True)
+    # 该步骤使用的yml文件拷贝，例如：yml_file文件是个模板文件，不针对模板文件操作，而是拷贝出来一份，在临时文件中操作，然后删除掉临时文件
+    step_yml_file_tmp = models.CharField(max_length=100,null=True,blank=True)
+    # 该步骤在当前类别下的顺序值
+    step_sort = models.IntegerField(null=True,blank=True)
+    # 步骤描述
+    step_desc = models.CharField(max_length=200,null=True,blank=True)
+    
+    class Meta:
+        db_table = "install_step"
+
 
 class Server(models.Model):
     id = models.IntegerField(primary_key=True)
