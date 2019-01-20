@@ -5,6 +5,33 @@ INSERT INTO "assets" VALUES (3, '', 5, 3, NULL, '2019-01-19', '2019-01-19', 'adm
 COMMIT;
 
 BEGIN;
+INSERT INTO "product" VALUES (1, '支付系统', '支付系统啊', '需求收集', '张三丰', 1000, '张无忌', 2000, '张起灵', 3000, '张副官', 4000, '', 'http://wiki.com/pay/index', '2019-01-19', '2019-01-19', 'admin', '', NULL, '');
+INSERT INTO "product" VALUES (2, '移动端APP', '移动端app', '需求收集', '凌云', 333, '壮志', '020-2000', '岭南', '300-11121', '黑帽子', '040-2121', '', 'http://wiki.com/app/index', '2019-01-19', '2019-01-19', 'admin', '', NULL, '');
+COMMIT;
+
+BEGIN;
+INSERT INTO "product_version" VALUES (1, 2, 'app-v1.0.0', '张学友', '2019-01-01', '2019-02-20', 'http://wiki.com/app/v1.0.0/index.html', 5, NULL, 333, '张无忌', '020-2000', '郭富城', 3000, '刘德华', '040-4000', '2019-01-19', '2019-01-19', 'admin', '', '商品 搜索 支付');
+INSERT INTO "product_version" VALUES (2, 2, 'app-v2.0.0', '凌云', '2019-01-20', '2019-03-05', 'http://wiki.com/app/v2.0.0/index.html', 2, NULL, 333, '黎明', '020-2000', '张起灵', 3000, '刘德华', '040-4000', '2019-01-19', '2019-01-19', 'admin', '', '邀请 活动 周年庆');
+COMMIT;
+
+BEGIN;
+INSERT INTO "kube_config" VALUES (1, 'test', 'v1.10', 'multi-master', '192.168.150.181', 'yes', 'yes', '20000-40000', '192.168.150.187', 'https://192.168.150.187:8443', 'flannel', '10.68.0.0/16', '172.20.0.0/16', '10.68.0.1', '10.68.0.2', 'cluster.local.', 'admin', 'admin123456', '/opt/kube/bin', '/etc/kubernetes/ssl', '/etc/ansible', 'no', '', -100, '集群描述啊', '2019-01-19', 'admin', '2019-01-19', '');
+COMMIT;
+
+BEGIN;
+INSERT INTO "kube_cluster" VALUES (1, 1, '192.168.150.184', 'test.harbor.com', 'harbor', 'root', 'Linux2019', 22, NULL, 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+INSERT INTO "kube_cluster" VALUES (2, 1, '192.168.150.181', NULL, 'k8s', 'root', 'Linux2019', 22, NULL, 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+INSERT INTO "kube_cluster" VALUES (3, 1, '192.168.150.182', NULL, 'k8s', 'root', 'Linux2019', 22, NULL, 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+INSERT INTO "kube_cluster" VALUES (4, 1, '192.168.150.184', NULL, 'k8s', 'root', 'Linux2019', 22, NULL, 'backup', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+INSERT INTO "kube_cluster" VALUES (5, 1, '192.168.150.181', NULL, 'etcd', 'root', 'Linux2019', 22, 'etcd1', 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+INSERT INTO "kube_cluster" VALUES (6, 1, '192.168.150.182', NULL, 'etcd', 'root', 'Linux2019', 22, 'etcd2', 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+INSERT INTO "kube_cluster" VALUES (7, 1, '192.168.150.183', NULL, 'etcd', 'root', 'Linux2019', 22, 'etcd3', 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+INSERT INTO "kube_cluster" VALUES (8, 1, '192.168.150.185', NULL, 'loadbalance', 'root', 'Linux2019', 22, NULL, 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+INSERT INTO "kube_cluster" VALUES (9, 1, '192.168.150.186', NULL, 'loadbalance', 'root', 'Linux2019', 22, NULL, 'backup', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
+COMMIT;
+
+
+BEGIN;
 INSERT INTO "install_check" VALUES (1, '验证版本', '/etc/ansible/bin/kubectl version', 'k8s', '描述信息啊', 'yes');
 INSERT INTO "install_check" VALUES (2, '验证master/etcd', '/etc/ansible/bin/kubectl get componentstatus', 'k8s', '可以看到scheduler/controller-manager/etcd等组件 Healthy', 'yes');
 INSERT INTO "install_check" VALUES (3, '验证apiserver', '/etc/ansible/bin/kubectl cluster-info', 'k8s', '可以看到kubernetes master(apiserver)组件 running', 'yes');
@@ -62,54 +89,27 @@ INSERT INTO "install_check" VALUES (43, '查看helm版本', 'helm version', 'hel
 COMMIT;
 
 BEGIN;
-INSERT INTO "install_step" VALUES (-4, 'ansible环境准备', 'k8s_prepare_install_env', 1, -100, 'no', 1, '安装ansible环境，生成hosts文件等', NULL, '');
-INSERT INTO "install_step" VALUES (-3, '免密钥登陆配置', 'k8s_config_ssh_login', 1, -4, 'no', 2, '免密钥登陆各个集群节点', NULL, '_ssh.yml');
-INSERT INTO "install_step" VALUES (-2, '自定义操作', 'k8s_install_custom', 1, -3, 'yes', 3, '执行一些自定义操作，如配置速度快一些等dns等', NULL, '_custom.yml');
-INSERT INTO "install_step" VALUES (-1, '导入k8s二进制/镜像文件', 'k8s_import_install_package', 1, -2, 'no', 4, '导入k8s二进制文件和docker镜像', NULL, '');
-INSERT INTO "install_step" VALUES (0, '一键安装', 'xxxx', 3, NULL, 'yes', 1, '一键部署集群', NULL, '');
-INSERT INTO "install_step" VALUES (1, '安装准备', 'k8s_init_depend', 2, -1, 'no', 1, '安装准备，安装一些必要的依赖', NULL, '01.prepare.yml');
-INSERT INTO "install_step" VALUES (2, '安装k8s-etcd', 'k8s_instll_etcd', 2, 1, 'no', 2, '安装etcd集群等', NULL, '02.etcd.yml');
-INSERT INTO "install_step" VALUES (3, '安装k8s-docker', 'k8s_install_docker', 2, 2, 'no', 3, '安装docker', NULL, '03.docker.yml');
-INSERT INTO "install_step" VALUES (4, '安装k8s-master', 'k8s_install_master', 2, 3, 'no', 4, '安装master', NULL, '04.kube-master.yml');
-INSERT INTO "install_step" VALUES (5, '安装k8s-node', 'k8s_install_node', 2, 4, 'no', 5, '安装node节点', NULL, '05.kube-node.yml');
-INSERT INTO "install_step" VALUES (6, '安装k8s-network', 'k8s_install_network', 2, 5, 'no', 6, '安装网络插件', NULL, '06.network.yml');
-INSERT INTO "install_step" VALUES (7, '安装k8s-plugins', 'k8s_install_plugins', 2, 6, 'no', 7, '安装一些必要的插件', NULL, '07.cluster-addon.yml');
-INSERT INTO "install_step" VALUES (11, '安装Harbor', 'k8s_install_harbor', 6, 7, 'yes', 1, '安装harbor', NULL, '11.harbor.yml');
-INSERT INTO "install_step" VALUES (12, '安全安装 helm（在线）', 'k8s_install_helm_online', 6, 7, 'yes', 2, '安装helm', NULL, '');
-INSERT INTO "install_step" VALUES (13, '安全安装 helm（离线）', 'k8s_install_helm_offline', 6, 7, 'yes', 3, '安装helm', NULL, '');
-INSERT INTO "install_step" VALUES (14, '安装Jenkins', 'k8s_install_jenkins', 6, 7, 'yes', 4, '安装jenkins', NULL, '');
-INSERT INTO "install_step" VALUES (15, '安装Gitlab', 'k8s_install_gitlab', 6, 7, 'yes', 6, '安装gitlab', NULL, '');
-INSERT INTO "install_step" VALUES (20, '新增k8s-node节点', 'k8s_install_new_node', 4, 7, 'yes', 1, '增加node节点', NULL, '20.addnode.yml');
-INSERT INTO "install_step" VALUES (21, '新增k8s-master节点', 'k8s_install_new_master', 4, 7, 'yes', 2, '新增master节点', NULL, '21.addmaster.yml');
-INSERT INTO "install_step" VALUES (22, '删除集群节点', 'k8s_install_remove_node', 5, 7, 'yes', 1, '移除k8s集群中的节点', 'clean_one_node_1.yml', 'tools/clean_one_node.yml');
-INSERT INTO "install_step" VALUES (99, '清理集群', 'k8s_install_clear', 3, NULL, 'yes', 2, '一键清理集群', NULL, '99.clean.yml');
-COMMIT;
-
-
-BEGIN;
-INSERT INTO "kube_cluster" VALUES (1, 1, '192.168.150.184', 'test.harbor.com', 'harbor', 'root', 'Linux2019', 22, NULL, 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-INSERT INTO "kube_cluster" VALUES (2, 1, '192.168.150.181', NULL, 'k8s', 'root', 'Linux2019', 22, NULL, 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-INSERT INTO "kube_cluster" VALUES (3, 1, '192.168.150.182', NULL, 'k8s', 'root', 'Linux2019', 22, NULL, 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-INSERT INTO "kube_cluster" VALUES (4, 1, '192.168.150.184', NULL, 'k8s', 'root', 'Linux2019', 22, NULL, 'backup', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-INSERT INTO "kube_cluster" VALUES (5, 1, '192.168.150.181', NULL, 'etcd', 'root', 'Linux2019', 22, 'etcd1', 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-INSERT INTO "kube_cluster" VALUES (6, 1, '192.168.150.182', NULL, 'etcd', 'root', 'Linux2019', 22, 'etcd2', 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-INSERT INTO "kube_cluster" VALUES (7, 1, '192.168.150.183', NULL, 'etcd', 'root', 'Linux2019', 22, 'etcd3', 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-INSERT INTO "kube_cluster" VALUES (8, 1, '192.168.150.185', NULL, 'loadbalance', 'root', 'Linux2019', 22, NULL, 'master', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-INSERT INTO "kube_cluster" VALUES (9, 1, '192.168.150.186', NULL, 'loadbalance', 'root', 'Linux2019', 22, NULL, 'backup', NULL, 'yes', '2019-01-19', '2019-01-19', 1);
-COMMIT;
-
-BEGIN;
-INSERT INTO "kube_config" VALUES (1, 'test', 'v1.10', 'multi-master', '192.168.150.181', 'yes', 'yes', '20000-40000', '192.168.150.187', 'https://192.168.150.187:8443', 'flannel', '10.68.0.0/16', '172.20.0.0/16', '10.68.0.1', '10.68.0.2', 'cluster.local.', 'admin', 'admin123456', '/opt/kube/bin', '/etc/kubernetes/ssl', '/etc/ansible', 'no', '', -100, '集群描述啊', '2019-01-19', 'admin', '2019-01-19', '');
-COMMIT;
-
-BEGIN;
-INSERT INTO "product" VALUES (1, '支付系统', '支付系统啊', '需求收集', '张三丰', 1000, '张无忌', 2000, '张起灵', 3000, '张副官', 4000, '', 'http://wiki.com/pay/index', '2019-01-19', '2019-01-19', 'admin', '', NULL, '');
-INSERT INTO "product" VALUES (2, '移动端APP', '移动端app', '需求收集', '凌云', 333, '壮志', '020-2000', '岭南', '300-11121', '黑帽子', '040-2121', '', 'http://wiki.com/app/index', '2019-01-19', '2019-01-19', 'admin', '', NULL, '');
-COMMIT;
-
-BEGIN;
-INSERT INTO "product_version" VALUES (1, 2, 'app-v1.0.0', '张学友', '2019-01-01', '2019-02-20', 'http://wiki.com/app/v1.0.0/index.html', 5, NULL, 333, '张无忌', '020-2000', '郭富城', 3000, '刘德华', '040-4000', '2019-01-19', '2019-01-19', 'admin', '', '商品 搜索 支付');
-INSERT INTO "product_version" VALUES (2, 2, 'app-v2.0.0', '凌云', '2019-01-20', '2019-03-05', 'http://wiki.com/app/v2.0.0/index.html', 2, NULL, 333, '黎明', '020-2000', '张起灵', 3000, '刘德华', '040-4000', '2019-01-19', '2019-01-19', 'admin', '', '邀请 活动 周年庆');
+INSERT INTO "install_step" VALUES (-4, 'ansible环境准备', 'k8s_prepare_install_env', 1, 'no', 1, '安装ansible环境，生成hosts文件等', '', NULL, -100, NULL, '');
+INSERT INTO "install_step" VALUES (-3, '免密钥登陆配置', 'k8s_config_ssh_login', 1, 'no', 2, '免密钥登陆各个集群节点', '_ssh.yml', NULL, -4, NULL, '');
+INSERT INTO "install_step" VALUES (-2, '自定义操作', 'install_template', 1, 'yes', 3, '执行一些自定义操作，如配置速度快一些等dns等', '_custom.yml', NULL, -3, NULL, '');
+INSERT INTO "install_step" VALUES (-1, '导入k8s二进制/镜像文件', 'k8s_import_install_package', 1, 'no', 4, '导入k8s二进制文件和docker镜像', '', NULL, -2, NULL, '');
+INSERT INTO "install_step" VALUES (0, '一键安装', 'xxxx', 3, 'yes', 1, '一键部署集群', '', NULL, NULL, NULL, NULL);
+INSERT INTO "install_step" VALUES (1, '安装准备', 'install_template', 2, 'no', 1, '安装准备，安装一些必要的依赖', '01.prepare.yml', NULL, -1, NULL, '');
+INSERT INTO "install_step" VALUES (2, '安装k8s-etcd', 'install_template', 2, 'no', 2, '安装etcd集群等', '02.etcd.yml', NULL, 1, NULL, '');
+INSERT INTO "install_step" VALUES (3, '安装k8s-docker', 'install_template', 2, 'no', 3, '安装docker', '03.docker.yml', NULL, 2, NULL, '');
+INSERT INTO "install_step" VALUES (4, '安装k8s-master', 'install_template', 2, 'no', 4, '安装master', '04.kube-master.yml', NULL, 3, 'after_update_kube_cluster_master_node_status', '');
+INSERT INTO "install_step" VALUES (5, '安装k8s-node', 'install_template', 2, 'no', 5, '安装node节点', '05.kube-node.yml', NULL, 4, 'after_update_kube_cluster_node_node_status', '');
+INSERT INTO "install_step" VALUES (6, '安装k8s-network', 'install_template', 2, 'no', 6, '安装网络插件', '06.network.yml', NULL, 5, NULL, '');
+INSERT INTO "install_step" VALUES (7, '安装k8s-plugins', 'install_template', 2, 'no', 7, '安装一些必要的插件', '07.cluster-addon.yml', NULL, 6, 'after_update_kube_config_deploy_status', '');
+INSERT INTO "install_step" VALUES (11, '安装Harbor', 'k8s_install_harbor', 6, 'yes', 1, '安装harbor', '11.harbor.yml', NULL, 7, '', 'before_check_k8s_deploy_status');
+INSERT INTO "install_step" VALUES (12, '安全安装 helm（在线）', 'k8s_install_helm_online', 6, 'yes', 2, '安装helm', 'roles/helm/helm.yml', NULL, 7, '', 'before_check_k8s_deploy_status');
+INSERT INTO "install_step" VALUES (13, '安全安装 helm（离线）', 'k8s_install_helm_offline', 6, 'yes', 3, '安装helm', 'roles/helm/helm.yml', NULL, 7, '', 'before_check_k8s_deploy_status');
+INSERT INTO "install_step" VALUES (14, '安装Jenkins', 'k8s_install_jenkins', 6, 'yes', 4, '安装jenkins', '', NULL, 7, '', 'before_check_k8s_deploy_status');
+INSERT INTO "install_step" VALUES (15, '安装Gitlab', 'k8s_install_gitlab', 6, 'yes', 6, '安装gitlab', '', NULL, 7, '', 'before_check_k8s_deploy_status');
+INSERT INTO "install_step" VALUES (20, '新增k8s-node节点', 'k8s_install_new_node', 4, 'yes', 1, '增加node节点', '20.addnode.yml', NULL, 7, '', 'before_check_k8s_deploy_status');
+INSERT INTO "install_step" VALUES (21, '新增k8s-master节点', 'k8s_install_new_master', 4, 'yes', 2, '新增master节点', '21.addmaster.yml', NULL, 7, '', 'before_check_k8s_deploy_status');
+INSERT INTO "install_step" VALUES (22, '删除集群节点', 'k8s_install_remove_node', 5, 'yes', 1, '移除k8s集群中的节点', 'tools/clean_one_node.yml', 'clean_one_node_1.yml', 7, '', 'before_check_k8s_deploy_status');
+INSERT INTO "install_step" VALUES (99, '清理集群', 'install_template', 3, 'yes', 2, '一键清理集群', '99.clean.yml', NULL, NULL, NULL, NULL);
 COMMIT;
 
 
