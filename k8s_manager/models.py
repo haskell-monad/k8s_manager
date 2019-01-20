@@ -194,6 +194,8 @@ class InstallCheck(models.Model):
     command = models.CharField(max_length=500)
     # 命令所属类别，如etcd/集群pod状态等
     command_category = models.CharField(max_length=20,null=True,blank=True)
+    # 是否可执行
+    command_exec = models.CharField(max_length=5,choices=common.COMMON_STATUS)
     # 命令描述
     command_desc = models.CharField(max_length=500,null=True,blank=True)
 

@@ -85,7 +85,6 @@ function k8sClusterAdd(kube_id){
 
 // 显示消息
 function show_msg(msg){
-
 	jQuery("#reply").append("<span class=\"msg\">"+msg+"</span>");
 }
 
@@ -96,9 +95,8 @@ function request_by_ajax(_url,_callback){
 		  dataType: 'html',
 		  success: function (data) {
 		  	console.log("request_by_ajax",data);
-			show_msg(data);
 		 	if(typeof _callback === "function"){
-		 		_callback();
+		 		_callback(data);
 		 	}
 		  },
 		  fail: function (err, status) {
@@ -107,17 +105,24 @@ function request_by_ajax(_url,_callback){
 	})
 }
 
-
 // 执行集群部署命令
 function k8s_install_command(kube_id,step_id){
-	request_by_ajax("/k8s/install/command/"+kube_id+"/"+step_id);
+	request_by_ajax("/k8s/install/command/"+kube_id+"/"+step_id,show_msg);
 }
 
 // 执行集群部署检测命令
 function k8s_check_command(kube_id,command_id){
-	request_by_ajax("/k8s/check/command/"+kube_id+"/"+command_id);
+	request_by_ajax("/k8s/check/command/"+kube_id+"/"+command_id,show_msg);
 }
 
+function alert_msg(msg){
+	alert(msg)
+}
+
+// 删除k8s集群节点
+function k8s_remove_node(kube_id,node_id){
+	request_by_ajax("/k8s/remove/node/"+kube_id+"/"+node_id,alert_msg);
+}
 
 
 

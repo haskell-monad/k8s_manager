@@ -1,6 +1,6 @@
 <div class="pageheader notab">
-    <h5 class="pagetitle">k8s集群列表</h5>
-    <span class="pagedesc">可以管理指定k8s集群 </span>            
+    <h5 class="pagetitle">k8s集群节点列表</h5>
+    <span class="pagedesc">当前集群：{{ kube.kube_name }} - {{ kube.kube_version }} - {{ kube.deploy_mode }} </span>            
 </div>
 <div id="contentwrapper" class="contentwrapper">
     <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
@@ -40,12 +40,16 @@
                 <td>{{ cluster.node_role }}</td>
                 <td>未知</td>
                 <td class="center">
-                    <a href="/k8s/cluster/edit/{{ cluster.id }}">节点状态信息</a>
-                    <a href="/kube/version/{{ kube.id }}">运行服务信息</a>
-                    <a href="/kube/version/{{ kube.id }}">执行命令</a>
+                    <a href="#">节点状态信息</a>
+                    <a href="#" onclick="k8s_remove_node({{ cluster.kube_id }},{{ cluster.id }})">删除节点</a>
+                    <a href="#">运行服务信息</a>
+                    <a href="#">执行命令</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+
+{% load staticfiles  %}
+<script type="text/javascript" src="{% static 'js/custom.js' %}" ></script>

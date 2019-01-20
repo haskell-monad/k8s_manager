@@ -70,23 +70,6 @@ def edit(request, pk):
             kube.save()
         return redirect('/k8s')
 
-
-# 安装集群页面
-def install(request,pk):
-
-    context = build_context()
-
-    context['k8s_prepare'] = common.K8S_INSTALL_PRE
-    context['k8s_install'] = common.K8S_INSTALL
-    context['k8s_step'] = common.K8S_INSTALL_STEP
-    context['k8s_clean'] = common.K8S_INSTALL_CLEAN
-
-    context['k8s_add_node'] = common.K8S_INSTALL_ADD_NODE
-    context['k8s_add_master'] = common.K8S_INSTALL_ADD_MASTER
-    context['kube_id'] = pk
-    return render(request, 'install/index.html', context)
-
-
 # 安装验证命令列表
 def command_add_list(request):
     listData = InstallCheck.objects.all()

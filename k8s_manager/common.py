@@ -146,19 +146,5 @@ STEP_MAP = {
 }
 
 
-# 集群部署操作每一步验证
-K8S_INSTALL_CHECK = (
-    (1,"kubectl version"),
-    (2,"kubectl get componentstatus"),
-    (3,"kubectl cluster-info"),
-    (4,"kubectl get node"),
-    (5,"kubectl get pod --all-namespace"),
-    (6,"kubectl get svc --all-namespaces"),
-
-
-)
-
-
-
 
 

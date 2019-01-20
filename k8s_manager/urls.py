@@ -58,6 +58,9 @@ urlpatterns = [
     # 执行集群检测命令
     url(r'^k8s/check/command/(\d+)/(\d+)$', kube_install.install_check_command),
 
+    # 删除k8s节点
+    url(r'^k8s/remove/node/(\d+)/(\d+)$', kube_install.k8s_remove_node),
+
 
     # 编辑集群节点信息
     url(r'^k8s/cluster/(\d+)$', kube_cluster.index),

@@ -11,7 +11,7 @@ from .forms import KubeConfigForm
 from django.forms.models import model_to_dict
 from . import common
 from k8s_manager.celery import app
-from k8s_manager.tasks import k8s_prepare_install_env, k8s_config_ssh_login, k8s_import_install_package, k8s_init_depend,k8s_instll_etcd,k8s_install_docker,k8s_install_master, k8s_install_node,k8s_install_network,k8s_install_plugins,k8s_install_clear,k8s_install_custom 
+from k8s_manager.tasks import k8s_prepare_install_env, k8s_config_ssh_login, k8s_import_install_package, k8s_init_depend,k8s_instll_etcd,k8s_install_docker,k8s_install_master, k8s_install_node,k8s_install_network,k8s_install_plugins,k8s_install_clear,k8s_install_custom,k8s_install_check_command,k8s_install_remove_node 
 
 logger = logging.getLogger('django')
 
@@ -152,20 +152,33 @@ def install_command(request,pk,step_id):
 
 # 执行安装检测命令，用来验证安装是否正确
 def install_check_command(request,pk,command_id):
-
     # todo 这里在执行验证命令前，需要判断下是否可以执行该验证命令，通过当前执行的步骤id
-
+    # todo 应该根据集群id，链接到具体的集群上执行，这里默认在部署节点上执行了
     check_command = InstallCheck.objects.get(id=command_id)
-
-    s = k8s_install_check_command.delay(pk,command_id)
-    print(s)
     result = model_to_dict(check_command,exclude = ['id',"command_category"])
-
     json_data = json.dumps(result,ensure_ascii=False,indent=2)
 
-
+    if check_command.command_exec == common.COMMON_STATUS[0][0]:
+        s = k8s_install_check_command.delay(pk,command_id)
+        print(s)
     return HttpResponse(json_data,content_type="application/json,charset=utf-8")
 
+# 删除某个集群节点
+def k8s_remove_node(request,pk,node_id):
+
+    kube_cluster = KubeCluster.objects.get(id=node_id)
+    result = {}
+    if not kube_cluster:
+        result = {"status":"error","data":"该节点不存在，不可以删除"}
+    elif kube_cluster.install_type != common.COMMON_STATUS[0][0]:
+        result = {"status":"error","data":"该节点未安装，不可以删除"}   
+    elif kube_cluster.node_status == common.COMMON_STATUS[0][0]:
+        result = model_to_dict(check_command,exclude = ['id'])
+        s = k8s_install_remove_node.delay(pk,node_id)
+    else:
+        result = {"status":"error","data":"该节点未部署，不可以删除"}
+
+    return HttpResponse(json.dumps(result,ensure_ascii=False,indent=2),content_type="application/json,charset=utf-8")
 
 
 

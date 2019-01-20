@@ -22,7 +22,7 @@ def index(request,kube_id):
 
     context['kube_id'] = kube_id
     context['listData'] = KubeCluster.objects.filter(kube_id=kube_id)
-
+    context['kube'] = KubeConfig.objects.get(id=kube_id)
     return render(request, 'kube_cluster/index.html', context)
 
 def add(request,kube_id):

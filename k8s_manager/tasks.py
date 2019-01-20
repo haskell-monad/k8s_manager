@@ -188,6 +188,26 @@ def k8s_install_new_node(kube_id,step_id):
     else:
        log.error("新增node节点失败,生成hosts文件异常[%s:%s]" % (kube_id,step_id))
 
+@task
+def k8s_install_remove_node(kube_id,node_id):
+    kube_cluster = KubeCluster.objects.get(id=node_id)
+    if not kube_cluster:
+        log.error("节点不存在，不可以删除该节点[%s:%s]" % (kube_id,node_id))
+        return
+    node_ip = kube_cluster.node_ip
+    cp = os.system("cp /etc/ansible/tools/clean_one_node.yml /etc/ansible/tools/clean_one_node_1.yml")
+    if cp == 0 and os.path.exists("/etc/ansible/tools/clean_one_node_1.yml"):
+        os.system("sed -i \"s/NODE_TO_DEL/"+node_ip+"/g\" /etc/ansible/tools/clean_one_node_1.yml")
+        r = os.system("ansible-playbook /etc/ansible/tools/clean_one_node_1.yml")
+        if r == 0:
+            log.debug("删除k8s集群节点成功[%s:%s]" % (kube_id,node_ip))
+        else:
+            log.debug("执行删除k8s集群节点操作完成，请自行验证该节点是否已删除[%s:%s]" % (kube_id,node_ip))
+        os.system("rm -rf /etc/ansible/tools/clean_one_node_1.yml")
+        log.error("更新集群节点状态为[未部署][%s:%s]" % (kube_id,node_ip))
+        KubeCluster.objects.filter(kube_id=kube_id).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[1][0]).update(node_status=common.K8S_NODE_STATUS[0][0])
+    return
+
 # 清理集群
 @task
 def k8s_install_clear(kube_id,step_id):
