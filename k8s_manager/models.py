@@ -232,6 +232,18 @@ class InstallStep(models.Model):
         db_table = "install_step"
 
 
+class InstallLock(models.Model):
+    # 集群id
+    kube_id = models.IntegerField()
+    # 自定义key
+    lock_key = models.CharField(max_length=30)
+    create_date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('kube_id','lock_key',)
+        db_table = "install_lock"
+
+
 class Server(models.Model):
     id = models.IntegerField(primary_key=True)
     manage_ip = models.CharField(max_length=255)

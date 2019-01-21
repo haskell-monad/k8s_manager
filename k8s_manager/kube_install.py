@@ -11,7 +11,7 @@ from .forms import KubeConfigForm
 from django.forms.models import model_to_dict
 from . import common
 from k8s_manager.celery import app
-from k8s_manager.tasks import k8s_prepare_install_env, k8s_config_ssh_login, k8s_import_install_package,k8s_install_check_command,k8s_install_remove_node,k8s_install_harbor 
+from k8s_manager.tasks import k8s_prepare_install_env, k8s_import_install_package,k8s_install_check_command,k8s_install_remove_node 
 
 logger = logging.getLogger('django')
 

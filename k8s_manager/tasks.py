@@ -4,7 +4,7 @@ from celery import shared_task, task
 from celery.utils.log import get_task_logger
 import time
 import os
-from .models import KubeConfig, KubeCluster, InstallCheck, InstallStep
+from .models import KubeConfig, KubeCluster, InstallCheck, InstallStep, InstallLock
 from . import common
 
 log = get_task_logger("install")
@@ -78,19 +78,14 @@ def k8s_prepare_install_env(kube_id,step_id):
     else:
         log.error("生成/etc/ansible/hosts失败")
 
-
-# 执行免密钥登陆
-@task
-def k8s_config_ssh_login(kube_id,step_id):
-    log.debug("开始执行任务[%s:%s][免密钥登陆]" % (kube_id,step_id))
-
+# 生成id_rsa
+def before_generate_id_rsa(_kube_config,_install_step):
     if not os.path.exists("/root/.ssh/id_rsa"):
         k = exec_system("ssh-keygen -N '' -f /root/.ssh/id_rsa")
         if k != 0:
             log.error("任务[%s:%s][免密钥登陆]执行失败,执行ssh-keygen失败" % (kube_id,step_id))
-            return
-    install_template(kube_id,step_id)
-    log.debug("任务[%s:%s][免密钥登陆]执行完成" % (kube_id,step_id))
+            return False
+    return True
 
 
 # 导入k8s二进制/镜像文件
@@ -172,9 +167,6 @@ def exec_custom_function(_function,_kube_config,_install_step):
         log.debug(u"执行自定义函数成功[%s][%s][%s]" % (_kube_config.kube_name,_install_step.step_name,_function))
 
 
-######################## 
-######################## 调用install_template函数的方法近期将会清理掉，统一调用install_template函数，另外根据各个情况调用相应的before**和ater***函数，在install_step表中配置 
-########################
 @task
 def install_template(kube_id,step_id):
     kube_config = KubeConfig.objects.get(id=kube_id)
@@ -213,43 +205,19 @@ def install_template(kube_id,step_id):
         return False
     
 
-# 新增master
-@task
-def k8s_install_new_master(kube_id,step_id):
-    kube_config = KubeConfig.objects.get(id=kube_id)
-    if kube_config.deploy != common.COMMON_STATUS[0][0]:
-        log.error("此集群还未部署，不可以新增master节点[%s:%s]" % (kube_id,step_id))
-        return
-    flag = k8s_generate_hosts(kube_id,common.K8S_DEPLOY_TYPE[1][0])
-    if flag and os.path.exists("/etc/ansible/hosts"):
-        r = install_template(kube_id,step_id)
-        if r:
-            # 更新节点部署状态
-            log.error("更新新增master节点状态为[已部署][%s:%s]" % (kube_id,step_id))
-            KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[0][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
-        else:
-            log.error("新增master节点失败[%s:%s]" % (kube_id,step_id))
+# 检测集群是否已部署过，然后生成hosts文件
+def before_generate_hosts_file(_kube_config,_install_step):
+    flag = before_check_k8s_deploy_status(_kube_config,_install_step)
+    if not flag:
+        return False
+    rs = k8s_generate_hosts(_kube_config.id,common.K8S_DEPLOY_TYPE[1][0])
+    if not rs:
+        return False
+    elif not os.path.exists("/etc/ansible/hosts"):
+        return False
     else:
-       log.error("新增master节点失败,生成hosts文件异常[%s:%s]" % (kube_id,step_id))
+        return True
 
-# 新增node
-@task
-def k8s_install_new_node(kube_id,step_id):
-    kube_config = KubeConfig.objects.get(id=kube_id)
-    if kube_config.deploy != common.COMMON_STATUS[0][0]:
-        log.error("此集群还未部署，不可以新增node节点[%s:%s]" % (kube_id,step_id))
-        return
-    flag = k8s_generate_hosts(kube_id,common.K8S_DEPLOY_TYPE[1][0])
-    if flag and os.path.exists("/etc/ansible/hosts"):
-        r = install_template(kube_id,step_id)
-        if r:
-            # 更新节点部署状态
-            log.error("更新新增node节点状态为[已部署][%s:%s]" % (kube_id,step_id))
-            KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[0][0]).filter(node_role=common.K8S_NODE_ROLE[1][0]).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[0][0]).update(node_status=common.K8S_NODE_STATUS[1][0])
-        else:
-            log.error("新增node节点失败[%s:%s]" % (kube_id,step_id))
-    else:
-       log.error("新增node节点失败,生成hosts文件异常[%s:%s]" % (kube_id,step_id))
 
 @task
 def k8s_install_remove_node(kube_id,node_id):
@@ -271,21 +239,85 @@ def k8s_install_remove_node(kube_id,node_id):
         KubeCluster.objects.filter(kube_id=kube_id).filter(install_type=common.COMMON_STATUS[0][0]).filter(node_status=common.K8S_NODE_STATUS[1][0]).update(node_status=common.K8S_NODE_STATUS[0][0])
     return
 
-# 安装harbor
-@task
-def k8s_install_harbor(kube_id,step_id):
-    print("%s : %s" % (kube_id,step_id))
-    return
 
-# 安全安装 helm（在线）
-@task
-def k8s_install_helm_online(kube_id,step_id):
-    install_template(kube_id,step_id)
+# 检测harbor服务器是否配置
+def before_check_harbor_config(_kube_config,_install_step):
+    rs = before_check_k8s_deploy_status(_kube_config,_install_step)
+    if not rs:
+        return False
+    kube_id = _kube_config.id
+    harbor_list = KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[3][0])
+    if not harbor_list:
+        log.error("harbor节点没有配置,请先配置[%s]" % kube_id)
+        return False
+    new_node = filter(lambda obj : obj.node_status == common.K8S_NODE_STATUS[0][0],harbor_list)    
+    if not new_node:
+        log.error("已经部署过harbor,不可以重复部署[%s]" % kube_id)
+        return False
+    return True
 
-# 安全安装 helm（离线）
-@task
-def k8s_install_helm_offline(kube_id,step_id):
+# 更新harbor部署状态为：已部署
+def after_update_harbor_install_status(_kube_config,_install_step):
+    kube_id = _kube_config.id
+    log.info("更新harbor部署状态为:已部署[%s]" % kube_id)
+    KubeCluster.objects.filter(kube_id=kube_id).filter(node_type=common.K8S_NODE_TYPE[3][0]).filter(node_status=common.K8S_NODE_STATUS[1][0]).update(node_status=common.K8S_NODE_STATUS[0][0])
 
+# 检测helm是否已经安装
+def before_check_helm(_kube_config,_install_step):
+    rs = before_check_k8s_deploy_status(_kube_config,_install_step)
+    if not rs:
+        return False
+    if os.path.exists("/opt/kube/bin/helm"):
+        log.error("helm已经安装,不可以重复安装[%s]" % kube_id)
+        return False
+    r = exec_system("which helm")
+    if r == 0:
+        log.error("helm已经安装,不可以重复安装[%s]" % kube_id)
+        return False
+    try:
+        InstallLock.objects.create(kube_id=_kube_config.id,lock_key=common.HELM_LOCK_KEY)
+    except Exception as e:
+        log.error("helm正在安装,请稍后重试[%s]" % kube_id)
+        return False
+    return True
+
+# 离线安装helm,准备配置文件
+def before_install_helm_offline(_kube_config,_install_step):
+    rs = before_check_helm(_kube_config,_install_step)
+    if not rs:
+        return False
+    exec_system("mkdir -p /opt/helm-repo")
+    r = exec_system("nohup helm serve --address 127.0.0.1:8879 --repo-path /opt/helm-repo &")
+    if r != 0:
+        log.error("启动helm repo server失败[%s]" % _kube_config.id)
+        return False
+    # 准备配置文件
+    rp = os.system(u'sed -i ".bak" "s/^repo_url/#&/g" /etc/ansible/roles/helm/default/main.yml')
+    os.system(u'echo "repo_url: http://127.0.0.1:8879" >> /etc/ansible/roles/helm/default/main.yml')
+    return True
+
+# 离线安装helm后，还原配置文件
+def after_install_helm_offline(_kube_config,_install_step):
+    # 删除添加的地址
+    os.system('sed -i ".bak" "/repo_url: http:\\/\\/127.0.0.1:8879/d" /etc/ansible/roles/helm/default/main.yml')
+    # 还原被注释的地址
+    str = os.system(u'sed -i ".bak" "1,/^#repo_url/ s/^#//" /etc/ansible/roles/helm/default/main.yml')
+    after_install_helm(_kube_config,_install_step)
+    
+# 安装helm完成后，释放锁
+def after_install_helm(_kube_config,_install_step):
+    InstallLock.objects.filter(kube_id=_kube_config.id).filter(lock_key=common.HELM_LOCK_KEY).delete()
+
+
+# 安装jenkins前，检测配置
+def before_install_jenkins(_kube_config,_install_step):
+    rs = before_check_k8s_deploy_status(_kube_config,_install_step)
+    if not rs:
+        return False
+
+# 安装traefik
+@task
+def k8s_install_traefik():
     return
 
 # 安装jenkins
