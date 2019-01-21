@@ -4,3 +4,4 @@
 django.log
 k8s_manager/migrations/**
 k8s_manager/*.pyc
+dump.rdb
