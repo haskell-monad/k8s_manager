@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster, InstallCheck, InstallStep
+from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster, InstallCheck, InstallStep, NfsConfig
 from django.forms import ModelForm
 from django.forms import widgets as wid
 from . import common
@@ -239,6 +239,27 @@ class ServerForm(ModelForm):
             "id": wid.HiddenInput(),
         }
 
+class NfsConfigForm(ModelForm):
+    class Meta:
+        model = NfsConfig
+        fields = ('nfs_ip','nfs_status','nfs_login_user','nfs_passwd','nfs_port','nfs_user','share_dir','nfs_exports','id'
+        )
+        exclude = None          #排除的字段
+        labels = None           #提示信息
+        help_texts = None       #帮助提示信息
+        widgets = None          #自定义插件
+        error_messages = None   #自定义错误信息
+        widgets = {
+            "nfs_ip": wid.TextInput(attrs={'class':'smallinput'}),
+            "nfs_status": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
+            "nfs_login_user": wid.TextInput(attrs={'class':'smallinput'}),
+            "nfs_passwd": wid.TextInput(attrs={'class':'smallinput'}),
+            "nfs_port":  wid.TextInput(attrs={'class':'smallinput'}),
+            "nfs_user":  wid.TextInput(attrs={'class':'smallinput'}),
+            "share_dir":  wid.TextInput(attrs={'class':'smallinput'}),
+            "nfs_exports": wid.Textarea(attrs={'cols': 80, 'rows': 5, 'class':'mediuminput'}),
+            "id": wid.HiddenInput(),
+        }
 
 
 

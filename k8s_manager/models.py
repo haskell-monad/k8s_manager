@@ -300,7 +300,23 @@ class VersionEnv(models.Model):
         db_table = "version_env"
 
 
+class NfsConfig(models.Model):
+    nfs_ip = models.CharField(max_length=20)
+    nfs_login_user = models.CharField(max_length=20)
+    nfs_passwd = models.CharField(max_length=20)
+    nfs_port = models.IntegerField(null=True,blank=True)
+    nfs_user = models.CharField(max_length=20)
+    share_dir = models.CharField(max_length=40)
+    nfs_status = models.CharField(max_length=5,choices=common.COMMON_STATUS)
+    nfs_exports = models.CharField(max_length=500)
 
+    create_date = models.DateField(auto_now_add=True)
+    update_date = models.DateField(auto_now = True)
+    create_user = models.CharField(max_length=20)
+    update_user = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "nfs_config"
 
 
 

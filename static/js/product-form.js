@@ -163,5 +163,32 @@ jQuery(document).ready(function(){
 			}
 		});
 
+		jQuery("#_nfsConfig").validate({
+			rules: {
+				nfs_ip: "required",
+				nfs_status: "required",
+
+				nfs_login_user: "required",
+				nfs_passwd: "required",
+				nfs_port: "required",
+
+				nfs_user: "required",
+				share_dir: "required",
+				nfs_exports: "required",
+
+			},
+			messages: {
+				nfs_ip: "请设置NFS服务器ip",
+				nfs_status: "请输入步骤名称",
+				nfs_login_user: "请输入登陆用户名",
+				nfs_passwd: "请输入密码",
+				nfs_port: "请输入端口",
+
+				nfs_user: "请配置NFS用户名",
+				share_dir: "请配置共享目录",
+				nfs_exports: "请配置客户端共享目录",
+			}
+		});
+
 
 });

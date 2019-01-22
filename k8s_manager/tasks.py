@@ -309,6 +309,14 @@ def after_install_helm(_kube_config,_install_step):
     InstallLock.objects.filter(kube_id=_kube_config.id).filter(lock_key=common.HELM_LOCK_KEY).delete()
 
 
+@task
+def install_nfs_server():
+    # 需要生成两个文件，一个是：/etc/ansible/nfs-hosts 另一个是/etc/ansible/roles/nfs/default/main.yml
+    #generate_nfs_hosts()
+
+    exec_system("ansible-playbook -i /etc/ansible/nfs-hosts /etc/ansible/_nfs.yml")
+
+
 # 安装jenkins前，检测配置
 def before_install_jenkins(_kube_config,_install_step):
     rs = before_check_k8s_deploy_status(_kube_config,_install_step)
