@@ -34,6 +34,11 @@ VERSION_STATUS_VALUE = (
 
 version_status_list = map(lambda x: x[1], VERSION_STATUS_VALUE)
 
+# 存储类型
+STORAGE_TYPE = (
+    ("nfs","nfs"),
+    ("aliyun_nas","aliyun_nas")
+)
 
 # 通用状态
 COMMON_STATUS = (
@@ -118,6 +123,8 @@ step_category_list = map(lambda x: x[1], INSTALL_STEP_CATEGORY)
 category_list = filter(lambda x: x != INSTALL_STEP_CATEGORY[4][0],map(lambda x: x[0], INSTALL_STEP_CATEGORY))
 
 
+
+HELM_LOCK_KEY = "helm"
 
 
 

@@ -163,30 +163,33 @@ jQuery(document).ready(function(){
 			}
 		});
 
-		jQuery("#_nfsConfig").validate({
+		jQuery("#_storageConfig").validate({
 			rules: {
-				nfs_ip: "required",
-				nfs_status: "required",
-
-				nfs_login_user: "required",
-				nfs_passwd: "required",
-				nfs_port: "required",
-
-				nfs_user: "required",
-				share_dir: "required",
+				storage_type: "required",
+				server_ip: "required",
+				login_user: "required",
+				login_passwd: "required",
+				login_port: "required",
+				install_status: "required",
+				server_user: "required",
+				server_path: "required",
 				nfs_exports: "required",
-
+				storage_class: "required",
+				provisioner_name: "required",
 			},
 			messages: {
-				nfs_ip: "请设置NFS服务器ip",
-				nfs_status: "请输入步骤名称",
-				nfs_login_user: "请输入登陆用户名",
-				nfs_passwd: "请输入密码",
-				nfs_port: "请输入端口",
+				storage_type: "请选择存储类型",
+				server_ip: "请选择服务器IP",
+				login_user: "请输入登陆用户名",
+				login_passwd: "请输入密码",
+				login_port: "请输入端口",
+				install_status: "请选择安装状态",
+				server_user: "请配置NFS用户名",
+				server_path: "请配置共享目录",
+				nfs_exports: "请配置客户端NFS共享目录",
+				storage_class: "请设置storage_class",
+				provisioner_name: "请设置provisioner_name",
 
-				nfs_user: "请配置NFS用户名",
-				share_dir: "请配置共享目录",
-				nfs_exports: "请配置客户端共享目录",
 			}
 		});
 

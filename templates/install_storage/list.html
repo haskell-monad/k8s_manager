@@ -15,28 +15,36 @@
         <thead>
             <tr>
                 <th class="head0 nosort"></th>
-                <th class="head0">NFS服务器IP</th>
-                <th class="head1">NFS用户名</th>
-                <th class="head1">NFS服务器安装状态</th>
+                <th class="head0">存储类型</th>
+                <th class="head0">服务器IP</th>
+                <th class="head0">共享目录</th>
+                <th class="head1">服务器安装状态</th>
+                <th class="head1">storage_class</th>
+                <th class="head1">provisioner_name</th>
                 <th class="head0">操作</th>
             </tr>
         </thead>
         <!--内容-->
         <tbody>
-            {% for nfs in listData %}
+            {% for storage in listData %}
             <tr class="gradeX">
                 <td align="center">
-                    <span class="center"><input type="checkbox" value="{{ nfs.id }}"/></span>
+                    <span class="center"><input type="checkbox" value="{{ storage.id }}"/></span>
                 </td>
                 <td>
-                    <a href="#" onclick="installStepEdit({{ nfs.id }})">
-                    {{ nfs.nfs_ip }}
+                   {{ storage.storage_type }}
+                </td>
+                <td>
+                    <a href="#" onclick="installStorageEdit({{ storage.id }})">
+                    {{ storage.server_ip }}
                     </a>
                 </td>
-                <td>{{ nfs.nfs_user }}</td>
-                <td>{{ nfs.nfs_status }}</td>
+                <td>{{ storage.server_path }}</td>
+                <td>{{ storage.install_status }}</td>
+                <td>{{ storage.storage_class }}</td>
+                <td>{{ storage.provisioner_name }}</td>
                 <td class="center">
-                    <a href="#" onclick = "installStepEdit({{ nfs.id }})">编辑</a>
+                    <a href="#" onclick = "installStorageEdit({{ storage.id }})">编辑</a>
                 </td>
             </tr>
             {% endfor %}

@@ -76,6 +76,20 @@ function installCheckEdit(command_id){
 	flushHtmlByAjax("/k8s/command/edit/"+command_id,"centerContent");
 }
 
+// 新增 存储
+function installStorageAdd(){
+	flushHtmlByAjax("/storage/install/add","centerContent");
+}
+
+// 编辑 存储
+function installStorageEdit(storage_id){
+	flushHtmlByAjax("/storage/install/edit/"+storage_id,"centerContent");
+}
+
+// 存储列表
+function installStorageList(){
+	flushHtmlByAjax("/storage/install/list","centerContent");
+}
 
 
 

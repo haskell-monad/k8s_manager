@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster, InstallCheck, InstallStep, NfsConfig
+from .models import Assets, Product, ProductVersion, KubeConfig, Server, KubeCluster, InstallCheck, InstallStep, StorageConfig
 from django.forms import ModelForm
 from django.forms import widgets as wid
 from . import common
@@ -239,10 +239,10 @@ class ServerForm(ModelForm):
             "id": wid.HiddenInput(),
         }
 
-class NfsConfigForm(ModelForm):
+class StorageConfigForm(ModelForm):
     class Meta:
-        model = NfsConfig
-        fields = ('nfs_ip','nfs_status','nfs_login_user','nfs_passwd','nfs_port','nfs_user','share_dir','nfs_exports','id'
+        model = StorageConfig
+        fields = ('storage_type','server_ip','login_user','login_passwd','login_port','install_status','server_user','server_path','nfs_exports','storage_class','provisioner_name','id'
         )
         exclude = None          #排除的字段
         labels = None           #提示信息
@@ -250,14 +250,17 @@ class NfsConfigForm(ModelForm):
         widgets = None          #自定义插件
         error_messages = None   #自定义错误信息
         widgets = {
-            "nfs_ip": wid.TextInput(attrs={'class':'smallinput'}),
-            "nfs_status": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
-            "nfs_login_user": wid.TextInput(attrs={'class':'smallinput'}),
-            "nfs_passwd": wid.TextInput(attrs={'class':'smallinput'}),
-            "nfs_port":  wid.TextInput(attrs={'class':'smallinput'}),
-            "nfs_user":  wid.TextInput(attrs={'class':'smallinput'}),
-            "share_dir":  wid.TextInput(attrs={'class':'smallinput'}),
+            "storage_type": wid.Select(choices=common.STORAGE_TYPE,attrs={'style':'margin: 0px;height:30px'}),
+            "server_ip": wid.TextInput(attrs={'class':'smallinput'}),
+            "login_user": wid.TextInput(attrs={'class':'smallinput'}),
+            "login_passwd": wid.TextInput(attrs={'class':'smallinput'}),
+            "login_port": wid.TextInput(attrs={'class':'smallinput'}),
+            "install_status": wid.Select(choices=common.COMMON_STATUS,attrs={'style':'margin: 0px;height:30px'}),
+            "server_user": wid.TextInput(attrs={'class':'smallinput'}),
+            "server_path":  wid.TextInput(attrs={'class':'smallinput'}),
             "nfs_exports": wid.Textarea(attrs={'cols': 80, 'rows': 5, 'class':'mediuminput'}),
+            "storage_class": wid.TextInput(attrs={'class':'smallinput'}),
+            "provisioner_name": wid.TextInput(attrs={'class':'smallinput'}),
             "id": wid.HiddenInput(),
         }
 

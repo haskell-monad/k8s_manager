@@ -4,7 +4,7 @@ from celery import shared_task, task
 from celery.utils.log import get_task_logger
 import time
 import os
-from .models import KubeConfig, KubeCluster, InstallCheck, InstallStep, InstallLock, NfsConfig
+from .models import KubeConfig, KubeCluster, InstallCheck, InstallStep, InstallLock, StorageConfig
 from . import common
 
 log = get_task_logger("install")
@@ -308,7 +308,10 @@ def after_install_helm_offline(_kube_config,_install_step):
 def after_install_helm(_kube_config,_install_step):
     InstallLock.objects.filter(kube_id=_kube_config.id).filter(lock_key=common.HELM_LOCK_KEY).delete()
 
+# 创建nfs provisioner
+def instll_cluster_storage():
 
+    return
 
 @task
 def install_nfs_server():
@@ -330,20 +333,20 @@ def install_nfs_server():
     if not os.path.exists(default_yml):
         exec_system("mkdir -p %s" % default_yml)
 
-    nfs_list = NfsConfig.objects.filter(nfs_status=common.COMMON_STATUS[1][0])
+    nfs_list = StorageConfig.objects.filter(storage_type=common.STORAGE_TYPE[0][0]).filter(install_status=common.COMMON_STATUS[1][0])
 
     for nfs in nfs_list:
         # 生成 /etc/ansible/nfs-hosts
         with open(nfs_host,'w') as k:
             # ssh-login
             k.write("[ssh-addkey]\n")
-            k.write("%s ansible_ssh_user=\"%s\" ansible_ssh_pass=\"%s\" ansible_ssh_port=\"%s\"\n" % (nfs.nfs_ip,nfs.nfs_login_user,nfs.nfs_passwd,nfs.nfs_port))
+            k.write("%s ansible_ssh_user=\"%s\" ansible_ssh_pass=\"%s\" ansible_ssh_port=\"%s\"\n" % (nfs.server_ip,nfs.login_user,nfs.login_passwd,nfs.login_port))
             k.write("\n\n")
         # 生成 /etc/ansible/roles/nfs/default/main.yml
         with open(default_yml,'w') as f:
             # ssh-login
-            f.write("NFS_USER: \"%s\"\n" % nfs.nfs_user)
-            f.write("SHARE_DIR: \"%s\"\n" % nfs.share_dir)
+            f.write("NFS_USER: \"%s\"\n" % nfs.server_user)
+            f.write("SHARE_DIR: \"%s\"\n" % nfs.server_path)
             if nfs.nfs_exports:
                 f.write("NFS_EXPORTS: \n")
                 line_list = nfs.nfs_exports.split("\n")
@@ -353,10 +356,10 @@ def install_nfs_server():
         # 安装nfs-server
         r = exec_system("ansible-playbook -i %s %s" % (nfs_host,exec_yml))
         if r == 0:
-            NfsConfig.objects.filter(id=nfs.id).update(nfs_status=common.COMMON_STATUS[0][0])
-            log.info("安装nfs服务器[%s]成功" % nfs.nfs_ip)
+            NfsConfig.objects.filter(id=nfs.id).filter(storage_type=common.STORAGE_TYPE[0][0]).update(nfs_status=common.COMMON_STATUS[0][0])
+            log.info("安装nfs服务器[%s]成功" % nfs.server_ip)
         else:
-            log.error("安装nfs服务器[%s]失败" % nfs.nfs_ip)
+            log.error("安装nfs服务器[%s]失败" % nfs.server_ip)
 
 
 # 安装jenkins前，检测配置

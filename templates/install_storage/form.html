@@ -1,0 +1,107 @@
+<div id="contentwrapper" class="contentwrapper">
+    <div class="contenttitle2">
+        <h3>storage服务器配置</h3>
+    </div
+    <div id="validation" class="subcontent" >
+    	
+            <form id="_storageConfig" class="stdform" method="post" action="{{ formUrl }}">
+                {% csrf_token %}
+                <p>
+                    <label>存储类型</label>
+                    <span class="field">
+                        {{ form.storage_type }}
+                        <a>目前支持nfs/aliyun_nas</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>存储服务器IP</label>
+                    <span class="field">
+                        {{ form.server_ip }}
+                        <a></a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>登陆用户名</label>
+                    <span class="field">
+                        {{ form.login_user }}
+                    </span>
+                    <a>免密钥登陆使用</a>
+                </p>
+
+                <p>
+                    <label>登陆密码</label>
+                    <span class="field">
+                        {{ form.login_passwd }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>登陆端口</label>
+                    <span class="field">
+                        {{ form.login_port }}
+                    </span>
+                </p>
+
+                <p>
+                    <label>安装状态</label>
+                    <span class="field">
+                        {{ form.install_status }}
+                        <a>是否已安装</a>
+                    </span>
+                </p>
+
+                <p style="align:center;color:blue">共享配置</p>
+
+                <p>
+                    <label>NFS服务器用户名</label>
+                    <span class="field">
+                        {{ form.server_user }}
+                        <a>待创建的用户名</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>为客户端配置NFS共享目录</label>
+                    <span class="field">
+                        {{ form.nfs_exports }}
+                        <a>每个目录的设置独占一行，例如：/nfs-share 192.168.150.18*(rw,sync,insecure,no_subtree_check,no_root_squash)</a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>共享目录</label>
+                    <span class="field">
+                        {{ form.server_path }}
+                        <a></a>
+                    </span>
+                </p>
+
+                <p>
+                    <label>storage_class</label>
+                    <span class="field">
+                        {{ form.storage_class }}
+                        <a>例如：class-nfs-01</a>
+                    </span>
+                </p>
+
+                 <p>
+                    <label>provisioner_name</label>
+                    <span class="field">
+                        {{ form.provisioner_name }}
+                        <a>例如：nfs-provisioner-01</a>
+                    </span>
+                </p>
+                
+                <p class="stdformbutton">
+                    {{ form.id }}
+                	<button class="submit radius2">确定</button>
+                </p>
+            </form>
+
+    </div>
+</div>
+
+{% load staticfiles  %}
+<script type="text/javascript" src="{% static 'js/product-form.js' %}" ></script>

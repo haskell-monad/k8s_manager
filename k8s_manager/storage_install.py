@@ -6,54 +6,54 @@ from django.http import HttpResponseRedirect
 import logging
 import json
 
-from .models import NfsConfig
-from .forms import NfsConfigForm
+from .models import StorageConfig
+from .forms import StorageConfigForm
 from . import common
 
 logger = logging.getLogger('django')
 
 
-# nfs 列表
-def nfs_list(request):
-    listData = InstallStep.objects.all()
+# storage 列表
+def storage_list(request):
+    listData = StorageConfig.objects.all()
     context = {}
     context['listData'] = listData
-    return render(request, 'install_nfs/list.html', context)
+    return render(request, 'install_storage/list.html', context)
 
-# 添加 nfs
-def add_nfs(request):
+# 添加 storage
+def add_storage(request):
     request.encoding = 'utf-8'
     context = {}
     if request.method == "POST":
-        form = NfsConfigForm(request.POST)
-        print("----add_nfs-----")
+        form = StorageConfigForm(request.POST)
+        print("----add_storage-----")
         print(form.errors)
         if form.is_valid():
              kube = form.save(commit=False)
              kube.save()
         return HttpResponseRedirect('/k8s')
     else:
-        form = NfsConfigForm()
+        form = StorageConfigForm()
     context['title'] = "新增_NFS"
-    context['formUrl'] = "/nfs/install/add"
+    context['formUrl'] = "/storage/install/add"
     context['form'] = form
-    return render(request, 'install_nfs/form.html', context)
+    return render(request, 'install_storage/form.html', context)
 
 
-# 编辑 nfs
-def edit_nfs(request,pk):
+# 编辑 storage
+def edit_storage(request,pk):
     context = {}
-    obj = NfsConfig.objects.filter(pk=pk).first()
+    obj = StorageConfig.objects.filter(pk=pk).first()
     if not obj:
         return redirect('/k8s')
     if request.method == "GET":
-        form = NfsConfigForm(instance=obj)
+        form = StorageConfigForm(instance=obj)
         context['form'] = form
-        context['title'] = "编辑_NFS"
-        context['formUrl'] = "/nfs/install/edit/"+pk
-        return render(request, 'install_nfs/form.html', context)
+        context['title'] = "编辑_Storage"
+        context['formUrl'] = "/storage/install/edit/"+pk
+        return render(request, 'install_storage/form.html', context)
     else:
-        form = NfsConfigForm(request.POST, instance=obj)
+        form = StorageConfigForm(request.POST, instance=obj)
         if form.is_valid():
             kube = form.save(commit=False)
             kube.save()
