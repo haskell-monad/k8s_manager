@@ -66,7 +66,7 @@
                     <label>为客户端配置共享目录</label>
                     <span class="field">
                         {{ form.nfs_exports }}
-                        <a>每条一行，例如：/nfs-share 192.168.150.181(rw,async,no_root_squash)</a>
+                        <a>每个目录的设置独占一行，例如：/nfs-share 192.168.150.18*(rw,sync,insecure,no_subtree_check,no_root_squash)</a>
                     </span>
                 </p>
                 

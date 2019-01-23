@@ -1,0 +1,45 @@
+<div class="pageheader notab">
+    <h5 class="pagetitle">NFS服务器列表</h5>
+    <span class="pagedesc"> </span>            
+</div>
+<div id="contentwrapper" class="contentwrapper">
+    <table cellpadding="0" cellspacing="0" border="0" class="stdtable" id="dyntable2">
+        <colgroup>
+            <col class="con0" style="width: 4%" />
+            <col class="con1" />
+            <col class="con0" />
+            <col class="con1" />
+            <col class="con0" />
+        </colgroup>
+        <!--表头-->
+        <thead>
+            <tr>
+                <th class="head0 nosort"></th>
+                <th class="head0">NFS服务器IP</th>
+                <th class="head1">NFS用户名</th>
+                <th class="head1">NFS服务器安装状态</th>
+                <th class="head0">操作</th>
+            </tr>
+        </thead>
+        <!--内容-->
+        <tbody>
+            {% for nfs in listData %}
+            <tr class="gradeX">
+                <td align="center">
+                    <span class="center"><input type="checkbox" value="{{ nfs.id }}"/></span>
+                </td>
+                <td>
+                    <a href="#" onclick="installStepEdit({{ nfs.id }})">
+                    {{ nfs.nfs_ip }}
+                    </a>
+                </td>
+                <td>{{ nfs.nfs_user }}</td>
+                <td>{{ nfs.nfs_status }}</td>
+                <td class="center">
+                    <a href="#" onclick = "installStepEdit({{ nfs.id }})">编辑</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

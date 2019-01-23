@@ -18,7 +18,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from . import home, assets, product, product_version, kube, kube_cluster, kube_install,kube_install_check,kube_install_step
+from . import home, assets, product, product_version, kube, kube_cluster, kube_install,kube_install_check,kube_install_step, nfs_server
 
 
 urlpatterns = [
@@ -39,6 +39,12 @@ urlpatterns = [
     url(r'^product/version/(\d+)$', product_version.index),
     url(r'^product/version/add/(\d+)$', product_version.add),
    
+
+    # nfs相关
+    url(r'^nfs/install/add$', nfs_server.add_nfs),
+    url(r'^nfs/install/list$', nfs_server.nfs_list),
+    url(r'^nfs/install/edit/(\d+)$', nfs_server.edit_nfs),
+
 
     url(r'^k8s$', kube.index),
     # 编辑集群信息
